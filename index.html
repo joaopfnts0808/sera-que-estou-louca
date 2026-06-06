@@ -178,6 +178,26 @@
   .login-hint { font-size: .68rem; color: rgba(255,255,255,.2); margin-top: 6px; text-align: right; font-style: italic; }
 
   footer { position: relative; z-index: 1; text-align: center; padding: 36px 24px; border-top: 1px solid rgba(255,255,255,.05); font-size: .72rem; color: rgba(255,255,255,.2); letter-spacing: .12em; }
+  /* album covers */
+  .disc-cover {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    border-radius: 50%; object-fit: cover;
+    opacity: 0; transition: opacity .5s;
+    box-shadow: 0 24px 72px rgba(0,0,0,.6), 0 0 0 2px rgba(255,255,255,.08);
+  }
+  .disc-cover.loaded { opacity: 1; }
+  .sleeve:hover .disc-cover.loaded { animation: spin 4s linear infinite; }
+  .sleeve:hover .vinyl { animation: none; }
+  .disc-cover.loaded ~ .vinyl { opacity: 0; }
+
+  .track-thumb {
+    width: 38px; height: 38px; border-radius: 5px;
+    object-fit: cover; flex-shrink: 0;
+    background: rgba(255,255,255,.06);
+    display: block;
+  }
+  .track-header { grid-template-columns: 28px 38px 1fr auto; }
+
   @media (max-width: 600px) { .records-grid { gap: 36px; } .hero { padding: 60px 20px 40px; } }
 </style>
 </head>
@@ -230,8 +250,9 @@
   <p class="shelf-label">Escolha um disco</p>
   <div class="records-grid">
   <div class="record-card c-a">
-      <div class="sleeve">
+      <div class="sleeve" data-disc="0">
         <div class="vinyl"></div>
+        <img class="disc-cover" src="" alt="Lado A">
         <div class="label"><span class="label-name">Lado A</span><div class="label-hole"></div></div>
       </div>
       <div class="card-info">
@@ -244,6 +265,7 @@
     <div class="track" data-uri="spotify:track:1duoEJxM4GBEICofJAh9Im" data-idx="0">
           <div class="track-header">
             <span class="track-cap">I</span>
+            <img class="track-thumb" id="thumb-0" src="" alt="">
             <div class="track-body">
               <div class="track-title">Out Of Mind</div>
               <div class="track-artist">Tove Lo</div>
@@ -257,6 +279,7 @@
     <div class="track" data-uri="spotify:track:6UgkB0xM45TR3Zjqm3GQ6T" data-idx="1">
           <div class="track-header">
             <span class="track-cap">II</span>
+            <img class="track-thumb" id="thumb-1" src="" alt="">
             <div class="track-body">
               <div class="track-title">Let's Not Fall In Love</div>
               <div class="track-artist">BigBang</div>
@@ -270,6 +293,7 @@
     <div class="track" data-uri="spotify:track:1fN3fH8Wcx7SJJwlVFrO5t" data-idx="2">
           <div class="track-header">
             <span class="track-cap">III</span>
+            <img class="track-thumb" id="thumb-2" src="" alt="">
             <div class="track-body">
               <div class="track-title">Casanova</div>
               <div class="track-artist">Allie X</div>
@@ -283,6 +307,7 @@
     <div class="track" data-uri="spotify:track:5Q4H1XkVHxQjnrHCUpS61d" data-idx="3">
           <div class="track-header">
             <span class="track-cap">IV</span>
+            <img class="track-thumb" id="thumb-3" src="" alt="">
             <div class="track-body">
               <div class="track-title">Nicotine</div>
               <div class="track-artist">Panic! At The Disco</div>
@@ -296,6 +321,7 @@
     <div class="track" data-uri="spotify:track:73kadnv7SduzhApfRUv5C0" data-idx="4">
           <div class="track-header">
             <span class="track-cap">V</span>
+            <img class="track-thumb" id="thumb-4" src="" alt="">
             <div class="track-body">
               <div class="track-title">hey you got drugs?</div>
               <div class="track-artist">Tove Lo</div>
@@ -310,8 +336,9 @@
     </div>
 
   <div class="record-card c-b">
-      <div class="sleeve">
+      <div class="sleeve" data-disc="1">
         <div class="vinyl"></div>
+        <img class="disc-cover" src="" alt="Lado B">
         <div class="label"><span class="label-name">Lado B</span><div class="label-hole"></div></div>
       </div>
       <div class="card-info">
@@ -324,6 +351,7 @@
     <div class="track" data-uri="spotify:track:1CD7hXuEjiUsoqOhleyKb7" data-idx="5">
           <div class="track-header">
             <span class="track-cap">VI</span>
+            <img class="track-thumb" id="thumb-5" src="" alt="">
             <div class="track-body">
               <div class="track-title">Doi D+</div>
               <div class="track-artist">Jaloo</div>
@@ -337,6 +365,7 @@
     <div class="track" data-uri="spotify:track:2VZ5Vtjn16RThAvaFz3sJZ" data-idx="6">
           <div class="track-header">
             <span class="track-cap">VII</span>
+            <img class="track-thumb" id="thumb-6" src="" alt="">
             <div class="track-body">
               <div class="track-title">Get Outta My Way</div>
               <div class="track-artist">Kylie Minogue</div>
@@ -350,6 +379,7 @@
     <div class="track" data-uri="spotify:track:7s0YfJE6hNNYq9BV26iCw6" data-idx="7">
           <div class="track-header">
             <span class="track-cap">VIII</span>
+            <img class="track-thumb" id="thumb-7" src="" alt="">
             <div class="track-body">
               <div class="track-title">Circle The Drain</div>
               <div class="track-artist">Katy Perry</div>
@@ -363,6 +393,7 @@
     <div class="track" data-uri="spotify:track:1eTL8yocTmire9gpOn2H2g" data-idx="8">
           <div class="track-header">
             <span class="track-cap">IX</span>
+            <img class="track-thumb" id="thumb-8" src="" alt="">
             <div class="track-body">
               <div class="track-title">Godless</div>
               <div class="track-artist">Banks</div>
@@ -376,6 +407,7 @@
     <div class="track" data-uri="spotify:track:2ArW2y4HFzz1VjGtl7f4xm" data-idx="9">
           <div class="track-header">
             <span class="track-cap">X</span>
+            <img class="track-thumb" id="thumb-9" src="" alt="">
             <div class="track-body">
               <div class="track-title">Sangrando</div>
               <div class="track-artist">Gaby Amarantos & Potyguara Bardo</div>
@@ -404,6 +436,7 @@
     <div class="track" data-uri="spotify:track:7KiLniGRlvAHpoxMLYp32P" data-idx="10">
           <div class="track-header">
             <span class="track-cap">XI</span>
+            <img class="track-thumb" id="thumb-10" src="" alt="">
             <div class="track-body">
               <div class="track-title">Espumas ao Vento</div>
               <div class="track-artist">Elza Soares</div>
@@ -417,6 +450,7 @@
     <div class="track" data-uri="spotify:track:6K8VQ84MqhsoakN5MjrnVR" data-idx="11">
           <div class="track-header">
             <span class="track-cap">XII</span>
+            <img class="track-thumb" id="thumb-11" src="" alt="">
             <div class="track-body">
               <div class="track-title">Supercut</div>
               <div class="track-artist">Lorde</div>
@@ -430,6 +464,7 @@
     <div class="track" data-uri="spotify:track:1k0JAiH11gHL9dc5dfQjQr" data-idx="12">
           <div class="track-header">
             <span class="track-cap">XIII</span>
+            <img class="track-thumb" id="thumb-12" src="" alt="">
             <div class="track-body">
               <div class="track-title">Not Cute Anymore</div>
               <div class="track-artist">ILLIT</div>
@@ -443,6 +478,7 @@
     <div class="track" data-uri="spotify:track:1bYtKF2sY2wLU6xdVaqIqD" data-idx="13">
           <div class="track-header">
             <span class="track-cap">XIV</span>
+            <img class="track-thumb" id="thumb-13" src="" alt="">
             <div class="track-body">
               <div class="track-title">It's Alright, It's Ok</div>
               <div class="track-artist">Ashley Tisdale</div>
@@ -456,6 +492,7 @@
     <div class="track" data-uri="spotify:track:05HElY3EVth4SMuOJOGusl" data-idx="14">
           <div class="track-header">
             <span class="track-cap">XV</span>
+            <img class="track-thumb" id="thumb-14" src="" alt="">
             <div class="track-body">
               <div class="track-title">On The Floor</div>
               <div class="track-artist">Perfume Genius</div>
@@ -574,9 +611,33 @@ window.onSpotifyWebPlaybackSDKReady = async () => {
   initPlayer();
 };
 
+const TRACK_IDS = ["1duoEJxM4GBEICofJAh9Im","6UgkB0xM45TR3Zjqm3GQ6T","1fN3fH8Wcx7SJJwlVFrO5t","5Q4H1XkVHxQjnrHCUpS61d","73kadnv7SduzhApfRUv5C0","1CD7hXuEjiUsoqOhleyKb7","2VZ5Vtjn16RThAvaFz3sJZ","7s0YfJE6hNNYq9BV26iCw6","1eTL8yocTmire9gpOn2H2g","2ArW2y4HFzz1VjGtl7f4xm","7KiLniGRlvAHpoxMLYp32P","6K8VQ84MqhsoakN5MjrnVR","1k0JAiH11gHL9dc5dfQjQr","1bYtKF2sY2wLU6xdVaqIqD","05HElY3EVth4SMuOJOGusl"];
+const DISC_FIRST = [0, 5, 10];
+
+async function fetchCovers() {
+  const res = await fetch("https://api.spotify.com/v1/tracks?ids=" + TRACK_IDS.join(","), {
+    headers: { Authorization: "Bearer " + accessToken }
+  });
+  const data = await res.json();
+  if (!data.tracks) return;
+  data.tracks.forEach((track, idx) => {
+    const img = track.album.images[1]?.url || track.album.images[0]?.url;
+    // track thumbnail
+    const thumb = document.getElementById("thumb-" + idx);
+    if (thumb) thumb.src = img;
+    // disc cover (first track of each disc)
+    const discIdx = DISC_FIRST.indexOf(idx);
+    if (discIdx >= 0) {
+      const cover = document.querySelector('.sleeve[data-disc="' + discIdx + '"] .disc-cover');
+      if (cover) { cover.src = img; cover.onload = () => cover.classList.add("loaded"); }
+    }
+  });
+}
+
 function initPlayer() {
   document.getElementById("loginBanner").classList.add("hidden");
   fetchUser();
+  fetchCovers();
 
   player = new Spotify.Player({
     name: "Será que Estou Louca?",
