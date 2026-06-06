@@ -7,21 +7,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:     #0b0928;
-    --pink:   #f036b8;
-    --purple: #7b2fbe;
-    --blue:   #2d4de0;
-    --steel:  #6b8fd4;
-    --muted:  #9d93c8;
-    --text:   #ffffff;
+    --bg: #0b0928; --pink: #f036b8; --purple: #7b2fbe;
+    --blue: #2d4de0; --steel: #6b8fd4; --muted: #9d93c8; --text: #ffffff;
   }
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: var(--bg); color: var(--text); font-family: "DM Sans", sans-serif; min-height: 100vh; overflow-x: hidden; }
+
   .bg-layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
   .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.18; animation: drift 10s ease-in-out infinite; }
   .b1 { background: var(--pink);   width: 500px; height: 500px; top: -180px; left: -120px; }
   .b2 { background: var(--purple); width: 380px; height: 380px; bottom: 50px; right: -80px; animation-delay: -4s; }
-  .b3 { background: var(--blue);   width: 280px; height: 280px; top: 45%; left: 35%;       animation-delay: -7s; }
+  .b3 { background: var(--blue);   width: 280px; height: 280px; top: 45%; left: 35%; animation-delay: -7s; }
   @keyframes drift {
     0%,100% { transform: translate(0,0) scale(1); }
     33%      { transform: translate(24px,-36px) scale(1.06); }
@@ -32,7 +28,9 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
     opacity: 0.035; mix-blend-mode: overlay;
   }
-  .hero { position: relative; z-index: 1; text-align: center; padding: 90px 24px 72px; }
+
+  /* HERO */
+  .hero { position: relative; z-index: 1; text-align: center; padding: 90px 24px 56px; }
   .hero-author { font-size: .72rem; letter-spacing: .35em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
   .hero-title {
     font-family: "Abril Fatface", serif; font-size: clamp(3rem, 9vw, 7rem); line-height: 1;
@@ -41,8 +39,79 @@
   }
   .hero-sub { margin-top: 18px; color: var(--muted); font-size: .95rem; font-style: italic; font-weight: 300; letter-spacing: .06em; }
   .hero-bar { width: 48px; height: 2px; background: linear-gradient(90deg, var(--pink), var(--purple)); margin: 28px auto 0; border-radius: 2px; }
-  main { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: 0 24px 100px; }
-  .shelf-label { text-align: center; font-size: .68rem; letter-spacing: .35em; text-transform: uppercase; color: var(--muted); margin-bottom: 56px; }
+
+  /* LOGIN BANNER */
+  .login-banner {
+    position: relative; z-index: 1;
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin: 32px auto 0; max-width: 420px;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 16px; padding: 18px 24px;
+  }
+  .login-banner.hidden { display: none; }
+  .login-banner p { font-size: .85rem; color: var(--muted); line-height: 1.4; }
+  .login-banner p span { color: #fff; font-weight: 600; }
+  .btn-spotify {
+    flex-shrink: 0;
+    background: #1DB954; color: #000; font-family: "DM Sans", sans-serif;
+    font-size: .78rem; font-weight: 700; letter-spacing: .08em;
+    border: none; border-radius: 24px; padding: 10px 20px;
+    cursor: pointer; white-space: nowrap; transition: opacity .2s;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .btn-spotify:hover { opacity: .85; }
+  .btn-spotify svg { width: 16px; height: 16px; fill: #000; }
+
+  /* USER BAR */
+  .user-bar {
+    position: relative; z-index: 1;
+    display: none; align-items: center; justify-content: center; gap: 10px;
+    margin: 32px auto 0; max-width: 420px;
+    background: rgba(29,185,84,.08); border: 1px solid rgba(29,185,84,.25);
+    border-radius: 16px; padding: 12px 20px;
+    font-size: .82rem; color: var(--muted);
+  }
+  .user-bar.visible { display: flex; }
+  .user-bar img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+  .user-bar .uname { color: #fff; font-weight: 600; }
+  .user-bar .logout {
+    margin-left: auto; background: none; border: 1px solid rgba(255,255,255,.15);
+    color: var(--muted); font-family: "DM Sans", sans-serif; font-size: .7rem;
+    border-radius: 12px; padding: 4px 12px; cursor: pointer; transition: color .2s, border-color .2s;
+  }
+  .user-bar .logout:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+
+  /* NOW PLAYING */
+  .now-playing {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    z-index: 100; display: none;
+    background: rgba(15,12,45,.95); border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(20px); border-radius: 20px;
+    padding: 14px 20px; min-width: 300px; max-width: 90vw;
+    align-items: center; gap: 14px;
+    box-shadow: 0 8px 40px rgba(0,0,0,.5);
+  }
+  .now-playing.visible { display: flex; }
+  .now-playing img { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+  .np-info { flex: 1; min-width: 0; }
+  .np-title { font-size: .85rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .np-artist { font-size: .72rem; color: var(--muted); margin-top: 2px; }
+  .np-controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .np-btn {
+    background: none; border: none; cursor: pointer; color: var(--muted);
+    padding: 6px; border-radius: 50%; transition: color .2s, background .2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .np-btn:hover { color: #fff; background: rgba(255,255,255,.08); }
+  .np-btn.play-pause {
+    background: var(--pink); color: #fff; width: 36px; height: 36px;
+  }
+  .np-btn.play-pause:hover { background: var(--pink-2, #c4218f); }
+  .np-btn svg { display: block; }
+
+  /* MAIN */
+  main { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: 0 24px 120px; }
+  .shelf-label { text-align: center; font-size: .68rem; letter-spacing: .35em; text-transform: uppercase; color: var(--muted); margin-bottom: 56px; margin-top: 56px; }
   .records-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 48px; justify-items: center; }
   .record-card { width: 100%; max-width: 340px; }
   .sleeve { position: relative; width: 100%; aspect-ratio: 1; margin-bottom: 22px; cursor: default; }
@@ -89,32 +158,78 @@
   .toggle-btn.open .arrow { transform: rotate(180deg); }
   .tracklist { max-height: 0; overflow: hidden; transition: max-height .6s cubic-bezier(.4,0,.2,1); margin-top: 14px; }
   .tracklist.open { max-height: 9999px; }
-  .track { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.05); }
+  .track { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.05); }
   .track:last-child { border-bottom: none; }
-  .track-header { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; margin-bottom: 10px; }
-  .track-cap { font-family: "Abril Fatface", serif; font-size: .62rem; color: var(--muted); text-align: right; padding-top: 4px; line-height: 1; }
+  .track-header { display: grid; grid-template-columns: 28px 1fr auto; gap: 12px; align-items: start; }
+  .track-cap { font-family: "Abril Fatface", serif; font-size: .62rem; color: var(--muted); text-align: right; padding-top: 4px; }
   .track-body { min-width: 0; }
   .track-title { font-size: .9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .track-artist { font-size: .74rem; color: var(--muted); margin-top: 1px; }
   .track-desc { font-size: .76rem; color: rgba(255,255,255,.42); font-style: italic; font-weight: 300; margin-top: 8px; line-height: 1.6; border-left: 2px solid rgba(255,255,255,.1); padding-left: 10px; }
-  .track-player { margin-top: 12px; border-radius: 10px; overflow: hidden; }
-  .track-player iframe { display: block; border-radius: 10px; }
+  .play-track-btn {
+    flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+    color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .play-track-btn:hover { background: var(--pink); border-color: var(--pink); color: #fff; }
+  .play-track-btn.playing { background: var(--pink); border-color: var(--pink); color: #fff; }
+  .play-track-btn svg { display: block; }
+  .login-hint { font-size: .68rem; color: rgba(255,255,255,.2); margin-top: 6px; text-align: right; font-style: italic; }
+
   footer { position: relative; z-index: 1; text-align: center; padding: 36px 24px; border-top: 1px solid rgba(255,255,255,.05); font-size: .72rem; color: rgba(255,255,255,.2); letter-spacing: .12em; }
-  @media (max-width: 600px) { .records-grid { gap: 36px; } .hero { padding: 60px 20px 50px; } }
+  @media (max-width: 600px) { .records-grid { gap: 36px; } .hero { padding: 60px 20px 40px; } }
 </style>
 </head>
 <body>
+
 <div class="bg-layer"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
 <header class="hero">
   <p class="hero-author">João Pedro Fontes</p>
   <h1 class="hero-title">Será que<br>Estou Louca?</h1>
   <p class="hero-sub">A biblioteca musical do livro</p>
   <div class="hero-bar"></div>
+
+  <div class="login-banner" id="loginBanner">
+    <p><span>Ouça enquanto lê.</span><br>Entre com sua conta do Spotify para ouvir as músicas direto aqui.</p>
+    <button class="btn-spotify" onclick="loginSpotify()">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      Entrar
+    </button>
+  </div>
+
+  <div class="user-bar" id="userBar">
+    <img id="userAvatar" src="" alt="">
+    <span>Olá, <span class="uname" id="userName"></span></span>
+    <button class="logout" onclick="logout()">Sair</button>
+  </div>
 </header>
+
+<div id="nowPlaying" class="now-playing">
+  <img id="npCover" src="" alt="">
+  <div class="np-info">
+    <div class="np-title" id="npTitle"></div>
+    <div class="np-artist" id="npArtist"></div>
+  </div>
+  <div class="np-controls">
+    <button class="np-btn" onclick="prevTrack()" title="Anterior">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+    </button>
+    <button class="np-btn play-pause" id="playPauseBtn" onclick="togglePlay()">
+      <svg id="playIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      <svg id="pauseIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+    </button>
+    <button class="np-btn" onclick="nextTrack()" title="Próxima">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zm2.5-6 8.5 6V6z"/></svg>
+    </button>
+  </div>
+</div>
+
 <main>
   <p class="shelf-label">Escolha um disco</p>
   <div class="records-grid">
-    <div class="record-card c-a">
+  <div class="record-card c-a">
       <div class="sleeve">
         <div class="vinyl"></div>
         <div class="label"><span class="label-name">Lado A</span><div class="label-hole"></div></div>
@@ -126,7 +241,7 @@
       <p class="card-desc">Cap&iacute;tulos I ao V &mdash; o come&ccedil;o, a paix&atilde;o, os primeiros sinais</p>
       <button class="toggle-btn" onclick="toggle(this)">Ver faixas <span class="arrow">&#x2193;</span></button>
       <div class="tracklist">
-        <div class="track">
+    <div class="track" data-uri="spotify:track:1duoEJxM4GBEICofJAh9Im" data-idx="0">
           <div class="track-header">
             <span class="track-cap">I</span>
             <div class="track-body">
@@ -134,21 +249,25 @@
               <div class="track-artist">Tove Lo</div>
               <div class="track-desc">Comecei a escrever sem saber ao certo o que estava acontecendo comigo. Essa m&uacute;sica descreve bem esse estado: voc&ecirc; continua funcionando, mas sem estar presente. Foi o come&ccedil;o de tudo.</div>
             </div>
+            <button class="play-track-btn" id="btn-0" onclick="playTrack(0)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/1duoEJxM4GBEICofJAh9Im?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:6UgkB0xM45TR3Zjqm3GQ6T" data-idx="1">
           <div class="track-header">
             <span class="track-cap">II</span>
             <div class="track-body">
-              <div class="track-title">Let&rsquo;s Not Fall In Love</div>
+              <div class="track-title">Let's Not Fall In Love</div>
               <div class="track-artist">BigBang</div>
               <div class="track-desc">Ele disse desde o come&ccedil;o que n&atilde;o queria nada s&eacute;rio. Eu ouvi e continuei. Essa m&uacute;sica tem o nome que esse cap&iacute;tulo merecia ter.</div>
             </div>
+            <button class="play-track-btn" id="btn-1" onclick="playTrack(1)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/6UgkB0xM45TR3Zjqm3GQ6T?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:1fN3fH8Wcx7SJJwlVFrO5t" data-idx="2">
           <div class="track-header">
             <span class="track-cap">III</span>
             <div class="track-body">
@@ -156,10 +275,12 @@
               <div class="track-artist">Allie X</div>
               <div class="track-desc">Ele sabia exatamente o que dizer para voc&ecirc; se sentir especial. Casanova captura isso: o charme que funciona justamente porque n&atilde;o pretende nada.</div>
             </div>
+            <button class="play-track-btn" id="btn-2" onclick="playTrack(2)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/1fN3fH8Wcx7SJJwlVFrO5t?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:5Q4H1XkVHxQjnrHCUpS61d" data-idx="3">
           <div class="track-header">
             <span class="track-cap">IV</span>
             <div class="track-body">
@@ -167,10 +288,12 @@
               <div class="track-artist">Panic! At The Disco</div>
               <div class="track-desc">Eu sabia o que estava acontecendo e fiquei. O t&iacute;tulo j&aacute; diz tudo: nicotina. Voc&ecirc; fuma sabendo o que faz.</div>
             </div>
+            <button class="play-track-btn" id="btn-3" onclick="playTrack(3)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/5Q4H1XkVHxQjnrHCUpS61d?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:73kadnv7SduzhApfRUv5C0" data-idx="4">
           <div class="track-header">
             <span class="track-cap">V</span>
             <div class="track-body">
@@ -178,13 +301,15 @@
               <div class="track-artist">Tove Lo</div>
               <div class="track-desc">Esse cap&iacute;tulo fala por si. O c&iacute;rculo dele era esse, a noite toda, toda semana. Essa m&uacute;sica tocou em muitas madrugadas que eu passei esperando por algu&eacute;m que tinha ido cheirar com os amigos.</div>
             </div>
+            <button class="play-track-btn" id="btn-4" onclick="playTrack(4)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/73kadnv7SduzhApfRUv5C0?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
       </div>
     </div>
 
-    <div class="record-card c-b">
+  <div class="record-card c-b">
       <div class="sleeve">
         <div class="vinyl"></div>
         <div class="label"><span class="label-name">Lado B</span><div class="label-hole"></div></div>
@@ -196,7 +321,7 @@
       <p class="card-desc">Cap&iacute;tulos VI ao X &mdash; o fim, o gaslighting, a terapia</p>
       <button class="toggle-btn" onclick="toggle(this)">Ver faixas <span class="arrow">&#x2193;</span></button>
       <div class="tracklist">
-        <div class="track">
+    <div class="track" data-uri="spotify:track:1CD7hXuEjiUsoqOhleyKb7" data-idx="5">
           <div class="track-header">
             <span class="track-cap">VI</span>
             <div class="track-body">
@@ -204,10 +329,12 @@
               <div class="track-artist">Jaloo</div>
               <div class="track-desc">Depois do pedido de namoro e do sil&ecirc;ncio que veio depois, n&atilde;o tinha muito mais o que dizer. Jaloo disse por mim.</div>
             </div>
+            <button class="play-track-btn" id="btn-5" onclick="playTrack(5)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/1CD7hXuEjiUsoqOhleyKb7?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:2VZ5Vtjn16RThAvaFz3sJZ" data-idx="6">
           <div class="track-header">
             <span class="track-cap">VII</span>
             <div class="track-body">
@@ -215,10 +342,12 @@
               <div class="track-artist">Kylie Minogue</div>
               <div class="track-desc">Essa m&uacute;sica est&aacute; no texto porque precisava estar. No dia em que pedi J em namoro, tinha algu&eacute;m vindo de Porto Alegre pra me ver. Saia do meu caminho.</div>
             </div>
+            <button class="play-track-btn" id="btn-6" onclick="playTrack(6)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/2VZ5Vtjn16RThAvaFz3sJZ?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:7s0YfJE6hNNYq9BV26iCw6" data-idx="7">
           <div class="track-header">
             <span class="track-cap">VIII</span>
             <div class="track-body">
@@ -226,10 +355,12 @@
               <div class="track-artist">Katy Perry</div>
               <div class="track-desc">Tamb&eacute;m est&aacute; no texto. Eu estava sendo a respons&aacute;vel emocional de um adulto de 30 anos que gastava tudo com drogas e n&atilde;o cumpria prazo nenhum. Katy Perry nomeou isso antes de eu conseguir.</div>
             </div>
+            <button class="play-track-btn" id="btn-7" onclick="playTrack(7)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/7s0YfJE6hNNYq9BV26iCw6?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:1eTL8yocTmire9gpOn2H2g" data-idx="8">
           <div class="track-header">
             <span class="track-cap">IX</span>
             <div class="track-body">
@@ -237,24 +368,28 @@
               <div class="track-artist">Banks</div>
               <div class="track-desc">Cada sess&atilde;o com Gil me devolvia algo que eu j&aacute; sabia e escolhia ignorar. Banks tem essa dureza. Godless &eacute; sobre o momento em que voc&ecirc; para de se convencer.</div>
             </div>
+            <button class="play-track-btn" id="btn-8" onclick="playTrack(8)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/1eTL8yocTmire9gpOn2H2g?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:2ArW2y4HFzz1VjGtl7f4xm" data-idx="9">
           <div class="track-header">
             <span class="track-cap">X</span>
             <div class="track-body">
               <div class="track-title">Sangrando</div>
-              <div class="track-artist">Gaby Amarantos &amp; Potyguara Bardo</div>
+              <div class="track-artist">Gaby Amarantos & Potyguara Bardo</div>
               <div class="track-desc">Num bar, ouvindo as hist&oacute;rias de outras pessoas sobre ele, percebi que eu era mais um numa lista. Isso d&oacute;i de um jeito diferente. Sangrando foi o que ficou tocando na cabe&ccedil;a.</div>
             </div>
+            <button class="play-track-btn" id="btn-9" onclick="playTrack(9)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/2ArW2y4HFzz1VjGtl7f4xm?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
       </div>
     </div>
 
-    <div class="record-card c-bns">
+  <div class="record-card c-bns">
       <div class="sleeve">
         <div class="vinyl"></div>
         <div class="label"><span class="label-name">Faixas B&ocirc;nus</span><div class="label-hole"></div></div>
@@ -266,7 +401,7 @@
       <p class="card-desc">Cap&iacute;tulos XI ao XV &mdash; a sa&iacute;da, o luto, a sobriedade</p>
       <button class="toggle-btn" onclick="toggle(this)">Ver faixas <span class="arrow">&#x2193;</span></button>
       <div class="tracklist">
-        <div class="track">
+    <div class="track" data-uri="spotify:track:7KiLniGRlvAHpoxMLYp32P" data-idx="10">
           <div class="track-header">
             <span class="track-cap">XI</span>
             <div class="track-body">
@@ -274,10 +409,12 @@
               <div class="track-artist">Elza Soares</div>
               <div class="track-desc">Chamar algu&eacute;m de louco &eacute; uma forma de n&atilde;o precisar responder por nada. Ele usou muito isso. Elza Soares cantou sobre ficar sem ch&atilde;o antes de eu precisar de uma m&uacute;sica pra isso.</div>
             </div>
+            <button class="play-track-btn" id="btn-10" onclick="playTrack(10)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/7KiLniGRlvAHpoxMLYp32P?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:6K8VQ84MqhsoakN5MjrnVR" data-idx="11">
           <div class="track-header">
             <span class="track-cap">XII</span>
             <div class="track-body">
@@ -285,10 +422,12 @@
               <div class="track-artist">Lorde</div>
               <div class="track-desc">Supercut &eacute; sobre guardar s&oacute; os melhores momentos de algu&eacute;m. Eu precisava escrever o cap&iacute;tulo XII porque sem ele o livro seria uma mentira. Tinha lado bom. Era por isso que eu ficava.</div>
             </div>
+            <button class="play-track-btn" id="btn-11" onclick="playTrack(11)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/6K8VQ84MqhsoakN5MjrnVR?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:1k0JAiH11gHL9dc5dfQjQr" data-idx="12">
           <div class="track-header">
             <span class="track-cap">XIII</span>
             <div class="track-body">
@@ -296,21 +435,25 @@
               <div class="track-artist">ILLIT</div>
               <div class="track-desc">Passei o anivers&aacute;rio dele com dor de barriga, fui embora no meio e chorei em casa. Naquele dia ficou claro que algo havia mudado em mim. N&atilde;o era mais bonito assistir &agrave;quilo tudo.</div>
             </div>
+            <button class="play-track-btn" id="btn-12" onclick="playTrack(12)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/1k0JAiH11gHL9dc5dfQjQr?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:1bYtKF2sY2wLU6xdVaqIqD" data-idx="13">
           <div class="track-header">
             <span class="track-cap">XIV</span>
             <div class="track-body">
-              <div class="track-title">It&rsquo;s Alright, It&rsquo;s Ok</div>
+              <div class="track-title">It's Alright, It's Ok</div>
               <div class="track-artist">Ashley Tisdale</div>
               <div class="track-desc">Pode parecer ing&ecirc;nua, mas ou&ccedil;a com aten&ccedil;&atilde;o. Tem raiva nessa m&uacute;sica. Eu parei de esperar. T&aacute; tudo bem.</div>
             </div>
+            <button class="play-track-btn" id="btn-13" onclick="playTrack(13)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/1bYtKF2sY2wLU6xdVaqIqD?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
-        <div class="track">
+    <div class="track" data-uri="spotify:track:05HElY3EVth4SMuOJOGusl" data-idx="14">
           <div class="track-header">
             <span class="track-cap">XV</span>
             <div class="track-body">
@@ -318,26 +461,191 @@
               <div class="track-artist">Perfume Genius</div>
               <div class="track-desc">Tamb&eacute;m est&aacute; no texto. A pergunta de Perfume Genius era a minha: quanto tempo at&eacute; esse cora&ccedil;&atilde;o n&atilde;o ser mais meu. Escrever foi a resposta.</div>
             </div>
+            <button class="play-track-btn" id="btn-14" onclick="playTrack(14)" title="Reproduzir">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
+            </button>
           </div>
-          <div class="track-player"><iframe src="https://open.spotify.com/embed/track/05HElY3EVth4SMuOJOGusl?utm_source=generator&theme=0" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></div>
         </div>
       </div>
     </div>
 
   </div>
 </main>
+
 <footer>
-  <p>&#169; 2026 &middot; Ser&aacute; que Estou Louca? &middot; Jo&atilde;o Pedro Fontes</p>
+  <p>&#169; 2026 &middot; Será que Estou Louca? &middot; João Pedro Fontes</p>
 </footer>
+
+<script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script>
-  function toggle(btn) {
-    const card = btn.closest(".record-card");
-    const list = card.querySelector(".tracklist");
-    const isOpen = list.classList.contains("open");
-    list.classList.toggle("open");
-    btn.classList.toggle("open");
-    btn.querySelector(".arrow").innerHTML = isOpen ? "&#x2193;" : "&#x2191;";
+const CLIENT_ID = "6b17b314279f41ca800c603bd7db0326";
+const REDIRECT_URI = "https://joaopfnts0808.github.io/sera-que-estou-louca/";
+const SCOPES = "streaming user-read-email user-read-private user-modify-playback-state user-read-playback-state";
+const TRACK_URIS = ["spotify:track:1duoEJxM4GBEICofJAh9Im", "spotify:track:6UgkB0xM45TR3Zjqm3GQ6T", "spotify:track:1fN3fH8Wcx7SJJwlVFrO5t", "spotify:track:5Q4H1XkVHxQjnrHCUpS61d", "spotify:track:73kadnv7SduzhApfRUv5C0", "spotify:track:1CD7hXuEjiUsoqOhleyKb7", "spotify:track:2VZ5Vtjn16RThAvaFz3sJZ", "spotify:track:7s0YfJE6hNNYq9BV26iCw6", "spotify:track:1eTL8yocTmire9gpOn2H2g", "spotify:track:2ArW2y4HFzz1VjGtl7f4xm", "spotify:track:7KiLniGRlvAHpoxMLYp32P", "spotify:track:6K8VQ84MqhsoakN5MjrnVR", "spotify:track:1k0JAiH11gHL9dc5dfQjQr", "spotify:track:1bYtKF2sY2wLU6xdVaqIqD", "spotify:track:05HElY3EVth4SMuOJOGusl"];
+
+let accessToken = null;
+let player = null;
+let deviceId = null;
+let currentIdx = -1;
+let isPlaying = false;
+
+// ── AUTH ──────────────────────────────────────────
+function loginSpotify() {
+  const url = "https://accounts.spotify.com/authorize" +
+    "?client_id=" + CLIENT_ID +
+    "&response_type=token" +
+    "&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
+    "&scope=" + encodeURIComponent(SCOPES) +
+    "&show_dialog=false";
+  window.location = url;
+}
+
+function logout() {
+  accessToken = null;
+  localStorage.removeItem("sp_token");
+  localStorage.removeItem("sp_expiry");
+  document.getElementById("loginBanner").classList.remove("hidden");
+  document.getElementById("userBar").classList.remove("visible");
+  document.getElementById("nowPlaying").classList.remove("visible");
+  if (player) { player.disconnect(); player = null; }
+  document.querySelectorAll(".play-track-btn").forEach(b => b.classList.remove("playing"));
+}
+
+function getTokenFromHash() {
+  const hash = window.location.hash.substring(1);
+  const params = Object.fromEntries(hash.split("&").map(p => p.split("=")));
+  if (params.access_token) {
+    const expiry = Date.now() + parseInt(params.expires_in || 3600) * 1000;
+    localStorage.setItem("sp_token", params.access_token);
+    localStorage.setItem("sp_expiry", expiry);
+    window.history.replaceState(null, null, window.location.pathname);
+    return params.access_token;
   }
+  return null;
+}
+
+function getSavedToken() {
+  const token = localStorage.getItem("sp_token");
+  const expiry = parseInt(localStorage.getItem("sp_expiry") || 0);
+  if (token && Date.now() < expiry) return token;
+  localStorage.removeItem("sp_token");
+  localStorage.removeItem("sp_expiry");
+  return null;
+}
+
+// ── PLAYER ───────────────────────────────────────
+window.onSpotifyWebPlaybackSDKReady = () => {
+  accessToken = getTokenFromHash() || getSavedToken();
+  if (!accessToken) return;
+  initPlayer();
+};
+
+function initPlayer() {
+  document.getElementById("loginBanner").classList.add("hidden");
+  fetchUser();
+
+  player = new Spotify.Player({
+    name: "Será que Estou Louca?",
+    getOAuthToken: cb => cb(accessToken),
+    volume: 0.8
+  });
+
+  player.addListener("ready", ({ device_id }) => {
+    deviceId = device_id;
+  });
+
+  player.addListener("player_state_changed", state => {
+    if (!state) return;
+    isPlaying = !state.paused;
+    updatePlayPauseIcon();
+    const t = state.track_window.current_track;
+    if (t) updateNowPlaying(t);
+  });
+
+  player.connect();
+}
+
+async function fetchUser() {
+  const res = await fetch("https://api.spotify.com/v1/me", {
+    headers: { Authorization: "Bearer " + accessToken }
+  });
+  const data = await res.json();
+  document.getElementById("userName").textContent = data.display_name || data.id;
+  const img = data.images && data.images[0] ? data.images[0].url : "";
+  document.getElementById("userAvatar").src = img;
+  document.getElementById("userBar").classList.add("visible");
+}
+
+// ── PLAYBACK ─────────────────────────────────────
+async function playTrack(idx) {
+  if (!accessToken) { loginSpotify(); return; }
+  if (!deviceId) { alert("Player ainda carregando, aguarde alguns segundos."); return; }
+
+  document.querySelectorAll(".play-track-btn").forEach(b => b.classList.remove("playing"));
+
+  if (currentIdx === idx && isPlaying) {
+    player.pause();
+    return;
+  }
+
+  currentIdx = idx;
+  document.getElementById("btn-" + idx).classList.add("playing");
+
+  await fetch("https://api.spotify.com/v1/me/player/play?device_id=" + deviceId, {
+    method: "PUT",
+    headers: { Authorization: "Bearer " + accessToken, "Content-Type": "application/json" },
+    body: JSON.stringify({ uris: [TRACK_URIS[idx]], offset: { position: 0 } })
+  });
+
+  document.getElementById("nowPlaying").classList.add("visible");
+}
+
+async function togglePlay() {
+  if (!player) return;
+  await player.togglePlay();
+}
+
+async function nextTrack() {
+  const next = (currentIdx + 1) % TRACK_URIS.length;
+  await playTrack(next);
+}
+
+async function prevTrack() {
+  const prev = (currentIdx - 1 + TRACK_URIS.length) % TRACK_URIS.length;
+  await playTrack(prev);
+}
+
+function updateNowPlaying(t) {
+  document.getElementById("npTitle").textContent = t.name;
+  document.getElementById("npArtist").textContent = t.artists.map(a => a.name).join(", ");
+  document.getElementById("npCover").src = t.album.images[0]?.url || "";
+  const idx = TRACK_URIS.indexOf("spotify:track:" + t.id);
+  document.querySelectorAll(".play-track-btn").forEach(b => b.classList.remove("playing"));
+  if (idx >= 0) { document.getElementById("btn-" + idx)?.classList.add("playing"); currentIdx = idx; }
+}
+
+function updatePlayPauseIcon() {
+  document.getElementById("playIcon").style.display  = isPlaying ? "none"  : "block";
+  document.getElementById("pauseIcon").style.display = isPlaying ? "block" : "none";
+}
+
+// ── UI ────────────────────────────────────────────
+function toggle(btn) {
+  const card = btn.closest(".record-card");
+  const list = card.querySelector(".tracklist");
+  const isOpen = list.classList.contains("open");
+  list.classList.toggle("open");
+  btn.classList.toggle("open");
+  btn.querySelector(".arrow").innerHTML = isOpen ? "&#x2193;" : "&#x2191;";
+}
+
+// init on load
+(function() {
+  accessToken = getTokenFromHash() || getSavedToken();
+  if (accessToken) {
+    document.getElementById("loginBanner").classList.add("hidden");
+  }
+})();
 </script>
 </body>
 </html>
