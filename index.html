@@ -177,7 +177,45 @@
   .play-track-btn svg { display: block; }
   .login-hint { font-size: .68rem; color: rgba(255,255,255,.2); margin-top: 6px; text-align: right; font-style: italic; }
 
-  footer { position: relative; z-index: 1; text-align: center; padding: 36px 24px; border-top: 1px solid rgba(255,255,255,.05); font-size: .72rem; color: rgba(255,255,255,.2); letter-spacing: .12em; }
+  footer { position: relative; z-index: 1; text-align: center; padding: 36px 24px 72px; border-top: 1px solid rgba(255,255,255,.05); font-size: .72rem; color: rgba(255,255,255,.2); letter-spacing: .12em; }
+
+  /* edit mode */
+  [data-key][contenteditable="true"] {
+    outline: 2px dashed var(--pink); border-radius: 4px;
+    padding: 2px 4px; cursor: text; min-height: 1em;
+    background: rgba(240,54,184,.06);
+  }
+  .edit-bar {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+    background: rgba(11,9,40,.97); border-top: 1px solid rgba(240,54,184,.3);
+    backdrop-filter: blur(16px);
+    display: none; align-items: center; justify-content: center; gap: 12px;
+    padding: 14px 24px;
+  }
+  .edit-bar.visible { display: flex; }
+  .edit-bar p { font-size: .78rem; color: var(--muted); flex: 1; }
+  .btn-save {
+    background: var(--pink); color: #fff; border: none; border-radius: 24px;
+    font-family: "DM Sans", sans-serif; font-size: .78rem; font-weight: 600;
+    padding: 10px 24px; cursor: pointer; transition: opacity .2s;
+  }
+  .btn-save:hover { opacity: .85; }
+  .btn-save:disabled { opacity: .4; cursor: default; }
+  .btn-cancel {
+    background: none; color: var(--muted); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 24px; font-family: "DM Sans", sans-serif; font-size: .78rem;
+    padding: 10px 20px; cursor: pointer; transition: color .2s, border-color .2s;
+  }
+  .btn-cancel:hover { color: #fff; border-color: rgba(255,255,255,.3); }
+  .edit-trigger {
+    position: fixed; bottom: 20px; right: 20px; z-index: 199;
+    background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 50%; width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: rgba(255,255,255,.3); font-size: 16px;
+    transition: all .2s;
+  }
+  .edit-trigger:hover { background: rgba(240,54,184,.15); border-color: var(--pink); color: var(--pink); }
   /* album covers */
   .disc-cover {
     position: absolute; inset: 0; width: 100%; height: 100%;
@@ -195,7 +233,9 @@
     object-fit: cover; flex-shrink: 0;
     background: rgba(255,255,255,.06);
     display: block;
+    opacity: 0; transition: opacity .3s;
   }
+  .track-thumb.loaded { opacity: 1; }
   .track-header { grid-template-columns: 28px 38px 1fr auto; }
 
   @media (max-width: 600px) { .records-grid { gap: 36px; } .hero { padding: 60px 20px 40px; } }
@@ -208,7 +248,7 @@
 <header class="hero">
   <p class="hero-author">João Pedro Fontes</p>
   <h1 class="hero-title">Será que<br>Estou Louca?</h1>
-  <p class="hero-sub">A biblioteca musical do livro</p>
+  <p class="hero-sub" data-key="hero_sub">A biblioteca musical do livro</p>
   <div class="hero-bar"></div>
 
   <div class="login-banner" id="loginBanner">
@@ -259,7 +299,7 @@
         <h2 class="card-title">Lado A</h2>
         <span class="card-count">5 faixas</span>
       </div>
-      <p class="card-desc">Cap&iacute;tulos I ao V &mdash; o come&ccedil;o, a paix&atilde;o, os primeiros sinais</p>
+      <p class="card-desc" data-key="disco_a_desc">Cap&iacute;tulos I ao V &mdash; o come&ccedil;o, a paix&atilde;o, os primeiros sinais</p>
       <button class="toggle-btn" onclick="toggle(this)">Ver faixas <span class="arrow">&#x2193;</span></button>
       <div class="tracklist">
     <div class="track" data-uri="spotify:track:1duoEJxM4GBEICofJAh9Im" data-idx="0">
@@ -269,7 +309,7 @@
             <div class="track-body">
               <div class="track-title">Out Of Mind</div>
               <div class="track-artist">Tove Lo</div>
-              <div class="track-desc">Comecei a escrever sem saber ao certo o que estava acontecendo comigo. Essa m&uacute;sica descreve bem esse estado: voc&ecirc; continua funcionando, mas sem estar presente. Foi o come&ccedil;o de tudo.</div>
+              <div class="track-desc" data-key="track_0_desc">Comecei a escrever sem saber ao certo o que estava acontecendo comigo. Essa m&uacute;sica descreve bem esse estado: voc&ecirc; continua funcionando, mas sem estar presente. Foi o come&ccedil;o de tudo.</div>
             </div>
             <button class="play-track-btn" id="btn-0" onclick="playTrack(0)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -283,7 +323,7 @@
             <div class="track-body">
               <div class="track-title">Let's Not Fall In Love</div>
               <div class="track-artist">BigBang</div>
-              <div class="track-desc">Ele disse desde o come&ccedil;o que n&atilde;o queria nada s&eacute;rio. Eu ouvi e continuei. Essa m&uacute;sica tem o nome que esse cap&iacute;tulo merecia ter.</div>
+              <div class="track-desc" data-key="track_1_desc">Ele disse desde o come&ccedil;o que n&atilde;o queria nada s&eacute;rio. Eu ouvi e continuei. Essa m&uacute;sica tem o nome que esse cap&iacute;tulo merecia ter.</div>
             </div>
             <button class="play-track-btn" id="btn-1" onclick="playTrack(1)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -297,7 +337,7 @@
             <div class="track-body">
               <div class="track-title">Casanova</div>
               <div class="track-artist">Allie X</div>
-              <div class="track-desc">Ele sabia exatamente o que dizer para voc&ecirc; se sentir especial. Casanova captura isso: o charme que funciona justamente porque n&atilde;o pretende nada.</div>
+              <div class="track-desc" data-key="track_2_desc">Ele sabia exatamente o que dizer para voc&ecirc; se sentir especial. Casanova captura isso: o charme que funciona justamente porque n&atilde;o pretende nada.</div>
             </div>
             <button class="play-track-btn" id="btn-2" onclick="playTrack(2)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -311,7 +351,7 @@
             <div class="track-body">
               <div class="track-title">Nicotine</div>
               <div class="track-artist">Panic! At The Disco</div>
-              <div class="track-desc">Eu sabia o que estava acontecendo e fiquei. O t&iacute;tulo j&aacute; diz tudo: nicotina. Voc&ecirc; fuma sabendo o que faz.</div>
+              <div class="track-desc" data-key="track_3_desc">Eu sabia o que estava acontecendo e fiquei. O t&iacute;tulo j&aacute; diz tudo: nicotina. Voc&ecirc; fuma sabendo o que faz.</div>
             </div>
             <button class="play-track-btn" id="btn-3" onclick="playTrack(3)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -325,7 +365,7 @@
             <div class="track-body">
               <div class="track-title">hey you got drugs?</div>
               <div class="track-artist">Tove Lo</div>
-              <div class="track-desc">Esse cap&iacute;tulo fala por si. O c&iacute;rculo dele era esse, a noite toda, toda semana. Essa m&uacute;sica tocou em muitas madrugadas que eu passei esperando por algu&eacute;m que tinha ido cheirar com os amigos.</div>
+              <div class="track-desc" data-key="track_4_desc">Esse cap&iacute;tulo fala por si. O c&iacute;rculo dele era esse, a noite toda, toda semana. Essa m&uacute;sica tocou em muitas madrugadas que eu passei esperando por algu&eacute;m que tinha ido cheirar com os amigos.</div>
             </div>
             <button class="play-track-btn" id="btn-4" onclick="playTrack(4)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -345,7 +385,7 @@
         <h2 class="card-title">Lado B</h2>
         <span class="card-count">5 faixas</span>
       </div>
-      <p class="card-desc">Cap&iacute;tulos VI ao X &mdash; o fim, o gaslighting, a terapia</p>
+      <p class="card-desc" data-key="disco_b_desc">Cap&iacute;tulos VI ao X &mdash; o fim, o gaslighting, a terapia</p>
       <button class="toggle-btn" onclick="toggle(this)">Ver faixas <span class="arrow">&#x2193;</span></button>
       <div class="tracklist">
     <div class="track" data-uri="spotify:track:1CD7hXuEjiUsoqOhleyKb7" data-idx="5">
@@ -355,7 +395,7 @@
             <div class="track-body">
               <div class="track-title">Doi D+</div>
               <div class="track-artist">Jaloo</div>
-              <div class="track-desc">Depois do pedido de namoro e do sil&ecirc;ncio que veio depois, n&atilde;o tinha muito mais o que dizer. Jaloo disse por mim.</div>
+              <div class="track-desc" data-key="track_5_desc">Depois do pedido de namoro e do sil&ecirc;ncio que veio depois, n&atilde;o tinha muito mais o que dizer. Jaloo disse por mim.</div>
             </div>
             <button class="play-track-btn" id="btn-5" onclick="playTrack(5)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -369,7 +409,7 @@
             <div class="track-body">
               <div class="track-title">Get Outta My Way</div>
               <div class="track-artist">Kylie Minogue</div>
-              <div class="track-desc">Essa m&uacute;sica est&aacute; no texto porque precisava estar. No dia em que pedi J em namoro, tinha algu&eacute;m vindo de Porto Alegre pra me ver. Saia do meu caminho.</div>
+              <div class="track-desc" data-key="track_6_desc">Essa m&uacute;sica est&aacute; no texto porque precisava estar. No dia em que pedi J em namoro, tinha algu&eacute;m vindo de Porto Alegre pra me ver. Saia do meu caminho.</div>
             </div>
             <button class="play-track-btn" id="btn-6" onclick="playTrack(6)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -383,7 +423,7 @@
             <div class="track-body">
               <div class="track-title">Circle The Drain</div>
               <div class="track-artist">Katy Perry</div>
-              <div class="track-desc">Tamb&eacute;m est&aacute; no texto. Eu estava sendo a respons&aacute;vel emocional de um adulto de 30 anos que gastava tudo com drogas e n&atilde;o cumpria prazo nenhum. Katy Perry nomeou isso antes de eu conseguir.</div>
+              <div class="track-desc" data-key="track_7_desc">Tamb&eacute;m est&aacute; no texto. Eu estava sendo a respons&aacute;vel emocional de um adulto de 30 anos que gastava tudo com drogas e n&atilde;o cumpria prazo nenhum. Katy Perry nomeou isso antes de eu conseguir.</div>
             </div>
             <button class="play-track-btn" id="btn-7" onclick="playTrack(7)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -397,7 +437,7 @@
             <div class="track-body">
               <div class="track-title">Godless</div>
               <div class="track-artist">Banks</div>
-              <div class="track-desc">Cada sess&atilde;o com Gil me devolvia algo que eu j&aacute; sabia e escolhia ignorar. Banks tem essa dureza. Godless &eacute; sobre o momento em que voc&ecirc; para de se convencer.</div>
+              <div class="track-desc" data-key="track_8_desc">Cada sess&atilde;o com Gil me devolvia algo que eu j&aacute; sabia e escolhia ignorar. Banks tem essa dureza. Godless &eacute; sobre o momento em que voc&ecirc; para de se convencer.</div>
             </div>
             <button class="play-track-btn" id="btn-8" onclick="playTrack(8)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -411,7 +451,7 @@
             <div class="track-body">
               <div class="track-title">Sangrando</div>
               <div class="track-artist">Gaby Amarantos & Potyguara Bardo</div>
-              <div class="track-desc">Num bar, ouvindo as hist&oacute;rias de outras pessoas sobre ele, percebi que eu era mais um numa lista. Isso d&oacute;i de um jeito diferente. Sangrando foi o que ficou tocando na cabe&ccedil;a.</div>
+              <div class="track-desc" data-key="track_9_desc">Num bar, ouvindo as hist&oacute;rias de outras pessoas sobre ele, percebi que eu era mais um numa lista. Isso d&oacute;i de um jeito diferente. Sangrando foi o que ficou tocando na cabe&ccedil;a.</div>
             </div>
             <button class="play-track-btn" id="btn-9" onclick="playTrack(9)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -430,7 +470,7 @@
         <h2 class="card-title">Faixas B&ocirc;nus</h2>
         <span class="card-count">5 faixas</span>
       </div>
-      <p class="card-desc">Cap&iacute;tulos XI ao XV &mdash; a sa&iacute;da, o luto, a sobriedade</p>
+      <p class="card-desc" data-key="disco_bns_desc">Cap&iacute;tulos XI ao XV &mdash; a sa&iacute;da, o luto, a sobriedade</p>
       <button class="toggle-btn" onclick="toggle(this)">Ver faixas <span class="arrow">&#x2193;</span></button>
       <div class="tracklist">
     <div class="track" data-uri="spotify:track:7KiLniGRlvAHpoxMLYp32P" data-idx="10">
@@ -440,7 +480,7 @@
             <div class="track-body">
               <div class="track-title">Espumas ao Vento</div>
               <div class="track-artist">Elza Soares</div>
-              <div class="track-desc">Chamar algu&eacute;m de louco &eacute; uma forma de n&atilde;o precisar responder por nada. Ele usou muito isso. Elza Soares cantou sobre ficar sem ch&atilde;o antes de eu precisar de uma m&uacute;sica pra isso.</div>
+              <div class="track-desc" data-key="track_10_desc">Chamar algu&eacute;m de louco &eacute; uma forma de n&atilde;o precisar responder por nada. Ele usou muito isso. Elza Soares cantou sobre ficar sem ch&atilde;o antes de eu precisar de uma m&uacute;sica pra isso.</div>
             </div>
             <button class="play-track-btn" id="btn-10" onclick="playTrack(10)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -454,7 +494,7 @@
             <div class="track-body">
               <div class="track-title">Supercut</div>
               <div class="track-artist">Lorde</div>
-              <div class="track-desc">Supercut &eacute; sobre guardar s&oacute; os melhores momentos de algu&eacute;m. Eu precisava escrever o cap&iacute;tulo XII porque sem ele o livro seria uma mentira. Tinha lado bom. Era por isso que eu ficava.</div>
+              <div class="track-desc" data-key="track_11_desc">Supercut &eacute; sobre guardar s&oacute; os melhores momentos de algu&eacute;m. Eu precisava escrever o cap&iacute;tulo XII porque sem ele o livro seria uma mentira. Tinha lado bom. Era por isso que eu ficava.</div>
             </div>
             <button class="play-track-btn" id="btn-11" onclick="playTrack(11)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -468,7 +508,7 @@
             <div class="track-body">
               <div class="track-title">Not Cute Anymore</div>
               <div class="track-artist">ILLIT</div>
-              <div class="track-desc">Passei o anivers&aacute;rio dele com dor de barriga, fui embora no meio e chorei em casa. Naquele dia ficou claro que algo havia mudado em mim. N&atilde;o era mais bonito assistir &agrave;quilo tudo.</div>
+              <div class="track-desc" data-key="track_12_desc">Passei o anivers&aacute;rio dele com dor de barriga, fui embora no meio e chorei em casa. Naquele dia ficou claro que algo havia mudado em mim. N&atilde;o era mais bonito assistir &agrave;quilo tudo.</div>
             </div>
             <button class="play-track-btn" id="btn-12" onclick="playTrack(12)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -482,7 +522,7 @@
             <div class="track-body">
               <div class="track-title">It's Alright, It's Ok</div>
               <div class="track-artist">Ashley Tisdale</div>
-              <div class="track-desc">Pode parecer ing&ecirc;nua, mas ou&ccedil;a com aten&ccedil;&atilde;o. Tem raiva nessa m&uacute;sica. Eu parei de esperar. T&aacute; tudo bem.</div>
+              <div class="track-desc" data-key="track_13_desc">Pode parecer ing&ecirc;nua, mas ou&ccedil;a com aten&ccedil;&atilde;o. Tem raiva nessa m&uacute;sica. Eu parei de esperar. T&aacute; tudo bem.</div>
             </div>
             <button class="play-track-btn" id="btn-13" onclick="playTrack(13)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -496,7 +536,7 @@
             <div class="track-body">
               <div class="track-title">On The Floor</div>
               <div class="track-artist">Perfume Genius</div>
-              <div class="track-desc">Tamb&eacute;m est&aacute; no texto. A pergunta de Perfume Genius era a minha: quanto tempo at&eacute; esse cora&ccedil;&atilde;o n&atilde;o ser mais meu. Escrever foi a resposta.</div>
+              <div class="track-desc" data-key="track_14_desc">Tamb&eacute;m est&aacute; no texto. A pergunta de Perfume Genius era a minha: quanto tempo at&eacute; esse cora&ccedil;&atilde;o n&atilde;o ser mais meu. Escrever foi a resposta.</div>
             </div>
             <button class="play-track-btn" id="btn-14" onclick="playTrack(14)" title="Reproduzir">
               <svg width="12" height="14" viewBox="0 0 12 14" fill="currentColor"><path d="M0 0l12 7-12 7z"/></svg>
@@ -624,7 +664,11 @@ async function fetchCovers() {
     const img = track.album.images[1]?.url || track.album.images[0]?.url;
     // track thumbnail
     const thumb = document.getElementById("thumb-" + idx);
-    if (thumb) thumb.src = img;
+    if (thumb) {
+      thumb.onload = () => thumb.classList.add("loaded");
+      thumb.onerror = () => { thumb.style.display = "none"; };
+      thumb.src = img;
+    }
     // disc cover (first track of each disc)
     const discIdx = DISC_FIRST.indexOf(idx);
     if (discIdx >= 0) {
@@ -744,6 +788,128 @@ function toggle(btn) {
     document.getElementById("loginBanner").classList.add("hidden");
   }
 })();
+
+// ── SUPABASE ──────────────────────────────────────
+const SUPABASE_URL = "https://rvmfonytiinfzdgirsgk.supabase.co";
+const SUPABASE_KEY = "sb_publishable_xqmhkVrzjsDW9i_Oe2m2jQ_EYQTqIwi";
+const EDIT_PASSWORD = "louca2026"; // troque esta senha
+
+async function sbFetch(method, body) {
+  const res = await fetch(SUPABASE_URL + "/rest/v1/conteudo", {
+    method,
+    headers: {
+      "apikey": SUPABASE_KEY,
+      "Authorization": "Bearer " + SUPABASE_KEY,
+      "Content-Type": "application/json",
+      "Prefer": method === "POST" ? "resolution=merge-duplicates" : ""
+    },
+    body: body ? JSON.stringify(body) : undefined
+  });
+  return method === "GET" ? res.json() : res;
+}
+
+const DEFAULTS = {
+  "hero_sub": "A biblioteca musical do livro",
+  "disco_a_desc": "Capítulos I ao V — o começo, a paixão, os primeiros sinais",
+  "disco_b_desc": "Capítulos VI ao X — o fim, o gaslighting, a terapia",
+  "disco_bns_desc": "Capítulos XI ao XV — a saída, o luto, a sobriedade",
+  "track_0_desc": "Comecei a escrever sem saber ao certo o que estava acontecendo comigo. Essa música descreve bem esse estado: você continua funcionando, mas sem estar presente. Foi o começo de tudo.",
+  "track_1_desc": "Ele disse desde o começo que não queria nada sério. Eu ouvi e continuei. Essa música tem o nome que esse capítulo merecia ter.",
+  "track_2_desc": "Ele sabia exatamente o que dizer para você se sentir especial. Casanova captura isso: o charme que funciona justamente porque não pretende nada.",
+  "track_3_desc": "Eu sabia o que estava acontecendo e fiquei. O título já diz tudo: nicotina. Você fuma sabendo o que faz.",
+  "track_4_desc": "Esse capítulo fala por si. O círculo dele era esse, a noite toda, toda semana. Essa música tocou em muitas madrugadas que eu passei esperando por alguém que tinha ido cheirar com os amigos.",
+  "track_5_desc": "Depois do pedido de namoro e do silêncio que veio depois, não tinha muito mais o que dizer. Jaloo disse por mim.",
+  "track_6_desc": "Essa música está no texto porque precisava estar. No dia em que pedi J em namoro, tinha alguém vindo de Porto Alegre pra me ver. Saia do meu caminho.",
+  "track_7_desc": "Também está no texto. Eu estava sendo a responsável emocional de um adulto de 30 anos que gastava tudo com drogas e não cumpria prazo nenhum. Katy Perry nomeou isso antes de eu conseguir.",
+  "track_8_desc": "Cada sessão com Gil me devolvia algo que eu já sabia e escolhia ignorar. Banks tem essa dureza. Godless é sobre o momento em que você para de se convencer.",
+  "track_9_desc": "Num bar, ouvindo as histórias de outras pessoas sobre ele, percebi que eu era mais um numa lista. Isso dói de um jeito diferente. Sangrando foi o que ficou tocando na cabeça.",
+  "track_10_desc": "Chamar alguém de louco é uma forma de não precisar responder por nada. Ele usou muito isso. Elza Soares cantou sobre ficar sem chão antes de eu precisar de uma música pra isso.",
+  "track_11_desc": "Supercut é sobre guardar só os melhores momentos de alguém. Eu precisava escrever o capítulo XII porque sem ele o livro seria uma mentira. Tinha lado bom. Era por isso que eu ficava.",
+  "track_12_desc": "Passei o aniversário dele com dor de barriga, fui embora no meio e chorei em casa. Naquele dia ficou claro que algo havia mudado em mim. Não era mais bonito assistir àquilo tudo.",
+  "track_13_desc": "Pode parecer ingênua, mas ouça com atenção. Tem raiva nessa música. Eu parei de esperar. Tá tudo bem.",
+  "track_14_desc": "Também está no texto. A pergunta de Perfume Genius era a minha: quanto tempo até esse coração não ser mais meu. Escrever foi a resposta."
+};
+
+async function loadContent() {
+  try {
+    const rows = await sbFetch("GET");
+    if (!rows || !rows.length) {
+      // first load: seed defaults
+      const seed = Object.entries(DEFAULTS).map(([chave, valor]) => ({chave, valor}));
+      await sbFetch("POST", seed);
+      return; // defaults already in DOM
+    }
+    rows.forEach(row => {
+      document.querySelectorAll('[data-key="' + row.chave + '"]').forEach(el => {
+        el.textContent = row.valor;
+      });
+    });
+  } catch(e) { console.warn("Supabase load error:", e); }
+}
+
+// ── EDIT MODE ─────────────────────────────────────
+let editActive = false;
+
+function promptEdit() {
+  const pw = prompt("Senha de edi\u00e7\u00e3o:");
+  if (pw === EDIT_PASSWORD) enableEdit();
+  else if (pw !== null) alert("Senha incorreta.");
+}
+
+function enableEdit() {
+  editActive = true;
+  document.querySelectorAll("[data-key]").forEach(el => {
+    el.contentEditable = "true";
+    el.setAttribute("data-original", el.textContent);
+  });
+  document.getElementById("editBar").classList.add("visible");
+  document.getElementById("editTrigger").style.display = "none";
+}
+
+function cancelEdit() {
+  document.querySelectorAll("[data-key]").forEach(el => {
+    el.textContent = el.getAttribute("data-original") || el.textContent;
+    el.removeAttribute("contenteditable");
+  });
+  document.getElementById("editBar").classList.remove("visible");
+  document.getElementById("editTrigger").style.display = "flex";
+  editActive = false;
+}
+
+async function saveContent() {
+  const btn = document.getElementById("saveBtn");
+  const status = document.getElementById("editStatus");
+  btn.disabled = true;
+  btn.textContent = "Salvando...";
+
+  const rows = [];
+  document.querySelectorAll("[data-key]").forEach(el => {
+    rows.push({ chave: el.dataset.key, valor: el.textContent.trim() });
+  });
+
+  try {
+    await sbFetch("POST", rows);
+    status.textContent = "Salvo com sucesso!";
+    setTimeout(() => cancelEdit(), 1200);
+  } catch(e) {
+    status.textContent = "Erro ao salvar. Tente novamente.";
+    btn.disabled = false;
+    btn.textContent = "Salvar tudo";
+  }
+}
+
+// load on start
+loadContent();
+
 </script>
+
+<div class="edit-bar" id="editBar">
+  <p id="editStatus">Modo de edi&ccedil;&atilde;o ativo &mdash; clique em qualquer texto para editar.</p>
+  <button class="btn-cancel" onclick="cancelEdit()">Cancelar</button>
+  <button class="btn-save" id="saveBtn" onclick="saveContent()">Salvar tudo</button>
+</div>
+
+<button class="edit-trigger" id="editTrigger" onclick="promptEdit()" title="Editar site">&#9998;</button>
+
 </body>
 </html>
