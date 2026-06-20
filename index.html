@@ -669,11 +669,7 @@ async function playTrack(idx) {
   if (currentIdx === idx && isPlaying) { player.pause(); return; }
   currentIdx = idx;
   document.getElementById("btn-play-" + idx)?.classList.add("playing");
-  // Reactivate device before playing
-  await fetch("https://api.spotify.com/v1/me/player", {
-    method:"PUT", headers:{Authorization:"Bearer "+accessToken,"Content-Type":"application/json"},
-    body: JSON.stringify({device_ids:[deviceId], play:false})
-  });
+  if (player) await player.activateElement();
   await fetch("https://api.spotify.com/v1/me/player/play?device_id=" + deviceId, {
     method:"PUT", headers:{Authorization:"Bearer "+accessToken,"Content-Type":"application/json"},
     body: JSON.stringify({uris:[TRACK_URIS[idx]]})
