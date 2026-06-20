@@ -153,6 +153,16 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
   border-top:1px solid rgba(255,255,255,.05);font-size:.68rem;color:rgba(255,255,255,.18);letter-spacing:.1em;}
 @media(max-width:480px){.track-top{grid-template-columns:22px 32px 1fr auto;gap:8px;}}
+
+/* lang toggle */
+.lang-toggle{display:flex;align-items:center;gap:0;margin:20px auto 0;width:fit-content;
+  border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;}
+.lang-btn{background:none;border:none;color:var(--muted);font-family:"DM Sans",sans-serif;
+  font-size:.65rem;font-weight:600;letter-spacing:.1em;padding:5px 14px;cursor:pointer;
+  transition:background .2s,color .2s;}
+.lang-btn.active{background:rgba(240,54,184,.2);color:#fff;}
+.lang-btn:hover:not(.active){color:#fff;}
+.lang-sep{width:1px;background:rgba(255,255,255,.12);height:24px;}
 </style>
 </head>
 <body>
@@ -161,18 +171,23 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
 
 <header class="hero wrap">
   <p class="hero-author">João Pedro Fontes</p>
-  <h1 class="hero-title">Será que<br>Estou Louca?</h1>
-  <p class="hero-sub" data-key="hero_sub">A biblioteca musical do livro</p>
+  <h1 class="hero-title" data-i18n="title">Será que<br>Estou Louca?</h1>
+  <p class="hero-sub" data-key="hero_sub" data-i18n="hero_sub">A biblioteca musical do livro</p>
   <div class="hero-bar"></div>
+  <div class="lang-toggle">
+    <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
+    <div class="lang-sep"></div>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
 
   <div class="login-banner" id="loginBanner">
-    <p><b>Ouça enquanto lê.</b><br>Entre com Spotify para tocar as músicas aqui.</p>
-    <button class="btn-spotify" onclick="loginSpotify()"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.36-.66.48-1.021.24-2.82-1.74-6.36-2.1-10.561-1.14-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.479.66.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14C9.6 9.9 15 10.56 18.72 12.84c.361.18.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.3c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.42-1.02.6-1.559.3z"/></svg> Entrar</button>
+    <p><b data-i18n="login_bold">Ouça enquanto lê.</b><br><span data-i18n="login_sub">Entre com Spotify para tocar as músicas aqui.</span></p>
+    <button class="btn-spotify" onclick="loginSpotify()"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.36-.66.48-1.021.24-2.82-1.74-6.36-2.1-10.561-1.14-.418.12-.779-.18-.899-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.479.66.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.02.6-1.14C9.6 9.9 15 10.56 18.72 12.84c.361.18.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.3c-.6.18-1.2-.18-1.38-.72-.18-.6.18-1.2.72-1.38 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.42-1.02.6-1.559.3z"/></svg> <span data-i18n="login_btn">Entrar</span></button>
   </div>
   <div class="user-bar" id="userBar">
     <img id="userAvatar" src="" alt="">
-    <span>Olá, <span class="uname" id="userName"></span></span>
-    <button class="btn-logout" onclick="logout()">Sair</button>
+    <span><span data-i18n="hello">Olá,</span> <span class="uname" id="userName"></span></span>
+    <button class="btn-logout" onclick="logout()" data-i18n="logout">Sair</button>
   </div>
 </header>
 
@@ -180,7 +195,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
   <div class="lock-overlay" id="lockOverlay"></div>
   <!-- ABERTURA -->
   <div class="wrap">
-    <p class="sec-label">Antes de tudo</p>
+    <p class="sec-label" data-i18n="before_all">Antes de tudo</p>
     <div class="special-card">
         <div class="track" onclick="expandTrack(this)" data-uri="spotify:track:3nAq2hCr1oWsIU54tS9K8B" data-idx="15">
           <div class="track-top">
@@ -189,7 +204,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Who's Afraid of Little Old Me?</div>
               <div class="track-artist">Taylor Swift</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(15)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -200,11 +215,11 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
     </div>
 
     <!-- DISCOS -->
-    <p class="sec-label">Escolha um disco</p>
+    <p class="sec-label" data-i18n="choose_disc">Escolha um disco</p>
     <div class="tabs">
-      <div class="tab tab-a active" onclick="switchTab('a')">Lado A</div>
-      <div class="tab tab-b" onclick="switchTab('b')">Lado B</div>
-      <div class="tab tab-bns" onclick="switchTab('bns')">Faixas Bônus</div>
+      <div class="tab tab-a active" onclick="switchTab('a')" data-i18n="side_a">Lado A</div>
+      <div class="tab tab-b" onclick="switchTab('b')" data-i18n="side_b">Lado B</div>
+      <div class="tab tab-bns" onclick="switchTab('bns')" data-i18n="bonus">Faixas Bônus</div>
     </div>
 
     <div class="panel active" id="panel-a">
@@ -216,7 +231,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Out Of Mind</div>
               <div class="track-artist">Tove Lo</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(0)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -231,7 +246,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Let's Not Fall In Love</div>
               <div class="track-artist">BigBang</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(1)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -246,7 +261,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Casanova</div>
               <div class="track-artist">Allie X</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(2)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -261,7 +276,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Nicotine</div>
               <div class="track-artist">Panic! At The Disco</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(3)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -276,7 +291,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">hey you got drugs?</div>
               <div class="track-artist">Tove Lo</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(4)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -294,7 +309,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Doi D+</div>
               <div class="track-artist">Jaloo</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(5)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -309,7 +324,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Get Outta My Way</div>
               <div class="track-artist">Kylie Minogue</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(6)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -324,7 +339,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Circle The Drain</div>
               <div class="track-artist">Katy Perry</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(7)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -339,7 +354,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Godless</div>
               <div class="track-artist">Banks</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(8)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -354,7 +369,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Sangrando</div>
               <div class="track-artist">Gaby Amarantos & Potyguara Bardo</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(9)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -372,7 +387,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Espumas ao Vento</div>
               <div class="track-artist">Elza Soares</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(10)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -387,7 +402,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Supercut</div>
               <div class="track-artist">Lorde</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(11)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -402,7 +417,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">Not Cute Anymore</div>
               <div class="track-artist">ILLIT</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(12)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -417,7 +432,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">It's Alright, It's Ok</div>
               <div class="track-artist">Ashley Tisdale</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(13)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -432,7 +447,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">On The Floor</div>
               <div class="track-artist">Perfume Genius</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(14)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -443,9 +458,9 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
     </div>
 
     <!-- EPÍLOGO -->
-    <p class="sec-label">Epílogo</p>
-    <h2 class="epilogo-title">Capítulo XVI</h2>
-    <p class="epilogo-sub">O Diálogo Final</p>
+    <p class="sec-label" data-i18n="epilogue_label">Epílogo</p>
+    <h2 class="epilogo-title" data-i18n="epilogue_chapter">Capítulo XVI</h2>
+    <p class="epilogo-sub" data-i18n="epilogue_sub">O Diálogo Final</p>
     <div class="special-card">
         <div class="track" onclick="expandTrack(this)" data-uri="spotify:track:4D7BCuvgdJlYvlX5QlSQoE" data-idx="16">
           <div class="track-top">
@@ -454,7 +469,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
             <div class="track-info">
               <div class="track-title">You're On Your Own, Kid</div>
               <div class="track-artist">Taylor Swift</div>
-              <div class="track-hint">toque para ler</div>
+              <div class="track-hint" data-i18n="tap">toque para ler</div>
             </div>
             <button class="btn-play" onclick="event.stopPropagation();playTrack(16)" title="Ouvir">
               <svg viewBox="0 0 12 14" fill="currentColor" width="11" height="13"><path d="M0 0l12 7-12 7z"/></svg>
@@ -485,9 +500,9 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
 
 <!-- EDIT -->
 <div class="edit-bar" id="editBar">
-  <p id="editStatus">Modo de edição ativo — clique em qualquer texto para editar.</p>
-  <button class="btn-cancel" onclick="cancelEdit()">Cancelar</button>
-  <button class="btn-save" id="saveBtn" onclick="saveContent()">Salvar tudo</button>
+  <p id="editStatus" data-i18n="edit_status">Modo de edição ativo — clique em qualquer texto para editar.</p>
+  <button class="btn-cancel" onclick="cancelEdit()" data-i18n="cancel">Cancelar</button>
+  <button class="btn-save" id="saveBtn" onclick="saveContent()" data-i18n="save_all">Salvar tudo</button>
 </div>
 <div class="edit-trigger" id="editTrigger" onclick="promptEdit()">✏️</div>
 
@@ -721,6 +736,113 @@ async function saveContent() {
     btn.disabled = false; btn.textContent = "Salvar tudo";
   }
 }
+
+// ── I18N ────────────────────────────────────────────
+const LANG_DATA = {
+  pt: {
+    title: "Será que<br>Estou Louca?",
+    hero_sub: "A biblioteca musical do livro",
+    login_bold: "Ouça enquanto lê.",
+    login_sub: "Entre com Spotify para tocar as músicas aqui.",
+    login_btn: "Entrar",
+    hello: "Olá,",
+    logout: "Sair",
+    before_all: "Antes de tudo",
+    choose_disc: "Escolha um disco",
+    side_a: "Lado A",
+    side_b: "Lado B",
+    bonus: "Faixas Bônus",
+    epilogue_label: "Epílogo",
+    epilogue_chapter: "Capítulo XVI",
+    epilogue_sub: "O Diálogo Final",
+    tap: "toque para ler",
+    edit_status: "Modo de edição ativo — clique em qualquer texto para editar.",
+    cancel: "Cancelar",
+    save_all: "Salvar tudo",
+    track_0_desc: null, track_1_desc: null, track_2_desc: null, track_3_desc: null,
+    track_4_desc: null, track_5_desc: null, track_6_desc: null, track_7_desc: null,
+    track_8_desc: null, track_9_desc: null, track_10_desc: null, track_11_desc: null,
+    track_12_desc: null, track_13_desc: null, track_14_desc: null, track_15_desc: null,
+    track_16_desc: null,
+    disco_a_desc: null, disco_b_desc: null, disco_bns_desc: null
+  },
+  en: {
+    title: "Am I<br>Going Crazy?",
+    hero_sub: "The book's musical library",
+    login_bold: "Listen while you read.",
+    login_sub: "Log in with Spotify to play the music here.",
+    login_btn: "Log in",
+    hello: "Hi,",
+    logout: "Log out",
+    before_all: "Before everything",
+    choose_disc: "Choose a side",
+    side_a: "Side A",
+    side_b: "Side B",
+    bonus: "Bonus Tracks",
+    epilogue_label: "Epilogue",
+    epilogue_chapter: "Chapter XVI",
+    epilogue_sub: "The Final Dialogue",
+    tap: "tap to read",
+    edit_status: "Edit mode active — click any text to edit.",
+    cancel: "Cancel",
+    save_all: "Save all",
+    track_0_desc: "Out Of Mind is about denying that someone has taken over your head. You convince yourself you're fine, that time will heal, that you're moving on. The song is the moment that lie cracks.",
+    track_1_desc: "Let's Not Fall In Love is about two people who like each other and know that going deeper will hurt. Nobody is lying, nobody is playing hard to get. Both are scared and say so openly. The request is simple: stay tonight, but don't promise anything. It's the warning that came before everything.",
+    track_2_desc: "Casanova is about knowing someone is dangerous and staying anyway. You see the bad reputation, feel the danger on his lips, and keep going. The song doesn't romanticize it — it names it: you fucked me and left me dying for your love. The problem is there's something in his touch you can't walk away from.",
+    track_3_desc: "Nicotine is about wanting to stop and not being able to. You know it's bad, you cut ties, and you still need it. The most honest line in the song is also the simplest: your love's a fucking drug but I need it so much.",
+    track_4_desc: "hey you got drugs? is about using the night and substances to stop feeling. Everything is fun until it becomes real, and while it doesn't, you dance, you ask for more, you pretend you got rid of the feelings. The song doesn't judge. It just shows what it looks like when the party is the only place you can breathe.",
+    track_5_desc: "Doi D+ is about a pain that doesn't pass even when you try to pull away. You lie that you didn't love that much, pretend it didn't hurt, and the song dismantles all of that. There's no clean exit, no peace at the end. Just the honesty of someone who stayed in the wreckage knowing the sea is the same person who drowns you.",
+    track_6_desc: "Get Outta My Way is about deciding to leave and already leaving. No hesitation, no last conversation. Someone who waited too long, saw someone better arrive, and simply moved on. The song doesn't ask for permission.",
+    track_7_desc: "Circle The Drain is about realizing you became responsible for someone who doesn't want to be saved. You wanted a partner, you ended up being a mother. Wanted love, ended up being a savior. The song is the moment you stop convincing yourself you can change someone who prefers to turn something solid into dust.",
+    track_8_desc: "Godless is about idolizing someone who doesn't believe in anything. You built an entire faith on top of a person who never asked to be worshipped. When she leaves, it's not just the longing that remains. It's the emptiness of someone who lost their own religion.",
+    track_9_desc: "Sangrando is about looking to the side and realizing the person disappeared without explanation. There was no fight, no goodbye. You bleed, your gaze gradually clears, and in the middle of it all you find yourself again. The healing doesn't come after the pain. It comes during.",
+    track_10_desc: "Espumas ao Vento is about knowing the love was real and not being able to accept that it's over. No anger, no pride. Just someone with their heart in hand asking the person to come back, with the door open and eyes ready to celebrate the moment they arrive. The choice of this version carries Inaura along: the pain of loving someone who won't stay, and crying knowing that.",
+    track_11_desc: "Supercut is about the edited version you keep of someone. In your head everything went well, you forgave without fighting, the love was fierce and fluorescent. The compilation is beautiful because you chose what stayed. The problem is the real version was never that.",
+    track_12_desc: "Not Cute Anymore is about stopping fitting into what the other person expected. The person keeps being who they are — with their colorful sandals and their Suede vinyl — but won't pretend to be cute to please anymore. It's not a dramatic break. It's just someone who got tired of being what they're not.",
+    track_13_desc: "It's Alright, It's Ok is about closing the door without drama. No tears, no last chance. Someone who saw the game, took the other person's words, and left without looking back. The bridge burned and that's fine.",
+    track_14_desc: "On The Floor is about trying to erase someone who won't go away. You cross out the name, lock the door, promise to change. And you close your eyes and they're still there. The question the song asks four times has no answer: how long until this heart isn't mine?",
+    track_15_desc: "Who's Afraid of Little Old Me? is about someone who was treated as a threat, as unstable, as a problem to be contained. The song doesn't push back or justify itself. It simply confirms: you should have been afraid.",
+    track_16_desc: "You're On Your Own, Kid is about closing a tab that will never be paid by the other person. The resolution comes alone, without the apology that never arrives. You were always on your own.",
+    disco_a_desc: "Chapters I to V — the beginning, the passion, the first signs",
+    disco_b_desc: "Chapters VI to X — the end, the gaslighting, the therapy",
+    disco_bns_desc: "Chapters XI to XV — the way out, the grief, the sobriety"
+  }
+};
+
+let currentLang = localStorage.getItem("sq_lang") || "pt";
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem("sq_lang", lang);
+  document.getElementById("btn-pt").classList.toggle("active", lang === "pt");
+  document.getElementById("btn-en").classList.toggle("active", lang === "en");
+  const t = LANG_DATA[lang];
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] != null) el.innerHTML = t[key];
+  });
+  // track descriptions and panel descs (data-key elements)
+  const trackKeys = ["track_0_desc","track_1_desc","track_2_desc","track_3_desc",
+    "track_4_desc","track_5_desc","track_6_desc","track_7_desc","track_8_desc",
+    "track_9_desc","track_10_desc","track_11_desc","track_12_desc","track_13_desc",
+    "track_14_desc","track_15_desc","track_16_desc","disco_a_desc","disco_b_desc","disco_bns_desc"];
+  trackKeys.forEach(key => {
+    if (t[key]) {
+      document.querySelectorAll('[data-key="' + key + '"]').forEach(el => {
+        if (!editActive) el.textContent = t[key];
+      });
+    } else if (lang === "pt") {
+      // restore from Supabase defaults
+      document.querySelectorAll('[data-key="' + key + '"]').forEach(el => {
+        if (!editActive && DEFAULTS[key]) el.textContent = DEFAULTS[key];
+      });
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (currentLang === "en") setLang("en");
+});
 
 // ── INIT ────────────────────────────────────────────
 function lockContent() {
