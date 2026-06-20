@@ -22,8 +22,8 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(24px,-36px) scale(1.06)}66%{transform:translate(-14px,22px) scale(.94)}}
 
 /* hero */
-.wrap{position:relative;z-index:1;max-width:620px;margin:0 auto;padding:0 32px;}
-.hero{text-align:center;padding:80px 20px 56px;}
+.wrap{position:relative;z-index:1;max-width:620px;margin:0 auto;padding:0 24px;}
+.hero{text-align:center;padding:80px 24px 56px;}
 .hero-author{font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
 .hero-title{font-family:"Abril Fatface",serif;font-size:clamp(2.8rem,9vw,6.5rem);line-height:1;
   background:linear-gradient(140deg,#fff 0%,var(--pink) 55%,var(--purple) 100%);
@@ -155,6 +155,7 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
   border-top:1px solid rgba(255,255,255,.05);font-size:.68rem;color:rgba(255,255,255,.18);letter-spacing:.1em;}
 @media(max-width:480px){.track-top{grid-template-columns:22px 32px 1fr auto;gap:8px;}}
+@media(max-width:480px){.wrap{padding:0 16px;}}
 
 /* lang toggle */
 .lang-toggle{display:flex;align-items:center;gap:0;margin:20px auto 0;width:fit-content;
@@ -669,11 +670,11 @@ async function playTrack(idx) {
   if (currentIdx === idx && isPlaying) { player.pause(); return; }
   currentIdx = idx;
   document.getElementById("btn-play-" + idx)?.classList.add("playing");
-  if (player) await player.activateElement();
   await fetch("https://api.spotify.com/v1/me/player/play?device_id=" + deviceId, {
     method:"PUT", headers:{Authorization:"Bearer "+accessToken,"Content-Type":"application/json"},
     body: JSON.stringify({uris:[TRACK_URIS[idx]]})
   });
+  document.getElementById("nowPlaying").classList.add("vis");
 }
 async function togglePlay() { if (player) await player.togglePlay(); }
 async function nextTrack() { await playTrack((currentIdx + 1) % TRACK_URIS.length); }
@@ -682,7 +683,6 @@ function updateNP(t) {
   document.getElementById("npTitle").textContent = t.name;
   document.getElementById("npArtist").textContent = t.artists.map(a => a.name).join(", ");
   document.getElementById("npCover").src = t.album.images[0]?.url || "";
-  document.getElementById("nowPlaying").classList.add("vis");
   const i = TRACK_URIS.indexOf("spotify:track:" + t.id);
   document.querySelectorAll(".btn-play.playing").forEach(b => b.classList.remove("playing"));
   if (i >= 0) { document.getElementById("btn-play-" + i)?.classList.add("playing"); currentIdx = i; }
