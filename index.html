@@ -696,6 +696,7 @@ async function loadContent() {
       });
     });
   } catch(e) { console.warn("Supabase:", e); }
+  if (currentLang === "en") setLang("en");
 }
 
 // ── EDIT MODE ───────────────────────────────────────
