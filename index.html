@@ -669,11 +669,15 @@ async function playTrack(idx) {
   if (currentIdx === idx && isPlaying) { player.pause(); return; }
   currentIdx = idx;
   document.getElementById("btn-play-" + idx)?.classList.add("playing");
+  // Reactivate device before playing
+  await fetch("https://api.spotify.com/v1/me/player", {
+    method:"PUT", headers:{Authorization:"Bearer "+accessToken,"Content-Type":"application/json"},
+    body: JSON.stringify({device_ids:[deviceId], play:false})
+  });
   await fetch("https://api.spotify.com/v1/me/player/play?device_id=" + deviceId, {
     method:"PUT", headers:{Authorization:"Bearer "+accessToken,"Content-Type":"application/json"},
     body: JSON.stringify({uris:[TRACK_URIS[idx]]})
   });
-  document.getElementById("nowPlaying").classList.add("vis");
 }
 async function togglePlay() { if (player) await player.togglePlay(); }
 async function nextTrack() { await playTrack((currentIdx + 1) % TRACK_URIS.length); }
@@ -682,6 +686,7 @@ function updateNP(t) {
   document.getElementById("npTitle").textContent = t.name;
   document.getElementById("npArtist").textContent = t.artists.map(a => a.name).join(", ");
   document.getElementById("npCover").src = t.album.images[0]?.url || "";
+  document.getElementById("nowPlaying").classList.add("vis");
   const i = TRACK_URIS.indexOf("spotify:track:" + t.id);
   document.querySelectorAll(".btn-play.playing").forEach(b => b.classList.remove("playing"));
   if (i >= 0) { document.getElementById("btn-play-" + i)?.classList.add("playing"); currentIdx = i; }
