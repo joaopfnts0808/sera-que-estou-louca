@@ -22,8 +22,8 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(24px,-36px) scale(1.06)}66%{transform:translate(-14px,22px) scale(.94)}}
 
 /* hero */
-.wrap{position:relative;z-index:1;max-width:620px;margin:0 auto;padding:0 24px;}
-.hero{text-align:center;padding:80px 24px 56px;}
+.wrap{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:0 40px;}
+.hero{text-align:center;padding:80px 40px 56px;}
 .hero-author{font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
 .hero-title{font-family:"Abril Fatface",serif;font-size:clamp(2.8rem,9vw,6.5rem);line-height:1;
   background:linear-gradient(140deg,#fff 0%,var(--pink) 55%,var(--purple) 100%);
@@ -200,7 +200,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
   <div class="wrap">
     <p class="sec-label" data-i18n="before_all">Antes de tudo</p>
     <div class="special-card">
-        <div class="track" onclick="expandTrack(this)" data-uri="spotify:track:3nAq2hCr1oWsIU54tS9K8B" data-idx="15">
+        <div class="track" onclick="expandTrack(this)" data-uri="spotify:track:2d8UxVNhJinc8uat9PoM9y" data-idx="15">
           <div class="track-top">
             <span class="track-cap">★</span>
             <img class="track-thumb" id="thumb-15" src="" alt="">
@@ -534,8 +534,8 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
 const CLIENT_ID   = "6b17b314279f41ca800c603bd7db0326";
 const REDIRECT_URI= "https://joaopfnts0808.github.io/sera-que-estou-louca/";
 const SCOPES      = "streaming user-read-email user-read-private user-modify-playback-state user-read-playback-state";
-const TRACK_URIS  = ["spotify:track:1duoEJxM4GBEICofJAh9Im", "spotify:track:6UgkB0xM45TR3Zjqm3GQ6T", "spotify:track:1fN3fH8Wcx7SJJwlVFrO5t", "spotify:track:5Q4H1XkVHxQjnrHCUpS61d", "spotify:track:73kadnv7SduzhApfRUv5C0", "spotify:track:1CD7hXuEjiUsoqOhleyKb7", "spotify:track:2VZ5Vtjn16RThAvaFz3sJZ", "spotify:track:7s0YfJE6hNNYq9BV26iCw6", "spotify:track:1eTL8yocTmire9gpOn2H2g", "spotify:track:2ArW2y4HFzz1VjGtl7f4xm", "spotify:track:7KiLniGRlvAHpoxMLYp32P", "spotify:track:6K8VQ84MqhsoakN5MjrnVR", "spotify:track:1k0JAiH11gHL9dc5dfQjQr", "spotify:track:1bYtKF2sY2wLU6xdVaqIqD", "spotify:track:05HElY3EVth4SMuOJOGusl", "spotify:track:3nAq2hCr1oWsIU54tS9K8B", "spotify:track:4D7BCuvgdJlYvlX5QlSQoE"];
-const TRACK_IDS   = ["1duoEJxM4GBEICofJAh9Im", "6UgkB0xM45TR3Zjqm3GQ6T", "1fN3fH8Wcx7SJJwlVFrO5t", "5Q4H1XkVHxQjnrHCUpS61d", "73kadnv7SduzhApfRUv5C0", "1CD7hXuEjiUsoqOhleyKb7", "2VZ5Vtjn16RThAvaFz3sJZ", "7s0YfJE6hNNYq9BV26iCw6", "1eTL8yocTmire9gpOn2H2g", "2ArW2y4HFzz1VjGtl7f4xm", "7KiLniGRlvAHpoxMLYp32P", "6K8VQ84MqhsoakN5MjrnVR", "1k0JAiH11gHL9dc5dfQjQr", "1bYtKF2sY2wLU6xdVaqIqD", "05HElY3EVth4SMuOJOGusl", "3nAq2hCr1oWsIU54tS9K8B", "4D7BCuvgdJlYvlX5QlSQoE"];
+const TRACK_URIS  = ["spotify:track:1duoEJxM4GBEICofJAh9Im", "spotify:track:6UgkB0xM45TR3Zjqm3GQ6T", "spotify:track:1fN3fH8Wcx7SJJwlVFrO5t", "spotify:track:5Q4H1XkVHxQjnrHCUpS61d", "spotify:track:73kadnv7SduzhApfRUv5C0", "spotify:track:1CD7hXuEjiUsoqOhleyKb7", "spotify:track:2VZ5Vtjn16RThAvaFz3sJZ", "spotify:track:7s0YfJE6hNNYq9BV26iCw6", "spotify:track:1eTL8yocTmire9gpOn2H2g", "spotify:track:2ArW2y4HFzz1VjGtl7f4xm", "spotify:track:7KiLniGRlvAHpoxMLYp32P", "spotify:track:6K8VQ84MqhsoakN5MjrnVR", "spotify:track:1k0JAiH11gHL9dc5dfQjQr", "spotify:track:1bYtKF2sY2wLU6xdVaqIqD", "spotify:track:05HElY3EVth4SMuOJOGusl", "spotify:track:2d8UxVNhJinc8uat9PoM9y", "spotify:track:4D7BCuvgdJlYvlX5QlSQoE"];
+const TRACK_IDS   = ["1duoEJxM4GBEICofJAh9Im", "6UgkB0xM45TR3Zjqm3GQ6T", "1fN3fH8Wcx7SJJwlVFrO5t", "5Q4H1XkVHxQjnrHCUpS61d", "73kadnv7SduzhApfRUv5C0", "1CD7hXuEjiUsoqOhleyKb7", "2VZ5Vtjn16RThAvaFz3sJZ", "7s0YfJE6hNNYq9BV26iCw6", "1eTL8yocTmire9gpOn2H2g", "2ArW2y4HFzz1VjGtl7f4xm", "7KiLniGRlvAHpoxMLYp32P", "6K8VQ84MqhsoakN5MjrnVR", "1k0JAiH11gHL9dc5dfQjQr", "1bYtKF2sY2wLU6xdVaqIqD", "05HElY3EVth4SMuOJOGusl", "2d8UxVNhJinc8uat9PoM9y", "4D7BCuvgdJlYvlX5QlSQoE"];
 const DISC_FIRST  = [0, 5, 10];
 const SB_URL      = "https://rvmfonytiinfzdgirsgk.supabase.co";
 const SB_KEY      = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2bWZvbnl0aWluZnpkZ2lyc2drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg1ODQsImV4cCI6MjA5NjMwNDU4NH0.kGVmLNzLE6eK6QaaCRVw8_cNZ8aloYi5CNzWwvEpSqI";
