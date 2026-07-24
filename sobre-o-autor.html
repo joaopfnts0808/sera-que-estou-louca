@@ -35,9 +35,17 @@ h1{font-family:"Abril Fatface",serif;font-size:clamp(2.2rem,7vw,3.4rem);line-hei
 .bio p{font-size:.98rem;line-height:1.85;color:rgba(255,255,255,.85);margin-bottom:20px;font-weight:300;}
 .pull{border-left:2px solid var(--pink);padding-left:20px;margin:36px 0;font-style:italic;
   color:var(--muted);font-size:.92rem;line-height:1.7;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 60px;}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 40px;}
 .tag{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
   border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:5px 12px;}
+.social-links{display:flex;flex-direction:column;gap:12px;margin:0 0 60px;}
+.social-link{display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff;
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;
+  padding:16px 20px;transition:border-color .2s,background .2s,transform .2s;}
+.social-link:hover{border-color:var(--pink);background:rgba(240,54,184,.06);transform:translateY(-2px);}
+.social-ic{font-size:1.2rem;flex-shrink:0;}
+.social-link b{display:block;font-family:"Abril Fatface",serif;font-size:.98rem;font-weight:400;margin-bottom:2px;}
+.social-link span.dsc{font-size:.78rem;color:var(--muted);}
 footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
   border-top:1px solid rgba(255,255,255,.05);font-size:.68rem;color:rgba(255,255,255,.18);letter-spacing:.1em;}
 @media(max-width:480px){.wrap{padding:0 22px;}}
@@ -58,6 +66,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
     <p data-i18n="p1">João Pedro Fontes nasceu e mora em Natal. Formado em Comunicação Social com habilitação em Publicidade e Propaganda, passou anos escrevendo para marcas antes de escrever para si mesmo. "Será que estou louca?" é o primeiro livro.</p>
     <p data-i18n="p2">É uma pessoa não binária vivendo com PFIC, uma doença hepática rara que a maior parte das pessoas nunca ouviu nomear. Essa convivência com um corpo que pode falhar antes da hora aparece no livro sem pedir licença: é o motivo pelo qual a história é contada por um fantasma, alguém que já sabe como tudo termina e ainda assim insiste em voltar para contar do começo.</p>
     <p data-i18n="p3">O livro nasceu de um relacionamento marcado por gaslighting. Não como desabafo, mas como tentativa de nomear com precisão algo que durante muito tempo não tinha nome nenhum. Escrever virou o processo de separar o que era real do que a outra pessoa insistia em dizer que era.</p>
+    <p data-i18n="p4">Fora do livro, João Pedro divide o processo de escrita no Instagram e assina uma coluna sobre cultura e identidade no Instituto SSEX BBOX.</p>
   </div>
   <div class="pull" data-i18n="pull">"Escrevo porque um fantasma não tem mais nada a perder ao dizer a verdade."</div>
   <div class="tags">
@@ -65,6 +74,16 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
     <span class="tag" data-i18n="tag2">Narrador-fantasma</span>
     <span class="tag" data-i18n="tag3">PFIC</span>
     <span class="tag" data-i18n="tag4">Identidade não binária</span>
+  </div>
+  <div class="social-links">
+    <a class="social-link" href="https://instagram.com/joaopfnts" target="_blank" rel="noopener">
+      <span class="social-ic">📷</span>
+      <span><b data-i18n="ig_b">Instagram</b><span class="dsc" data-i18n="ig_s">@joaopfnts — bastidores da escrita</span></span>
+    </a>
+    <a class="social-link" href="https://ssexbbox.com/author/jo%C3%A3o-pedro-fontes" target="_blank" rel="noopener">
+      <span class="social-ic">✒️</span>
+      <span><b data-i18n="col_b">Coluna no SSEX BBOX</b><span class="dsc" data-i18n="col_s">Textos sobre cultura e identidade</span></span>
+    </a>
   </div>
 </div>
 <footer><p>© 2026 · Será que Estou Louca? · João Pedro Fontes</p></footer>
@@ -75,16 +94,22 @@ const LANG_DATA = {
     p1: "João Pedro Fontes nasceu e mora em Natal. Formado em Comunicação Social com habilitação em Publicidade e Propaganda, passou anos escrevendo para marcas antes de escrever para si mesmo. \"Será que estou louca?\" é o primeiro livro.",
     p2: "É uma pessoa não binária vivendo com PFIC, uma doença hepática rara que a maior parte das pessoas nunca ouviu nomear. Essa convivência com um corpo que pode falhar antes da hora aparece no livro sem pedir licença: é o motivo pelo qual a história é contada por um fantasma, alguém que já sabe como tudo termina e ainda assim insiste em voltar para contar do começo.",
     p3: "O livro nasceu de um relacionamento marcado por gaslighting. Não como desabafo, mas como tentativa de nomear com precisão algo que durante muito tempo não tinha nome nenhum. Escrever virou o processo de separar o que era real do que a outra pessoa insistia em dizer que era.",
+    p4: "Fora do livro, João Pedro divide o processo de escrita no Instagram e assina uma coluna sobre cultura e identidade no Instituto SSEX BBOX.",
     pull: "\"Escrevo porque um fantasma não tem mais nada a perder ao dizer a verdade.\"",
-    tag1: "Autoficção", tag2: "Narrador-fantasma", tag3: "PFIC", tag4: "Identidade não binária"
+    tag1: "Autoficção", tag2: "Narrador-fantasma", tag3: "PFIC", tag4: "Identidade não binária",
+    ig_b: "Instagram", ig_s: "@joaopfnts — bastidores da escrita",
+    col_b: "Coluna no SSEX BBOX", col_s: "Textos sobre cultura e identidade"
   },
   en: {
     back: "← Back", h1: "About the author", role: "João Pedro Fontes — Natal, Brazil",
     p1: "João Pedro Fontes was born and lives in Natal, Brazil. With a degree in Advertising, they spent years writing for brands before writing for themselves. \"Será que estou louca?\" (Am I Going Crazy?) is their first book.",
     p2: "They are non-binary and live with PFIC, a rare liver disease most people have never heard named. That relationship with a body that could fail ahead of schedule shows up in the book without asking permission: it's the reason the story is told by a ghost, someone who already knows how it ends and still insists on coming back to tell the beginning.",
     p3: "The book grew out of a relationship marked by gaslighting. Not as a vent, but as an attempt to name with precision something that for a long time had no name at all. Writing became the process of separating what was real from what the other person kept insisting it was.",
+    p4: "Outside the book, João Pedro shares the writing process on Instagram and writes a column on culture and identity for Instituto SSEX BBOX.",
     pull: "\"I write because a ghost has nothing left to lose by telling the truth.\"",
-    tag1: "Autofiction", tag2: "Ghost narrator", tag3: "PFIC", tag4: "Non-binary identity"
+    tag1: "Autofiction", tag2: "Ghost narrator", tag3: "PFIC", tag4: "Non-binary identity",
+    ig_b: "Instagram", ig_s: "@joaopfnts — behind the scenes of the writing",
+    col_b: "Column on SSEX BBOX", col_s: "Essays on culture and identity"
   }
 };
 function setLang(lang) {
