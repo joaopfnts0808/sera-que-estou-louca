@@ -114,7 +114,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
 <div class="key-gate" id="keyGate">
   <div class="key-box">
     <h1 data-i18n="gate_title">Será que<br>Estou Louca?</h1>
-    <p class="sub" data-key="gate_sub">Este espaço é exclusivo para quem apoiou a pré-venda do livro. Digite sua chave de acesso para entrar.</p>
+    <p class="sub" data-key="home_gate_sub">Este espaço é exclusivo para quem apoiou a pré-venda do livro. Digite sua chave de acesso para entrar.</p>
     <div class="key-form">
       <input type="text" id="keyInput" placeholder="XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false">
       <button class="btn-unlock" onclick="tryUnlock()" data-i18n="gate_btn">Entrar</button>
@@ -137,7 +137,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
   <header class="hero wrap">
     <p class="hero-author">João Pedro Fontes</p>
     <h1 class="hero-title" data-i18n="title">Será que<br>Estou Louca?</h1>
-    <p class="hero-sub" data-key="hero_sub">Um romance narrado por um fantasma</p>
+    <p class="hero-sub" data-key="home_hero_sub">Um romance narrado por um fantasma</p>
     <div class="hero-bar"></div>
     <div class="lang-toggle">
       <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
@@ -151,7 +151,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
   </div>
 
   <div class="presale-cta wrap">
-    <p data-key="presale_txt">O livro já está em pré-venda. Garanta o seu exemplar.</p>
+    <p data-key="home_presale_txt">O livro já está em pré-venda. Garanta o seu exemplar.</p>
     <!-- TROQUE O href ABAIXO PELO LINK REAL DA PRÉ-VENDA -->
     <a class="btn-presale" href="COLOQUE_AQUI_O_LINK_DA_PRE_VENDA" data-i18n="presale_btn">Ver pré-venda</a>
   </div>
@@ -171,9 +171,9 @@ const SB_URL = "https://rvmfonytiinfzdgirsgk.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2bWZvbnl0aWluZnpkZ2lyc2drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg1ODQsImV4cCI6MjA5NjMwNDU4NH0.kGVmLNzLE6eK6QaaCRVw8_cNZ8aloYi5CNzWwvEpSqI";
 const EDIT_PASS = "louca2026";
 const DEFAULTS = {
-  gate_sub: "Este espaço é exclusivo para quem apoiou a pré-venda do livro. Digite sua chave de acesso para entrar.",
-  hero_sub: "Um romance narrado por um fantasma",
-  presale_txt: "O livro já está em pré-venda. Garanta o seu exemplar."
+  home_gate_sub: "Este espaço é exclusivo para quem apoiou a pré-venda do livro. Digite sua chave de acesso para entrar.",
+  home_hero_sub: "Um romance narrado por um fantasma",
+  home_presale_txt: "O livro já está em pré-venda. Garanta o seu exemplar."
 };
 let editActive = false;
 
@@ -290,9 +290,9 @@ const LANG_DATA = {
     nav_why: "Por que ouvir antes de ler?",
     nav_listen: "Ouça enquanto lê",
     presale_btn: "Ver pré-venda",
-    gate_sub: "Este espaço é exclusivo para quem apoiou a pré-venda do livro. Digite sua chave de acesso para entrar.",
-    hero_sub: "Um romance narrado por um fantasma",
-    presale_txt: "O livro já está em pré-venda. Garanta o seu exemplar."
+    home_gate_sub: "Este espaço é exclusivo para quem apoiou a pré-venda do livro. Digite sua chave de acesso para entrar.",
+    home_hero_sub: "Um romance narrado por um fantasma",
+    home_presale_txt: "O livro já está em pré-venda. Garanta o seu exemplar."
   },
   en: {
     gate_title: "Am I<br>Going Crazy?",
@@ -304,9 +304,9 @@ const LANG_DATA = {
     nav_why: "Why listen before reading?",
     nav_listen: "Listen while you read",
     presale_btn: "See pre-sale",
-    gate_sub: "This space is exclusive to those who supported the book's pre-sale. Enter your access key.",
-    hero_sub: "A novel narrated by a ghost",
-    presale_txt: "The book is already up for pre-sale. Get your copy."
+    home_gate_sub: "This space is exclusive to those who supported the book's pre-sale. Enter your access key.",
+    home_hero_sub: "A novel narrated by a ghost",
+    home_presale_txt: "The book is already up for pre-sale. Get your copy."
   }
 };
 let currentLang = localStorage.getItem("sq_lang") || "pt";
