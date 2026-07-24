@@ -54,6 +54,13 @@ table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.05);}
 .badge.err{background:rgba(255,107,157,.15);color:var(--red);}
 .btn-primary{background:var(--pink)!important;color:#fff!important;}
 .btn-primary:disabled{opacity:.5;cursor:not-allowed;}
+.site-nav{display:flex;flex-wrap:wrap;gap:8px;}
+.site-nav a{font-size:.75rem;color:#fff;text-decoration:none;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:8px 14px;transition:border-color .2s,background .2s;}
+.site-nav a:hover{border-color:var(--pink);background:rgba(240,54,184,.1);}
+.editor-note{font-size:.72rem;color:var(--green);text-align:center;}
+.btn-logout-admin{background:none;border:1px solid rgba(255,255,255,.15);color:var(--muted);
+  font-family:"DM Sans",sans-serif;font-size:.72rem;border-radius:16px;padding:7px 14px;cursor:pointer;align-self:center;}
 </style>
 </head>
 <body>
@@ -68,6 +75,20 @@ table td{padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.05);}
   </div>
 
   <div class="panel" id="panel">
+
+    <div class="section">
+      <h2>Editar páginas do site</h2>
+      <p class="hint">Com o painel logado, o lápis de edição das páginas abaixo já libera direto, sem pedir senha de novo.</p>
+      <p class="editor-note" id="editorNote">Modo de edição liberado nas páginas do site.</p>
+      <div class="site-nav">
+        <a href="/" target="_blank" rel="noopener">Home</a>
+        <a href="sobre-o-autor" target="_blank" rel="noopener">Sobre o autor</a>
+        <a href="sinopse" target="_blank" rel="noopener">Sinopse</a>
+        <a href="por-que-ouvir" target="_blank" rel="noopener">Por que ouvir</a>
+        <a href="escute" target="_blank" rel="noopener">Escute</a>
+      </div>
+      <button class="btn-logout-admin" onclick="logoutAdmin()">Sair do modo admin</button>
+    </div>
 
     <div class="section">
       <h2>Importar planilha e enviar por e-mail</h2>
@@ -103,9 +124,15 @@ function checkPw() {
   if (v === ADMIN_PASS) {
     document.getElementById("gateBox").style.display = "none";
     document.getElementById("panel").classList.add("vis");
+    localStorage.setItem("sq_editor_ok", "1");
   } else {
     st.textContent = "Senha incorreta.";
   }
+}
+function logoutAdmin() {
+  localStorage.removeItem("sq_editor_ok");
+  document.getElementById("editorNote").textContent = "Modo de edição desligado nas páginas do site.";
+  document.getElementById("editorNote").style.color = "var(--red)";
 }
 document.getElementById("pw").addEventListener("keydown", e => { if (e.key === "Enter") checkPw(); });
 
