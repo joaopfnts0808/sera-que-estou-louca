@@ -66,19 +66,19 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
 <div class="wrap">
   <a class="back-link" href="/" data-i18n="back">← Voltar</a>
   <h1 data-i18n="h1">Sinopse</h1>
-  <p class="role" data-key="role">Um romance narrado por um fantasma</p>
+  <p class="role" data-key="sinopse_role">Um romance narrado por um fantasma</p>
   <div class="lang-toggle">
     <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
     <div class="lang-sep"></div>
     <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
   </div>
   <div class="bio" id="bio">
-    <p data-key="p1">Quem narra este livro já morreu. E é justamente por isso que consegue contar tudo sem medo.</p>
-    <p data-key="p2">"Será que estou louca?" acompanha uma relação que começou como paixão e foi virando, capítulo a capítulo, um exercício silencioso de duvidar da própria percepção. A pessoa que narra revisita cada fase: a euforia do início, os primeiros sinais ignorados, as frases que reescreviam a realidade até fazer a vítima se sentir a culpada, a terapia que devolveu palavras para nomear o que estava acontecendo, e a saída, que não teve nada de cinematográfica.</p>
-    <p data-key="p3">No fundo da história corre outra pergunta, menos falada mas igual de urgente: o que fazer com o tempo quando o corpo pode acabar antes do previsto. A narradora convive com PFIC, doença hepática rara, e é não binária num mundo que ainda insiste em pedir explicações para as duas coisas. O livro não trata isso como pano de fundo. Trata como parte do mesmo enredo: a dificuldade de ser acreditada, seja sobre o próprio corpo, seja sobre a própria dor.</p>
-    <p data-key="p4">A escolha de um narrador-fantasma não é um truque literário vazio. É a forma mais honesta de contar essa história: só quem já perdeu tudo consegue falar sem medo do que ainda pode perder.</p>
+    <p data-key="sinopse_p1">Quem narra este livro já morreu. E é justamente por isso que consegue contar tudo sem medo.</p>
+    <p data-key="sinopse_p2">"Será que estou louca?" acompanha uma relação que começou como paixão e foi virando, capítulo a capítulo, um exercício silencioso de duvidar da própria percepção. A pessoa que narra revisita cada fase: a euforia do início, os primeiros sinais ignorados, as frases que reescreviam a realidade até fazer a vítima se sentir a culpada, a terapia que devolveu palavras para nomear o que estava acontecendo, e a saída, que não teve nada de cinematográfica.</p>
+    <p data-key="sinopse_p3">No fundo da história corre outra pergunta, menos falada mas igual de urgente: o que fazer com o tempo quando o corpo pode acabar antes do previsto. A narradora convive com PFIC, doença hepática rara, e é não binária num mundo que ainda insiste em pedir explicações para as duas coisas. O livro não trata isso como pano de fundo. Trata como parte do mesmo enredo: a dificuldade de ser acreditada, seja sobre o próprio corpo, seja sobre a própria dor.</p>
+    <p data-key="sinopse_p4">A escolha de um narrador-fantasma não é um truque literário vazio. É a forma mais honesta de contar essa história: só quem já perdeu tudo consegue falar sem medo do que ainda pode perder.</p>
   </div>
-  <div class="pull" data-key="pull">"Será que estou louca?" pergunta o título. O livro inteiro responde: não, você só duvidou de si mesma tempo demais.</div>
+  <div class="pull" data-key="sinopse_pull">"Será que estou louca?" pergunta o título. O livro inteiro responde: não, você só duvidou de si mesma tempo demais.</div>
   <div class="info-row">
     <div class="info-item"><b data-i18n="genre_label">Gênero</b><span data-i18n="genre">Autoficção</span></div>
     <div class="info-item"><b data-i18n="lang_label">Idioma</b><span data-i18n="lang">Português</span></div>
@@ -99,12 +99,12 @@ const SB_URL = "https://rvmfonytiinfzdgirsgk.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2bWZvbnl0aWluZnpkZ2lyc2drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg1ODQsImV4cCI6MjA5NjMwNDU4NH0.kGVmLNzLE6eK6QaaCRVw8_cNZ8aloYi5CNzWwvEpSqI";
 const EDIT_PASS = "louca2026";
 const DEFAULTS = {
-  role: "Um romance narrado por um fantasma",
-  p1: "Quem narra este livro já morreu. E é justamente por isso que consegue contar tudo sem medo.",
-  p2: "\"Será que estou louca?\" acompanha uma relação que começou como paixão e foi virando, capítulo a capítulo, um exercício silencioso de duvidar da própria percepção. A pessoa que narra revisita cada fase: a euforia do início, os primeiros sinais ignorados, as frases que reescreviam a realidade até fazer a vítima se sentir a culpada, a terapia que devolveu palavras para nomear o que estava acontecendo, e a saída, que não teve nada de cinematográfica.",
-  p3: "No fundo da história corre outra pergunta, menos falada mas igual de urgente: o que fazer com o tempo quando o corpo pode acabar antes do previsto. A narradora convive com PFIC, doença hepática rara, e é não binária num mundo que ainda insiste em pedir explicações para as duas coisas. O livro não trata isso como pano de fundo. Trata como parte do mesmo enredo: a dificuldade de ser acreditada, seja sobre o próprio corpo, seja sobre a própria dor.",
-  p4: "A escolha de um narrador-fantasma não é um truque literário vazio. É a forma mais honesta de contar essa história: só quem já perdeu tudo consegue falar sem medo do que ainda pode perder.",
-  pull: "\"Será que estou louca?\" pergunta o título. O livro inteiro responde: não, você só duvidou de si mesma tempo demais."
+  sinopse_role: "Um romance narrado por um fantasma",
+  sinopse_p1: "Quem narra este livro já morreu. E é justamente por isso que consegue contar tudo sem medo.",
+  sinopse_p2: "\"Será que estou louca?\" acompanha uma relação que começou como paixão e foi virando, capítulo a capítulo, um exercício silencioso de duvidar da própria percepção. A pessoa que narra revisita cada fase: a euforia do início, os primeiros sinais ignorados, as frases que reescreviam a realidade até fazer a vítima se sentir a culpada, a terapia que devolveu palavras para nomear o que estava acontecendo, e a saída, que não teve nada de cinematográfica.",
+  sinopse_p3: "No fundo da história corre outra pergunta, menos falada mas igual de urgente: o que fazer com o tempo quando o corpo pode acabar antes do previsto. A narradora convive com PFIC, doença hepática rara, e é não binária num mundo que ainda insiste em pedir explicações para as duas coisas. O livro não trata isso como pano de fundo. Trata como parte do mesmo enredo: a dificuldade de ser acreditada, seja sobre o próprio corpo, seja sobre a própria dor.",
+  sinopse_p4: "A escolha de um narrador-fantasma não é um truque literário vazio. É a forma mais honesta de contar essa história: só quem já perdeu tudo consegue falar sem medo do que ainda pode perder.",
+  sinopse_pull: "\"Será que estou louca?\" pergunta o título. O livro inteiro responde: não, você só duvidou de si mesma tempo demais."
 };
 let editActive = false;
 
@@ -177,24 +177,24 @@ const LANG_DATA = {
     genre_label: "Gênero", genre: "Autoficção",
     lang_label: "Idioma", lang: "Português",
     format_label: "Formato", format: "Impresso e digital",
-    role: "Um romance narrado por um fantasma",
-    p1: "Quem narra este livro já morreu. E é justamente por isso que consegue contar tudo sem medo.",
-    p2: "\"Será que estou louca?\" acompanha uma relação que começou como paixão e foi virando, capítulo a capítulo, um exercício silencioso de duvidar da própria percepção. A pessoa que narra revisita cada fase: a euforia do início, os primeiros sinais ignorados, as frases que reescreviam a realidade até fazer a vítima se sentir a culpada, a terapia que devolveu palavras para nomear o que estava acontecendo, e a saída, que não teve nada de cinematográfica.",
-    p3: "No fundo da história corre outra pergunta, menos falada mas igual de urgente: o que fazer com o tempo quando o corpo pode acabar antes do previsto. A narradora convive com PFIC, doença hepática rara, e é não binária num mundo que ainda insiste em pedir explicações para as duas coisas. O livro não trata isso como pano de fundo. Trata como parte do mesmo enredo: a dificuldade de ser acreditada, seja sobre o próprio corpo, seja sobre a própria dor.",
-    p4: "A escolha de um narrador-fantasma não é um truque literário vazio. É a forma mais honesta de contar essa história: só quem já perdeu tudo consegue falar sem medo do que ainda pode perder.",
-    pull: "\"Será que estou louca?\" pergunta o título. O livro inteiro responde: não, você só duvidou de si mesma tempo demais."
+    sinopse_role: "Um romance narrado por um fantasma",
+    sinopse_p1: "Quem narra este livro já morreu. E é justamente por isso que consegue contar tudo sem medo.",
+    sinopse_p2: "\"Será que estou louca?\" acompanha uma relação que começou como paixão e foi virando, capítulo a capítulo, um exercício silencioso de duvidar da própria percepção. A pessoa que narra revisita cada fase: a euforia do início, os primeiros sinais ignorados, as frases que reescreviam a realidade até fazer a vítima se sentir a culpada, a terapia que devolveu palavras para nomear o que estava acontecendo, e a saída, que não teve nada de cinematográfica.",
+    sinopse_p3: "No fundo da história corre outra pergunta, menos falada mas igual de urgente: o que fazer com o tempo quando o corpo pode acabar antes do previsto. A narradora convive com PFIC, doença hepática rara, e é não binária num mundo que ainda insiste em pedir explicações para as duas coisas. O livro não trata isso como pano de fundo. Trata como parte do mesmo enredo: a dificuldade de ser acreditada, seja sobre o próprio corpo, seja sobre a própria dor.",
+    sinopse_p4: "A escolha de um narrador-fantasma não é um truque literário vazio. É a forma mais honesta de contar essa história: só quem já perdeu tudo consegue falar sem medo do que ainda pode perder.",
+    sinopse_pull: "\"Será que estou louca?\" pergunta o título. O livro inteiro responde: não, você só duvidou de si mesma tempo demais."
   },
   en: {
     back: "← Back", h1: "Synopsis",
     genre_label: "Genre", genre: "Autofiction",
     lang_label: "Language", lang: "Portuguese",
     format_label: "Format", format: "Print and digital",
-    role: "A novel narrated by a ghost",
-    p1: "The narrator of this book is already dead. That's exactly why they can tell all of it without fear.",
-    p2: "\"Será que estou louca?\" (Am I Going Crazy?) follows a relationship that started as passion and turned, chapter by chapter, into a quiet exercise in doubting one's own perception. The narrator revisits every phase: the early euphoria, the first ignored warning signs, the sentences that rewrote reality until the victim felt like the guilty one, the therapy that gave the words back, and the exit, which had nothing cinematic about it.",
-    p3: "Underneath the story runs another question, less spoken but just as urgent: what to do with time when the body might run out ahead of schedule. The narrator lives with PFIC, a rare liver disease, and is non-binary in a world that still demands explanations for both. The book doesn't treat this as backdrop. It treats it as part of the same plot: the difficulty of being believed, whether about your body or your pain.",
-    p4: "The choice of a ghost narrator isn't an empty literary trick. It's the most honest way to tell this story: only someone who has already lost everything can speak without fear of what's left to lose.",
-    pull: "\"Am I going crazy?\" asks the title. The whole book answers: no, you just doubted yourself for too long."
+    sinopse_role: "A novel narrated by a ghost",
+    sinopse_p1: "The narrator of this book is already dead. That's exactly why they can tell all of it without fear.",
+    sinopse_p2: "\"Será que estou louca?\" (Am I Going Crazy?) follows a relationship that started as passion and turned, chapter by chapter, into a quiet exercise in doubting one's own perception. The narrator revisits every phase: the early euphoria, the first ignored warning signs, the sentences that rewrote reality until the victim felt like the guilty one, the therapy that gave the words back, and the exit, which had nothing cinematic about it.",
+    sinopse_p3: "Underneath the story runs another question, less spoken but just as urgent: what to do with time when the body might run out ahead of schedule. The narrator lives with PFIC, a rare liver disease, and is non-binary in a world that still demands explanations for both. The book doesn't treat this as backdrop. It treats it as part of the same plot: the difficulty of being believed, whether about your body or your pain.",
+    sinopse_p4: "The choice of a ghost narrator isn't an empty literary trick. It's the most honest way to tell this story: only someone who has already lost everything can speak without fear of what's left to lose.",
+    sinopse_pull: "\"Am I going crazy?\" asks the title. The whole book answers: no, you just doubted yourself for too long."
   }
 };
 let currentLang = localStorage.getItem("sq_lang") || "pt";
