@@ -69,23 +69,23 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
 <div class="wrap">
   <a class="back-link" href="/" data-i18n="back">← Voltar</a>
   <h1 data-i18n="h1">Por que ouvir antes de ler?</h1>
-  <p class="role" data-key="role">Uma música por capítulo, na ordem exata do livro</p>
+  <p class="role" data-key="ouvir_role">Uma música por capítulo, na ordem exata do livro</p>
   <div class="lang-toggle">
     <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
     <div class="lang-sep"></div>
     <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
   </div>
   <div class="bio" id="bio">
-    <p data-key="p1">Cada capítulo de "Será que estou louca?" nasceu com uma música tocando ao lado. Não como trilha decorativa colocada depois, pronta para dar clima. As dezenove faixas vieram primeiro. O texto se ajustou a elas, não o contrário.</p>
-    <p data-key="p2">Isso muda o que a playlist pode fazer por quem vai ler. Uma música leva alguns minutos para instalar um sentimento que um parágrafo levaria páginas para construir. Antes de saber a data em que aquele relacionamento começou a apodrecer, você já vai sentir o gosto de "Out Of Mind" na boca. Antes de ler a cena da saída, "You're On Your Own, Kid" já vai ter te avisado que ninguém chega para salvar ninguém.</p>
-    <p data-key="p3">Ler o livro sem a playlist funciona. Ler com ela funciona diferente: o corpo chega ao capítulo já sabendo alguma coisa que a cabeça só vai entender duas páginas depois. É essa defasagem proposital, entre sentir e entender, que a trilha sonora entrega.</p>
-    <p data-key="p4">Tem faixa bônus também, música que quase entrou num capítulo e acabou ficando de fora por decisão editorial. Essas explicam, nos próprios comentários da página, por que foram cortadas. Vale ouvir depois, como quem lê os extras de um DVD.</p>
+    <p data-key="ouvir_p1">Cada capítulo de "Será que estou louca?" nasceu com uma música tocando ao lado. Não como trilha decorativa colocada depois, pronta para dar clima. As dezenove faixas vieram primeiro. O texto se ajustou a elas, não o contrário.</p>
+    <p data-key="ouvir_p2">Isso muda o que a playlist pode fazer por quem vai ler. Uma música leva alguns minutos para instalar um sentimento que um parágrafo levaria páginas para construir. Antes de saber a data em que aquele relacionamento começou a apodrecer, você já vai sentir o gosto de "Out Of Mind" na boca. Antes de ler a cena da saída, "You're On Your Own, Kid" já vai ter te avisado que ninguém chega para salvar ninguém.</p>
+    <p data-key="ouvir_p3">Ler o livro sem a playlist funciona. Ler com ela funciona diferente: o corpo chega ao capítulo já sabendo alguma coisa que a cabeça só vai entender duas páginas depois. É essa defasagem proposital, entre sentir e entender, que a trilha sonora entrega.</p>
+    <p data-key="ouvir_p4">Tem faixa bônus também, música que quase entrou num capítulo e acabou ficando de fora por decisão editorial. Essas explicam, nos próprios comentários da página, por que foram cortadas. Vale ouvir depois, como quem lê os extras de um DVD.</p>
   </div>
-  <div class="pull" data-key="pull">Não é trilha sonora de fundo. É a temperatura emocional de cada capítulo, entregue três minutos antes de você chegar nele.</div>
+  <div class="pull" data-key="ouvir_pull">Não é trilha sonora de fundo. É a temperatura emocional de cada capítulo, entregue três minutos antes de você chegar nele.</div>
   <div class="cta">
     <div class="cta-txt">
-      <b data-key="cta_b">A biblioteca musical do livro</b>
-      <span data-key="cta_s">19 faixas, capítulo por capítulo, com Spotify integrado</span>
+      <b data-key="ouvir_cta_b">A biblioteca musical do livro</b>
+      <span data-key="ouvir_cta_s">19 faixas, capítulo por capítulo, com Spotify integrado</span>
     </div>
     <a class="btn-go" href="escute" data-i18n="cta_btn">Ouça agora</a>
   </div>
@@ -104,14 +104,14 @@ const SB_URL = "https://rvmfonytiinfzdgirsgk.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2bWZvbnl0aWluZnpkZ2lyc2drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg1ODQsImV4cCI6MjA5NjMwNDU4NH0.kGVmLNzLE6eK6QaaCRVw8_cNZ8aloYi5CNzWwvEpSqI";
 const EDIT_PASS = "louca2026";
 const DEFAULTS = {
-  role: "Uma música por capítulo, na ordem exata do livro",
-  p1: "Cada capítulo de \"Será que estou louca?\" nasceu com uma música tocando ao lado. Não como trilha decorativa colocada depois, pronta para dar clima. As dezenove faixas vieram primeiro. O texto se ajustou a elas, não o contrário.",
-  p2: "Isso muda o que a playlist pode fazer por quem vai ler. Uma música leva alguns minutos para instalar um sentimento que um parágrafo levaria páginas para construir. Antes de saber a data em que aquele relacionamento começou a apodrecer, você já vai sentir o gosto de \"Out Of Mind\" na boca. Antes de ler a cena da saída, \"You're On Your Own, Kid\" já vai ter te avisado que ninguém chega para salvar ninguém.",
-  p3: "Ler o livro sem a playlist funciona. Ler com ela funciona diferente: o corpo chega ao capítulo já sabendo alguma coisa que a cabeça só vai entender duas páginas depois. É essa defasagem proposital, entre sentir e entender, que a trilha sonora entrega.",
-  p4: "Tem faixa bônus também, música que quase entrou num capítulo e acabou ficando de fora por decisão editorial. Essas explicam, nos próprios comentários da página, por que foram cortadas. Vale ouvir depois, como quem lê os extras de um DVD.",
-  pull: "Não é trilha sonora de fundo. É a temperatura emocional de cada capítulo, entregue três minutos antes de você chegar nele.",
-  cta_b: "A biblioteca musical do livro",
-  cta_s: "19 faixas, capítulo por capítulo, com Spotify integrado"
+  ouvir_role: "Uma música por capítulo, na ordem exata do livro",
+  ouvir_p1: "Cada capítulo de \"Será que estou louca?\" nasceu com uma música tocando ao lado. Não como trilha decorativa colocada depois, pronta para dar clima. As dezenove faixas vieram primeiro. O texto se ajustou a elas, não o contrário.",
+  ouvir_p2: "Isso muda o que a playlist pode fazer por quem vai ler. Uma música leva alguns minutos para instalar um sentimento que um parágrafo levaria páginas para construir. Antes de saber a data em que aquele relacionamento começou a apodrecer, você já vai sentir o gosto de \"Out Of Mind\" na boca. Antes de ler a cena da saída, \"You're On Your Own, Kid\" já vai ter te avisado que ninguém chega para salvar ninguém.",
+  ouvir_p3: "Ler o livro sem a playlist funciona. Ler com ela funciona diferente: o corpo chega ao capítulo já sabendo alguma coisa que a cabeça só vai entender duas páginas depois. É essa defasagem proposital, entre sentir e entender, que a trilha sonora entrega.",
+  ouvir_p4: "Tem faixa bônus também, música que quase entrou num capítulo e acabou ficando de fora por decisão editorial. Essas explicam, nos próprios comentários da página, por que foram cortadas. Vale ouvir depois, como quem lê os extras de um DVD.",
+  ouvir_pull: "Não é trilha sonora de fundo. É a temperatura emocional de cada capítulo, entregue três minutos antes de você chegar nele.",
+  ouvir_cta_b: "A biblioteca musical do livro",
+  ouvir_cta_s: "19 faixas, capítulo por capítulo, com Spotify integrado"
 };
 let editActive = false;
 
@@ -181,25 +181,25 @@ async function saveContent() {
 const LANG_DATA = {
   pt: {
     back: "← Voltar", h1: "Por que ouvir antes de ler?", cta_btn: "Ouça agora",
-    role: "Uma música por capítulo, na ordem exata do livro",
-    p1: "Cada capítulo de \"Será que estou louca?\" nasceu com uma música tocando ao lado. Não como trilha decorativa colocada depois, pronta para dar clima. As dezenove faixas vieram primeiro. O texto se ajustou a elas, não o contrário.",
-    p2: "Isso muda o que a playlist pode fazer por quem vai ler. Uma música leva alguns minutos para instalar um sentimento que um parágrafo levaria páginas para construir. Antes de saber a data em que aquele relacionamento começou a apodrecer, você já vai sentir o gosto de \"Out Of Mind\" na boca. Antes de ler a cena da saída, \"You're On Your Own, Kid\" já vai ter te avisado que ninguém chega para salvar ninguém.",
-    p3: "Ler o livro sem a playlist funciona. Ler com ela funciona diferente: o corpo chega ao capítulo já sabendo alguma coisa que a cabeça só vai entender duas páginas depois. É essa defasagem proposital, entre sentir e entender, que a trilha sonora entrega.",
-    p4: "Tem faixa bônus também, música que quase entrou num capítulo e acabou ficando de fora por decisão editorial. Essas explicam, nos próprios comentários da página, por que foram cortadas. Vale ouvir depois, como quem lê os extras de um DVD.",
-    pull: "Não é trilha sonora de fundo. É a temperatura emocional de cada capítulo, entregue três minutos antes de você chegar nele.",
-    cta_b: "A biblioteca musical do livro",
-    cta_s: "19 faixas, capítulo por capítulo, com Spotify integrado"
+    ouvir_role: "Uma música por capítulo, na ordem exata do livro",
+    ouvir_p1: "Cada capítulo de \"Será que estou louca?\" nasceu com uma música tocando ao lado. Não como trilha decorativa colocada depois, pronta para dar clima. As dezenove faixas vieram primeiro. O texto se ajustou a elas, não o contrário.",
+    ouvir_p2: "Isso muda o que a playlist pode fazer por quem vai ler. Uma música leva alguns minutos para instalar um sentimento que um parágrafo levaria páginas para construir. Antes de saber a data em que aquele relacionamento começou a apodrecer, você já vai sentir o gosto de \"Out Of Mind\" na boca. Antes de ler a cena da saída, \"You're On Your Own, Kid\" já vai ter te avisado que ninguém chega para salvar ninguém.",
+    ouvir_p3: "Ler o livro sem a playlist funciona. Ler com ela funciona diferente: o corpo chega ao capítulo já sabendo alguma coisa que a cabeça só vai entender duas páginas depois. É essa defasagem proposital, entre sentir e entender, que a trilha sonora entrega.",
+    ouvir_p4: "Tem faixa bônus também, música que quase entrou num capítulo e acabou ficando de fora por decisão editorial. Essas explicam, nos próprios comentários da página, por que foram cortadas. Vale ouvir depois, como quem lê os extras de um DVD.",
+    ouvir_pull: "Não é trilha sonora de fundo. É a temperatura emocional de cada capítulo, entregue três minutos antes de você chegar nele.",
+    ouvir_cta_b: "A biblioteca musical do livro",
+    ouvir_cta_s: "19 faixas, capítulo por capítulo, com Spotify integrado"
   },
   en: {
     back: "← Back", h1: "Why listen before reading?", cta_btn: "Listen now",
-    role: "One song per chapter, in the book's exact order",
-    p1: "Every chapter of \"Será que estou louca?\" was written with a song playing alongside it. Not as a decorative soundtrack added afterward to set a mood. The nineteen tracks came first. The text adjusted to them, not the other way around.",
-    p2: "That changes what the playlist can do for a reader. A song takes a few minutes to install a feeling that a paragraph would take pages to build. Before you know the date that relationship started rotting, you'll already taste \"Out Of Mind\" in your mouth. Before you read the exit scene, \"You're On Your Own, Kid\" will already have warned you that nobody's coming to save anybody.",
-    p3: "Reading the book without the playlist works. Reading it with the playlist works differently: the body arrives at the chapter already knowing something the mind only catches up to two pages later. That's the deliberate lag, between feeling and understanding, the soundtrack delivers.",
-    p4: "There are bonus tracks too, songs that almost made it into a chapter and got cut in editing. Those explain, right in the page's own comments, why they were cut. Worth listening to afterward, like reading a DVD's deleted scenes.",
-    pull: "It isn't background music. It's the emotional temperature of each chapter, delivered three minutes before you get there.",
-    cta_b: "The book's musical library",
-    cta_s: "19 tracks, chapter by chapter, with Spotify built in"
+    ouvir_role: "One song per chapter, in the book's exact order",
+    ouvir_p1: "Every chapter of \"Será que estou louca?\" was written with a song playing alongside it. Not as a decorative soundtrack added afterward to set a mood. The nineteen tracks came first. The text adjusted to them, not the other way around.",
+    ouvir_p2: "That changes what the playlist can do for a reader. A song takes a few minutes to install a feeling that a paragraph would take pages to build. Before you know the date that relationship started rotting, you'll already taste \"Out Of Mind\" in your mouth. Before you read the exit scene, \"You're On Your Own, Kid\" will already have warned you that nobody's coming to save anybody.",
+    ouvir_p3: "Reading the book without the playlist works. Reading it with the playlist works differently: the body arrives at the chapter already knowing something the mind only catches up to two pages later. That's the deliberate lag, between feeling and understanding, the soundtrack delivers.",
+    ouvir_p4: "There are bonus tracks too, songs that almost made it into a chapter and got cut in editing. Those explain, right in the page's own comments, why they were cut. Worth listening to afterward, like reading a DVD's deleted scenes.",
+    ouvir_pull: "It isn't background music. It's the emotional temperature of each chapter, delivered three minutes before you get there.",
+    ouvir_cta_b: "The book's musical library",
+    ouvir_cta_s: "19 tracks, chapter by chapter, with Spotify built in"
   }
 };
 let currentLang = localStorage.getItem("sq_lang") || "pt";
