@@ -133,6 +133,7 @@ async function loadContent() {
   if (currentLang === "en") applyEnOverrides();
 }
 function promptEdit() {
+  if (localStorage.getItem("sq_editor_ok") === "1") { enableEdit(); return; }
   const pw = prompt("Senha de edição:");
   if (pw === EDIT_PASS) enableEdit();
   else if (pw !== null) alert("Senha incorreta.");
