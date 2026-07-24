@@ -92,7 +92,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
     <div class="author-main">
       <a class="back-link" href="/" data-i18n="back">← Voltar</a>
       <h1 data-i18n="h1">Sobre o autor</h1>
-      <p class="role" data-key="role">João Pedro Fontes — Natal, RN</p>
+      <p class="role" data-key="autor_role">João Pedro Fontes — Natal, RN</p>
       <div class="lang-toggle">
         <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
         <div class="lang-sep"></div>
@@ -101,12 +101,12 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
     </div>
   </div>
   <div class="bio" id="bio">
-    <p data-key="p1">João Pedro Fontes nasceu e mora em Natal. Formado em Comunicação Social com habilitação em Publicidade e Propaganda, passou anos escrevendo para marcas antes de escrever para si mesmo. "Será que estou louca?" é o primeiro livro.</p>
-    <p data-key="p2">É uma pessoa não binária vivendo com PFIC, uma doença hepática rara que a maior parte das pessoas nunca ouviu nomear. Essa convivência com um corpo que pode falhar antes da hora aparece no livro sem pedir licença: é o motivo pelo qual a história é contada por um fantasma, alguém que já sabe como tudo termina e ainda assim insiste em voltar para contar do começo.</p>
-    <p data-key="p3">O livro nasceu de um relacionamento marcado por gaslighting. Não como desabafo, mas como tentativa de nomear com precisão algo que durante muito tempo não tinha nome nenhum. Escrever virou o processo de separar o que era real do que a outra pessoa insistia em dizer que era.</p>
-    <p data-key="p4">Fora do livro, João Pedro divide o processo de escrita no Instagram e assina uma coluna sobre cultura e identidade no Instituto SSEX BBOX.</p>
+    <p data-key="autor_p1">João Pedro Fontes nasceu e mora em Natal. Formado em Comunicação Social com habilitação em Publicidade e Propaganda, passou anos escrevendo para marcas antes de escrever para si mesmo. "Será que estou louca?" é o primeiro livro.</p>
+    <p data-key="autor_p2">É uma pessoa não binária vivendo com PFIC, uma doença hepática rara que a maior parte das pessoas nunca ouviu nomear. Essa convivência com um corpo que pode falhar antes da hora aparece no livro sem pedir licença: é o motivo pelo qual a história é contada por um fantasma, alguém que já sabe como tudo termina e ainda assim insiste em voltar para contar do começo.</p>
+    <p data-key="autor_p3">O livro nasceu de um relacionamento marcado por gaslighting. Não como desabafo, mas como tentativa de nomear com precisão algo que durante muito tempo não tinha nome nenhum. Escrever virou o processo de separar o que era real do que a outra pessoa insistia em dizer que era.</p>
+    <p data-key="autor_p4">Fora do livro, João Pedro divide o processo de escrita no Instagram e assina uma coluna sobre cultura e identidade no Instituto SSEX BBOX.</p>
   </div>
-  <div class="pull" data-key="pull">"Escrevo porque um fantasma não tem mais nada a perder ao dizer a verdade."</div>
+  <div class="pull" data-key="autor_pull">"Escrevo porque um fantasma não tem mais nada a perder ao dizer a verdade."</div>
   <div class="tags">
     <span class="tag" data-i18n="tag1">Autoficção</span>
     <span class="tag" data-i18n="tag2">Narrador-fantasma</span>
@@ -128,12 +128,12 @@ const SB_URL = "https://rvmfonytiinfzdgirsgk.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2bWZvbnl0aWluZnpkZ2lyc2drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg1ODQsImV4cCI6MjA5NjMwNDU4NH0.kGVmLNzLE6eK6QaaCRVw8_cNZ8aloYi5CNzWwvEpSqI";
 const EDIT_PASS = "louca2026";
 const DEFAULTS = {
-  role: "João Pedro Fontes — Natal, RN",
-  p1: "João Pedro Fontes nasceu e mora em Natal. Formado em Comunicação Social com habilitação em Publicidade e Propaganda, passou anos escrevendo para marcas antes de escrever para si mesmo. \"Será que estou louca?\" é o primeiro livro.",
-  p2: "É uma pessoa não binária vivendo com PFIC, uma doença hepática rara que a maior parte das pessoas nunca ouviu nomear. Essa convivência com um corpo que pode falhar antes da hora aparece no livro sem pedir licença: é o motivo pelo qual a história é contada por um fantasma, alguém que já sabe como tudo termina e ainda assim insiste em voltar para contar do começo.",
-  p3: "O livro nasceu de um relacionamento marcado por gaslighting. Não como desabafo, mas como tentativa de nomear com precisão algo que durante muito tempo não tinha nome nenhum. Escrever virou o processo de separar o que era real do que a outra pessoa insistia em dizer que era.",
-  p4: "Fora do livro, João Pedro divide o processo de escrita no Instagram e assina uma coluna sobre cultura e identidade no Instituto SSEX BBOX.",
-  pull: "\"Escrevo porque um fantasma não tem mais nada a perder ao dizer a verdade.\""
+  autor_role: "João Pedro Fontes — Natal, RN",
+  autor_p1: "João Pedro Fontes nasceu e mora em Natal. Formado em Comunicação Social com habilitação em Publicidade e Propaganda, passou anos escrevendo para marcas antes de escrever para si mesmo. \"Será que estou louca?\" é o primeiro livro.",
+  autor_p2: "É uma pessoa não binária vivendo com PFIC, uma doença hepática rara que a maior parte das pessoas nunca ouviu nomear. Essa convivência com um corpo que pode falhar antes da hora aparece no livro sem pedir licença: é o motivo pelo qual a história é contada por um fantasma, alguém que já sabe como tudo termina e ainda assim insiste em voltar para contar do começo.",
+  autor_p3: "O livro nasceu de um relacionamento marcado por gaslighting. Não como desabafo, mas como tentativa de nomear com precisão algo que durante muito tempo não tinha nome nenhum. Escrever virou o processo de separar o que era real do que a outra pessoa insistia em dizer que era.",
+  autor_p4: "Fora do livro, João Pedro divide o processo de escrita no Instagram e assina uma coluna sobre cultura e identidade no Instituto SSEX BBOX.",
+  autor_pull: "\"Escrevo porque um fantasma não tem mais nada a perder ao dizer a verdade.\""
 };
 let editActive = false;
 
@@ -205,23 +205,23 @@ const LANG_DATA = {
     back: "← Voltar", h1: "Sobre o autor",
     tag1: "Autoficção", tag2: "Narrador-fantasma", tag3: "PFIC", tag4: "Identidade não binária",
     ig_handle: "@joaopfnts", col_line: "Colunista no Instituto [SSEX BBOX]",
-    role: "João Pedro Fontes — Natal, RN",
-    p1: "João Pedro Fontes nasceu e mora em Natal. Formado em Comunicação Social com habilitação em Publicidade e Propaganda, passou anos escrevendo para marcas antes de escrever para si mesmo. \"Será que estou louca?\" é o primeiro livro.",
-    p2: "É uma pessoa não binária vivendo com PFIC, uma doença hepática rara que a maior parte das pessoas nunca ouviu nomear. Essa convivência com um corpo que pode falhar antes da hora aparece no livro sem pedir licença: é o motivo pelo qual a história é contada por um fantasma, alguém que já sabe como tudo termina e ainda assim insiste em voltar para contar do começo.",
-    p3: "O livro nasceu de um relacionamento marcado por gaslighting. Não como desabafo, mas como tentativa de nomear com precisão algo que durante muito tempo não tinha nome nenhum. Escrever virou o processo de separar o que era real do que a outra pessoa insistia em dizer que era.",
-    p4: "Fora do livro, João Pedro divide o processo de escrita no Instagram e assina uma coluna sobre cultura e identidade no Instituto SSEX BBOX.",
-    pull: "\"Escrevo porque um fantasma não tem mais nada a perder ao dizer a verdade.\""
+    autor_role: "João Pedro Fontes — Natal, RN",
+    autor_p1: "João Pedro Fontes nasceu e mora em Natal. Formado em Comunicação Social com habilitação em Publicidade e Propaganda, passou anos escrevendo para marcas antes de escrever para si mesmo. \"Será que estou louca?\" é o primeiro livro.",
+    autor_p2: "É uma pessoa não binária vivendo com PFIC, uma doença hepática rara que a maior parte das pessoas nunca ouviu nomear. Essa convivência com um corpo que pode falhar antes da hora aparece no livro sem pedir licença: é o motivo pelo qual a história é contada por um fantasma, alguém que já sabe como tudo termina e ainda assim insiste em voltar para contar do começo.",
+    autor_p3: "O livro nasceu de um relacionamento marcado por gaslighting. Não como desabafo, mas como tentativa de nomear com precisão algo que durante muito tempo não tinha nome nenhum. Escrever virou o processo de separar o que era real do que a outra pessoa insistia em dizer que era.",
+    autor_p4: "Fora do livro, João Pedro divide o processo de escrita no Instagram e assina uma coluna sobre cultura e identidade no Instituto SSEX BBOX.",
+    autor_pull: "\"Escrevo porque um fantasma não tem mais nada a perder ao dizer a verdade.\""
   },
   en: {
     back: "← Back", h1: "About the author",
     tag1: "Autofiction", tag2: "Ghost narrator", tag3: "PFIC", tag4: "Non-binary identity",
     ig_handle: "@joaopfnts", col_line: "Columnist at Instituto [SSEX BBOX]",
-    role: "João Pedro Fontes — Natal, Brazil",
-    p1: "João Pedro Fontes was born and lives in Natal, Brazil. With a degree in Advertising, they spent years writing for brands before writing for themselves. \"Será que estou louca?\" (Am I Going Crazy?) is their first book.",
-    p2: "They are non-binary and live with PFIC, a rare liver disease most people have never heard named. That relationship with a body that could fail ahead of schedule shows up in the book without asking permission: it's the reason the story is told by a ghost, someone who already knows how it ends and still insists on coming back to tell the beginning.",
-    p3: "The book grew out of a relationship marked by gaslighting. Not as a vent, but as an attempt to name with precision something that for a long time had no name at all. Writing became the process of separating what was real from what the other person kept insisting it was.",
-    p4: "Outside the book, João Pedro shares the writing process on Instagram and writes a column on culture and identity for Instituto SSEX BBOX.",
-    pull: "\"I write because a ghost has nothing left to lose by telling the truth.\""
+    autor_role: "João Pedro Fontes — Natal, Brazil",
+    autor_p1: "João Pedro Fontes was born and lives in Natal, Brazil. With a degree in Advertising, they spent years writing for brands before writing for themselves. \"Será que estou louca?\" (Am I Going Crazy?) is their first book.",
+    autor_p2: "They are non-binary and live with PFIC, a rare liver disease most people have never heard named. That relationship with a body that could fail ahead of schedule shows up in the book without asking permission: it's the reason the story is told by a ghost, someone who already knows how it ends and still insists on coming back to tell the beginning.",
+    autor_p3: "The book grew out of a relationship marked by gaslighting. Not as a vent, but as an attempt to name with precision something that for a long time had no name at all. Writing became the process of separating what was real from what the other person kept insisting it was.",
+    autor_p4: "Outside the book, João Pedro shares the writing process on Instagram and writes a column on culture and identity for Instituto SSEX BBOX.",
+    autor_pull: "\"I write because a ghost has nothing left to lose by telling the truth.\""
   }
 };
 let currentLang = localStorage.getItem("sq_lang") || "pt";
