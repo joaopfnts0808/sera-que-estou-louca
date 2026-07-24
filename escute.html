@@ -6,7 +6,7 @@
 <title>Ouça enquanto lê — Será que Estou Louca?</title>
 <script>
 // Guarda: sem chave válida, volta pro hub.
-if (localStorage.getItem("sq_key_ok") !== "1") { location.href = "index.html"; }
+if (localStorage.getItem("sq_key_ok") !== "1") { location.href = "/"; }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 <style>
@@ -148,7 +148,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
 <body>
 <div class="bgs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 <header class="hero wrap">
-  <a class="back-link" href="index.html" data-i18n="back">← Voltar</a><br>
+  <a class="back-link" href="/" data-i18n="back">← Voltar</a><br>
   <p class="hero-author">João Pedro Fontes</p>
   <h1 class="hero-title" data-i18n="title">Será que<br>Estou Louca?</h1>
   <p class="hero-sub" data-key="hero_sub" data-i18n="hero_sub">A biblioteca musical do livro</p>
@@ -511,7 +511,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 70px;
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
 <script>
 const CLIENT_ID   = "6b17b314279f41ca800c603bd7db0326";
-const REDIRECT_URI= "https://seraqueestoulouca.com.br/escute.html";
+const REDIRECT_URI= "https://seraqueestoulouca.com.br/escute";
 const SCOPES      = "streaming user-read-email user-read-private user-modify-playback-state user-read-playback-state";
 const TRACK_URIS  = ["spotify:track:1duoEJxM4GBEICofJAh9Im", "spotify:track:6UgkB0xM45TR3Zjqm3GQ6T", "spotify:track:1fN3fH8Wcx7SJJwlVFrO5t", "spotify:track:5Q4H1XkVHxQjnrHCUpS61d", "spotify:track:73kadnv7SduzhApfRUv5C0", "spotify:track:1CD7hXuEjiUsoqOhleyKb7", "spotify:track:2VZ5Vtjn16RThAvaFz3sJZ", "spotify:track:7s0YfJE6hNNYq9BV26iCw6", "spotify:track:1eTL8yocTmire9gpOn2H2g", "spotify:track:2ArW2y4HFzz1VjGtl7f4xm", "spotify:track:7KiLniGRlvAHpoxMLYp32P", "spotify:track:6K8VQ84MqhsoakN5MjrnVR", "spotify:track:1k0JAiH11gHL9dc5dfQjQr", "spotify:track:1bYtKF2sY2wLU6xdVaqIqD", "spotify:track:4D7BCuvgdJlYvlX5QlSQoE", "spotify:track:2d8UxVNhJinc8uat9PoM9y", "spotify:track:2olfjOvAFAIaQ8mJp1TFo0", "spotify:track:11EDhDAVDtGPoSar6ootYA", "spotify:track:3XMBVIWJ19LcePSuM0VLEX"];
 const TRACK_IDS   = ["1duoEJxM4GBEICofJAh9Im", "6UgkB0xM45TR3Zjqm3GQ6T", "1fN3fH8Wcx7SJJwlVFrO5t", "5Q4H1XkVHxQjnrHCUpS61d", "73kadnv7SduzhApfRUv5C0", "1CD7hXuEjiUsoqOhleyKb7", "2VZ5Vtjn16RThAvaFz3sJZ", "7s0YfJE6hNNYq9BV26iCw6", "1eTL8yocTmire9gpOn2H2g", "2ArW2y4HFzz1VjGtl7f4xm", "7KiLniGRlvAHpoxMLYp32P", "6K8VQ84MqhsoakN5MjrnVR", "1k0JAiH11gHL9dc5dfQjQr", "1bYtKF2sY2wLU6xdVaqIqD", "4D7BCuvgdJlYvlX5QlSQoE", "2d8UxVNhJinc8uat9PoM9y", "2olfjOvAFAIaQ8mJp1TFo0", "11EDhDAVDtGPoSar6ootYA", "3XMBVIWJ19LcePSuM0VLEX"];
