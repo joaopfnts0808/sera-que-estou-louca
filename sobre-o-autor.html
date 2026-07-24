@@ -19,13 +19,25 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(24px,-36px) scale(1.06)}66%{transform:translate(-14px,22px) scale(.94)}}
 .wrap{position:relative;z-index:1;max-width:620px;margin:0 auto;padding:0 40px;}
 .back-link{display:inline-block;font-size:.72rem;color:var(--muted);text-decoration:none;
-  letter-spacing:.1em;text-transform:uppercase;margin:60px 0 30px;border:1px solid rgba(255,255,255,.12);
+  letter-spacing:.1em;text-transform:uppercase;margin:0 0 20px;border:1px solid rgba(255,255,255,.12);
   border-radius:20px;padding:6px 16px;transition:border-color .2s,color .2s;}
 .back-link:hover{border-color:var(--pink);color:#fff;}
 h1{font-family:"Abril Fatface",serif;font-size:clamp(2.2rem,7vw,3.4rem);line-height:1.1;
   background:linear-gradient(140deg,#fff 0%,var(--pink) 55%,var(--purple) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;}
 .role{font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:36px;}
+.author-grid{display:grid;grid-template-columns:170px 1fr;gap:32px;align-items:start;
+  padding-top:60px;margin-bottom:8px;}
+.author-photo{width:100%;aspect-ratio:1;border-radius:14px;object-fit:cover;
+  border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);}
+.author-links{display:flex;flex-direction:column;gap:10px;margin-top:14px;}
+.author-link{display:flex;align-items:center;gap:8px;font-size:.76rem;color:var(--muted);
+  text-decoration:none;line-height:1.4;transition:color .2s;}
+.author-link:hover{color:#fff;}
+.author-link svg{width:15px;height:15px;flex-shrink:0;}
+.author-main .role{margin-bottom:20px;}
+@media(max-width:560px){.author-grid{grid-template-columns:110px 1fr;gap:18px;padding-top:40px;}
+  .author-links{gap:8px;}.author-link{font-size:.7rem;}}
 .lang-toggle{display:flex;align-items:center;gap:0;margin:0 0 36px;width:fit-content;
   border:1px solid rgba(255,255,255,.12);border-radius:20px;overflow:hidden;}
 .lang-btn{background:none;border:none;color:var(--muted);font-family:"DM Sans",sans-serif;
@@ -38,14 +50,6 @@ h1{font-family:"Abril Fatface",serif;font-size:clamp(2.2rem,7vw,3.4rem);line-hei
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin:32px 0 40px;}
 .tag{font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
   border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:5px 12px;}
-.social-links{display:flex;flex-direction:column;gap:12px;margin:0 0 60px;}
-.social-link{display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff;
-  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;
-  padding:16px 20px;transition:border-color .2s,background .2s,transform .2s;}
-.social-link:hover{border-color:var(--pink);background:rgba(240,54,184,.06);transform:translateY(-2px);}
-.social-ic{font-size:1.2rem;flex-shrink:0;}
-.social-link b{display:block;font-family:"Abril Fatface",serif;font-size:.98rem;font-weight:400;margin-bottom:2px;}
-.social-link span.dsc{font-size:.78rem;color:var(--muted);}
 footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
   border-top:1px solid rgba(255,255,255,.05);font-size:.68rem;color:rgba(255,255,255,.18);letter-spacing:.1em;}
 @media(max-width:480px){.wrap{padding:0 22px;}}
@@ -71,13 +75,30 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
 <body>
 <div class="bgs"><div class="blob b1"></div><div class="blob b2"></div></div>
 <div class="wrap">
-  <a class="back-link" href="/" data-i18n="back">← Voltar</a>
-  <h1 data-i18n="h1">Sobre o autor</h1>
-  <p class="role" data-key="role">João Pedro Fontes — Natal, RN</p>
-  <div class="lang-toggle">
-    <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
-    <div class="lang-sep"></div>
-    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+  <div class="author-grid">
+    <div class="author-side">
+      <img class="author-photo" src="foto-autor.jpg" alt="João Pedro Fontes">
+      <div class="author-links">
+        <a class="author-link" href="https://instagram.com/joaopfnts" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.66.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.66 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.27.07-1.68.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.94 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.85a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+          <span data-i18n="ig_handle">@joaopfnts</span>
+        </a>
+        <a class="author-link" href="https://ssexbbox.com/author/jo%C3%A3o-pedro-fontes" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h11a5 5 0 0 1 5 5 5 5 0 0 1-5 5H7v6H4V4zm3 3v4h8a2 2 0 0 0 0-4H7z"/></svg>
+          <span data-i18n="col_line">Colunista no Instituto [SSEX BBOX]</span>
+        </a>
+      </div>
+    </div>
+    <div class="author-main">
+      <a class="back-link" href="/" data-i18n="back">← Voltar</a>
+      <h1 data-i18n="h1">Sobre o autor</h1>
+      <p class="role" data-key="role">João Pedro Fontes — Natal, RN</p>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
+        <div class="lang-sep"></div>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+    </div>
   </div>
   <div class="bio" id="bio">
     <p data-key="p1">João Pedro Fontes nasceu e mora em Natal. Formado em Comunicação Social com habilitação em Publicidade e Propaganda, passou anos escrevendo para marcas antes de escrever para si mesmo. "Será que estou louca?" é o primeiro livro.</p>
@@ -91,16 +112,6 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
     <span class="tag" data-i18n="tag2">Narrador-fantasma</span>
     <span class="tag" data-i18n="tag3">PFIC</span>
     <span class="tag" data-i18n="tag4">Identidade não binária</span>
-  </div>
-  <div class="social-links">
-    <a class="social-link" href="https://instagram.com/joaopfnts" target="_blank" rel="noopener">
-      <span class="social-ic">📷</span>
-      <span><b data-i18n="ig_b">Instagram</b><span class="dsc" data-i18n="ig_s">@joaopfnts — bastidores da escrita</span></span>
-    </a>
-    <a class="social-link" href="https://ssexbbox.com/author/jo%C3%A3o-pedro-fontes" target="_blank" rel="noopener">
-      <span class="social-ic">✒️</span>
-      <span><b data-i18n="col_b">Coluna no SSEX BBOX</b><span class="dsc" data-i18n="col_s">Textos sobre cultura e identidade</span></span>
-    </a>
   </div>
 </div>
 <footer><p>© 2026 · Será que Estou Louca? · João Pedro Fontes</p></footer>
@@ -193,8 +204,7 @@ const LANG_DATA = {
   pt: {
     back: "← Voltar", h1: "Sobre o autor",
     tag1: "Autoficção", tag2: "Narrador-fantasma", tag3: "PFIC", tag4: "Identidade não binária",
-    ig_b: "Instagram", ig_s: "@joaopfnts — bastidores da escrita",
-    col_b: "Coluna no SSEX BBOX", col_s: "Textos sobre cultura e identidade",
+    ig_handle: "@joaopfnts", col_line: "Colunista no Instituto [SSEX BBOX]",
     role: "João Pedro Fontes — Natal, RN",
     p1: "João Pedro Fontes nasceu e mora em Natal. Formado em Comunicação Social com habilitação em Publicidade e Propaganda, passou anos escrevendo para marcas antes de escrever para si mesmo. \"Será que estou louca?\" é o primeiro livro.",
     p2: "É uma pessoa não binária vivendo com PFIC, uma doença hepática rara que a maior parte das pessoas nunca ouviu nomear. Essa convivência com um corpo que pode falhar antes da hora aparece no livro sem pedir licença: é o motivo pelo qual a história é contada por um fantasma, alguém que já sabe como tudo termina e ainda assim insiste em voltar para contar do começo.",
@@ -205,8 +215,7 @@ const LANG_DATA = {
   en: {
     back: "← Back", h1: "About the author",
     tag1: "Autofiction", tag2: "Ghost narrator", tag3: "PFIC", tag4: "Non-binary identity",
-    ig_b: "Instagram", ig_s: "@joaopfnts — behind the scenes of the writing",
-    col_b: "Column on SSEX BBOX", col_s: "Essays on culture and identity",
+    ig_handle: "@joaopfnts", col_line: "Columnist at Instituto [SSEX BBOX]",
     role: "João Pedro Fontes — Natal, Brazil",
     p1: "João Pedro Fontes was born and lives in Natal, Brazil. With a degree in Advertising, they spent years writing for brands before writing for themselves. \"Será que estou louca?\" (Am I Going Crazy?) is their first book.",
     p2: "They are non-binary and live with PFIC, a rare liver disease most people have never heard named. That relationship with a body that could fail ahead of schedule shows up in the book without asking permission: it's the reason the story is told by a ghost, someone who already knows how it ends and still insists on coming back to tell the beginning.",
