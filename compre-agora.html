@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compre agora — Será que Estou Louca?</title>
+<meta name="description" content="Será que estou louca?, o romance de João Pedro Fontes. Garanta seu exemplar na pré-venda e a ecobag exclusiva da campanha.">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0928;--pink:#f036b8;--purple:#7b2fbe;
+  --blue:#2d4de0;--steel:#6b8fd4;--muted:#9d93c8;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height:100vh;overflow-x:hidden;}
+.bgs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.16;animation:drift 10s ease-in-out infinite;}
+.b1{background:var(--pink);width:500px;height:500px;top:-180px;left:-120px;}
+.b2{background:var(--purple);width:380px;height:380px;bottom:50px;right:-80px;animation-delay:-4s;}
+.b3{background:var(--blue);width:280px;height:280px;top:45%;left:35%;animation-delay:-7s;}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(24px,-36px) scale(1.06)}66%{transform:translate(-14px,22px) scale(.94)}}
+.wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 40px;}
+
+.back-link{display:inline-block;font-size:.72rem;color:var(--muted);text-decoration:none;
+  letter-spacing:.1em;text-transform:uppercase;margin:28px 0 0;border:1px solid rgba(255,255,255,.12);
+  border-radius:20px;padding:6px 16px;transition:border-color .2s,color .2s;}
+.back-link:hover{border-color:var(--pink);color:#fff;}
+
+.hero{text-align:center;padding:36px 40px 8px;}
+.hero-author{font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.hero-title{font-family:"Abril Fatface",serif;font-size:clamp(2.4rem,7.5vw,4.6rem);line-height:1;
+  background:linear-gradient(140deg,#fff 0%,var(--pink) 55%,var(--purple) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{margin-top:16px;color:var(--muted);font-size:.9rem;font-style:italic;font-weight:300;}
+.hero-bar{width:44px;height:2px;background:linear-gradient(90deg,var(--pink),var(--purple));margin:24px auto 0;border-radius:2px;}
+
+.cover-wrap{display:flex;justify-content:center;padding:36px 0 4px;}
+.cover-img{width:100%;max-width:230px;border-radius:8px;
+  box-shadow:0 20px 60px rgba(240,54,184,.25),0 8px 24px rgba(0,0,0,.4);}
+
+.presale-cta{text-align:center;padding:24px 20px 8px;}
+.presale-cta p{color:var(--muted);font-size:.85rem;margin-bottom:16px;}
+.btn-presale{display:inline-block;background:var(--pink);color:#fff;text-decoration:none;
+  border-radius:22px;font-size:.9rem;font-weight:600;padding:14px 36px;
+  box-shadow:0 6px 20px rgba(240,54,184,.35);transition:transform .2s;}
+.btn-presale:hover{transform:translateY(-2px);}
+.presale-note{font-size:.72rem;color:rgba(255,255,255,.35);margin-top:10px;}
+
+section{padding:56px 0;position:relative;}
+section + section{border-top:1px solid rgba(255,255,255,.06);}
+.section-label{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+h2{font-family:"Abril Fatface",serif;font-size:clamp(1.6rem,5vw,2.3rem);line-height:1.15;margin-bottom:20px;
+  background:linear-gradient(140deg,#fff 0%,var(--pink) 55%,var(--purple) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.body p{font-size:.98rem;line-height:1.85;color:rgba(255,255,255,.85);margin-bottom:18px;font-weight:300;}
+.pull{border-left:2px solid var(--pink);padding-left:20px;margin:32px 0 0;font-style:italic;
+  color:var(--muted);font-size:.92rem;line-height:1.7;}
+
+.ecobag-grid{display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center;}
+.ecobag-img{width:100%;max-width:320px;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.btn-secondary{display:inline-block;background:transparent;color:#fff;text-decoration:none;
+  border:1.5px solid var(--pink);border-radius:22px;font-size:.88rem;font-weight:600;padding:13px 34px;
+  transition:background .2s,transform .2s;}
+.btn-secondary:hover{background:rgba(240,54,184,.15);transform:translateY(-2px);}
+
+.press-card{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px 20px;text-decoration:none;
+  color:#fff;transition:border-color .2s,background .2s;}
+.press-card:hover{border-color:var(--pink);background:rgba(240,54,184,.08);}
+.press-icon{flex-shrink:0;width:44px;height:44px;border-radius:50%;background:var(--pink);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.press-text b{display:block;font-size:.92rem;margin-bottom:2px;}
+.press-text span{font-size:.78rem;color:var(--muted);}
+
+.final-cta{text-align:center;padding:60px 20px 20px;}
+.final-cta h2{margin-bottom:12px;}
+.final-cta p{color:var(--muted);font-size:.88rem;margin-bottom:24px;}
+
+footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
+  border-top:1px solid rgba(255,255,255,.05);font-size:.68rem;color:rgba(255,255,255,.18);letter-spacing:.1em;}
+
+@media(max-width:520px){.wrap{padding:0 22px;}}
+</style>
+</head>
+<body>
+<div class="bgs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+<div class="wrap">
+  <a class="back-link" href="/">← Voltar</a>
+
+  <header class="hero">
+    <p class="hero-author">João Pedro Fontes</p>
+    <h1 class="hero-title">Será que<br>Estou Louca?</h1>
+    <p class="hero-sub">Um romance narrado por um fantasma</p>
+    <div class="hero-bar"></div>
+  </header>
+
+  <div class="cover-wrap">
+    <img class="cover-img" src="https://i.postimg.cc/QNkmfV7R/capa-png.png" alt="Capa do livro Será que Estou Louca?, de João Pedro Fontes">
+  </div>
+
+  <div class="presale-cta">
+    <p>Pré-venda aberta na Caravana Grupo Editorial.</p>
+    <a class="btn-presale" href="https://caravanagrupoeditorial.com/livros/sera-que-estou-louca/" target="_blank" rel="noopener">Quero meu exemplar</a>
+    <p class="presale-note">Compra processada direto no site da editora.</p>
+  </div>
+
+  <section>
+    <p class="section-label">Sinopse</p>
+    <h2>A história</h2>
+    <div class="body">
+      <p>Quem narra este livro já morreu. É justamente por isso que consegue contar tudo sem medo.</p>
+      <p>"Será que estou louca?" acompanha uma relação que começou como paixão e foi virando, capítulo a capítulo, um exercício silencioso de duvidar da própria percepção: a euforia do início, os sinais ignorados, as frases que reescreviam a realidade até a vítima se sentir a culpada, a terapia que devolveu palavras para nomear o que estava acontecendo, e a saída, que não teve nada de cinematográfica.</p>
+      <p>No fundo da história corre outra pergunta, menos falada mas igual de urgente: o que fazer com o tempo quando o corpo pode acabar antes do previsto. A narradora convive com PFIC, doença hepática rara, e é não binária num mundo que ainda insiste em pedir explicações para as duas coisas. O livro trata isso como parte do mesmo enredo, não como pano de fundo: a dificuldade de ser acreditada, seja sobre o próprio corpo, seja sobre a própria dor.</p>
+    </div>
+    <div class="pull">"Será que estou louca?" pergunta o título. O livro inteiro responde: não, você só duvidou de si mesma tempo demais.</div>
+  </section>
+
+  <section>
+    <p class="section-label">Item exclusivo</p>
+    <h2>A ecobag da pré-venda</h2>
+    <div class="ecobag-grid">
+      <img class="ecobag-img" src="https://i.postimg.cc/Z5DV6gN8/Tote-Bag-Mockup.png" alt="Ecobag exclusiva da campanha de pré-venda de Será que Estou Louca?">
+      <p style="color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.8;max-width:440px;">Peça de tecido resistente, estampada com a identidade visual do livro. Quantidade limitada à campanha de pré-venda — depois que essa leva acabar, não tem reposição.</p>
+      <a class="btn-secondary" href="https://forms.gle/ZnY7yxrfdvCfHMVa8" target="_blank" rel="noopener">Comprar ecobag</a>
+    </div>
+  </section>
+
+  <section>
+    <p class="section-label">Na mídia</p>
+    <h2>Já falamos sobre isso na TV</h2>
+    <p style="color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.8;margin-bottom:20px;">João Pedro conversou com Juliana Celli no Band Mulher sobre o livro, o gaslighting por trás da história e a trilha sonora que guia cada capítulo.</p>
+    <a class="press-card" href="https://www.instagram.com/p/Dbbcz75t7Ie/" target="_blank" rel="noopener">
+      <span class="press-icon">▶</span>
+      <span class="press-text"><b>Entrevista completa no Band Mulher</b><span>Assistir no Instagram</span></span>
+    </a>
+  </section>
+
+  <div class="final-cta">
+    <h2>Ainda não garantiu o seu?</h2>
+    <p>A pré-venda fecha em breve. A ecobag, antes.</p>
+    <a class="btn-presale" href="https://caravanagrupoeditorial.com/livros/sera-que-estou-louca/" target="_blank" rel="noopener">Quero meu exemplar</a>
+  </div>
+</div>
+
+<footer><p>© 2026 · Será que Estou Louca? · João Pedro Fontes</p></footer>
+</body>
+</html>
