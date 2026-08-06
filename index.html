@@ -19,7 +19,6 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 .b3{background:var(--blue);width:280px;height:280px;top:45%;left:35%;animation-delay:-7s;}
 @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(24px,-36px) scale(1.06)}66%{transform:translate(-14px,22px) scale(.94)}}
 .wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 40px;}
-
 /* ---- Key gate ---- */
 .key-gate{position:fixed;inset:0;z-index:500;background:var(--bg);
   display:flex;align-items:center;justify-content:center;padding:30px;}
@@ -39,11 +38,9 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 .key-error{font-size:.76rem;color:#ff6b9d;min-height:16px;}
 .key-alt{font-size:.75rem;color:rgba(255,255,255,.3);line-height:1.6;margin-top:6px;}
 .key-alt a{color:var(--muted);}
-
 /* ---- Home do livro ---- */
 .home{display:none;}
 .home.vis{display:block;}
-
 /* nav no topo */
 .topnav{position:sticky;top:0;z-index:50;background:rgba(11,9,40,.85);
   backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08);}
@@ -56,7 +53,6 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
   background:linear-gradient(90deg,var(--pink),var(--purple));transform:scaleX(0);
   transition:transform .2s;transform-origin:left;}
 .topnav a:hover::after{transform:scaleX(1);}
-
 .hero{text-align:center;padding:56px 40px 20px;}
 .hero-author{font-size:.7rem;letter-spacing:.35em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
 .hero-title{font-family:"Abril Fatface",serif;font-size:clamp(2.4rem,7.5vw,4.6rem);line-height:1;
@@ -71,12 +67,10 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 .lang-btn.active{background:rgba(240,54,184,.2);color:#fff;}
 .lang-btn:hover:not(.active){color:#fff;}
 .lang-sep{width:1px;background:rgba(255,255,255,.12);height:24px;}
-
 /* capa do livro */
 .cover-wrap{display:flex;justify-content:center;padding:44px 0 8px;}
 .cover-img{width:100%;max-width:230px;border-radius:8px;
   box-shadow:0 20px 60px rgba(240,54,184,.25),0 8px 24px rgba(0,0,0,.4);}
-
 /* cta pré-venda */
 .presale-cta{text-align:center;padding:28px 20px 60px;}
 .presale-cta p{color:var(--muted);font-size:.85rem;margin-bottom:16px;}
@@ -84,10 +78,18 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
   border-radius:22px;font-size:.85rem;font-weight:600;padding:13px 32px;
   box-shadow:0 6px 20px rgba(240,54,184,.35);transition:transform .2s;}
 .btn-presale:hover{transform:translateY(-2px);}
-
+/* redes sociais */
+.social-row{display:flex;justify-content:center;gap:16px;padding:0 20px 8px;position:relative;z-index:1;}
+.social-btn{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;
+  color:var(--muted);transition:all .2s;}
+.social-btn:hover{background:rgba(240,54,184,.15);border-color:var(--pink);color:#fff;transform:translateY(-2px);}
+.social-btn svg{width:18px;height:18px;fill:currentColor;}
+.social-note{text-align:center;font-size:.72rem;color:rgba(255,255,255,.3);padding:10px 20px 30px;}
+.social-note a{color:var(--muted);text-decoration:none;}
+.social-note a:hover{color:#fff;}
 footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
   border-top:1px solid rgba(255,255,255,.05);font-size:.68rem;color:rgba(255,255,255,.18);letter-spacing:.1em;}
-
 /* ---- Edição inline ---- */
 [data-key][contenteditable="true"]{outline:2px dashed var(--pink);border-radius:3px;padding:1px 3px;cursor:text;background:rgba(240,54,184,.06);}
 .edit-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;
@@ -104,13 +106,11 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
   border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;
   cursor:pointer;color:rgba(255,255,255,.25);font-size:15px;transition:all .2s;}
 .edit-trigger:hover{background:rgba(240,54,184,.15);border-color:var(--pink);color:var(--pink);}
-
 @media(max-width:520px){.wrap{padding:0 22px;}.topnav-inner{gap:16px 18px;padding:12px 16px;}.topnav a{font-size:.72rem;}}
 </style>
 </head>
 <body>
 <div class="bgs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
-
 <div class="key-gate" id="keyGate">
   <div class="key-box">
     <h1 data-i18n="gate_title">Será que<br>Estou Louca?</h1>
@@ -123,7 +123,6 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
     <p class="key-alt" data-i18n="gate_alt">Ainda não garantiu seu exemplar? A pré-venda está aberta na Caravana Editorial.</p>
   </div>
 </div>
-
 <div class="home" id="home">
   <nav class="topnav">
     <div class="topnav-inner">
@@ -133,7 +132,6 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
       <a href="escute" data-i18n="nav_listen">Ouça enquanto lê</a>
     </div>
   </nav>
-
   <header class="hero wrap">
     <p class="hero-author">João Pedro Fontes</p>
     <h1 class="hero-title" data-i18n="title">Será que<br>Estou Louca?</h1>
@@ -145,27 +143,34 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
   </header>
-
   <div class="cover-wrap">
-    <img class="cover-img" src="capa-livro.png" alt="Capa do livro Será que Estou Louca?, de João Pedro Fontes">
+    <img class="cover-img" src="https://i.postimg.cc/QNkmfV7R/capa-png.png" alt="Capa do livro Será que Estou Louca?, de João Pedro Fontes">
   </div>
-
   <div class="presale-cta wrap">
     <p data-key="home_presale_txt">O livro já está em pré-venda. Garanta o seu exemplar.</p>
     <!-- TROQUE O href ABAIXO PELO LINK REAL DA PRÉ-VENDA -->
     <a class="btn-presale" href="https://caravanagrupoeditorial.com/livros/sera-que-estou-louca/" data-i18n="presale_btn">Ver pré-venda</a>
   </div>
-
+  <div class="social-row">
+    <a class="social-btn" href="https://facebook.com/seraqueestoulouca" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.8 8.44-4.95 8.44-9.94Z"/></svg>
+    </a>
+    <a class="social-btn" href="https://instagram.com/seraqueestoulouca" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.55.55.89 1.1 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43-.26.66-.6 1.21-1.15 1.76-.55.55-1.1.89-1.76 1.15-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47-.66-.26-1.21-.6-1.76-1.15-.55-.55-.89-1.1-1.15-1.76-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76.55-.55 1.1-.89 1.76-1.15.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 1.8c-2.67 0-2.99.01-4.04.06-.87.04-1.34.18-1.65.3-.42.16-.71.35-1.02.66-.31.31-.5.6-.66 1.02-.12.31-.26.78-.3 1.65C4.28 8.74 4.27 9.06 4.27 12s.01 2.99.06 4.04c.04.87.18 1.34.3 1.65.16.42.35.71.66 1.02.31.31.6.5 1.02.66.31.12.78.26 1.65.3 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.87-.04 1.34-.18 1.65-.3.42-.16.71-.35 1.02-.66.31-.31.5-.6.66-1.02.12-.31.26-.78.3-1.65.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.87-.18-1.34-.3-1.65-.16-.42-.35-.71-.66-1.02a2.75 2.75 0 0 0-1.02-.66c-.31-.12-.78-.26-1.65-.3C14.99 3.81 14.67 3.8 12 3.8Zm0 3.05a5.15 5.15 0 1 1 0 10.3 5.15 5.15 0 0 1 0-10.3Zm0 1.8a3.35 3.35 0 1 0 0 6.7 3.35 3.35 0 0 0 0-6.7Zm5.35-1.98a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"/></svg>
+    </a>
+    <a class="social-btn" href="mailto:imprensa@seraqueestoulouca.com.br" aria-label="E-mail">
+      <svg viewBox="0 0 24 24"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13Zm2.2.5 7.3 5.47a.8.8 0 0 0 .96 0L19.8 6H4.2ZM4 8.1v10.4h16V8.1l-7.02 5.26a2.6 2.6 0 0 1-3.06 0L4 8.1Z"/></svg>
+    </a>
+  </div>
+  <p class="social-note"><a href="mailto:imprensa@seraqueestoulouca.com.br">imprensa@seraqueestoulouca.com.br</a></p>
   <footer><p>© 2026 · Será que Estou Louca? · João Pedro Fontes</p></footer>
 </div>
-
 <div class="edit-bar" id="editBar">
   <p id="editStatus">Modo de edição ativo — clique em qualquer texto para editar.</p>
   <button class="btn-cancel" onclick="cancelEdit()">Cancelar</button>
   <button class="btn-save" id="saveBtn" onclick="saveContent()">Salvar tudo</button>
 </div>
 <div class="edit-trigger" id="editTrigger" onclick="promptEdit()">✏️</div>
-
 <script>
 const SB_URL = "https://rvmfonytiinfzdgirsgk.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2bWZvbnl0aWluZnpkZ2lyc2drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg1ODQsImV4cCI6MjA5NjMwNDU4NH0.kGVmLNzLE6eK6QaaCRVw8_cNZ8aloYi5CNzWwvEpSqI";
@@ -176,7 +181,6 @@ const DEFAULTS = {
   home_presale_txt: "O livro já está em pré-venda. Garanta o seu exemplar."
 };
 let editActive = false;
-
 function normalizeKey(v) {
   return v.trim().toUpperCase().replace(/\s+/g, "");
 }
@@ -212,7 +216,6 @@ function showHome() {
   document.getElementById("home").classList.add("vis");
 }
 document.getElementById("keyInput").addEventListener("keydown", e => { if (e.key === "Enter") tryUnlock(); });
-
 /* ---- conteúdo editável (Supabase) ---- */
 async function sbFetch(method, body) {
   const r = await fetch(SB_URL + "/rest/v1/conteudo", {
@@ -278,7 +281,6 @@ async function saveContent() {
     btn.disabled = false; btn.textContent = "Salvar tudo";
   }
 }
-
 const LANG_DATA = {
   pt: {
     gate_title: "Será que<br>Estou Louca?",
