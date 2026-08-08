@@ -75,6 +75,15 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 .presale-note{font-size:.72rem;color:rgba(255,255,255,.35);margin-top:10px;line-height:1.6;}
 .presale-note a{color:var(--muted);text-decoration:underline;}
 .presale-note a:hover{color:#fff;}
+.trust-line{font-size:.78rem;color:var(--muted);margin:-6px 0 26px;display:flex;align-items:center;gap:8px;}
+.trust-line::before{content:"✓";color:var(--pink);font-weight:700;}
+.faq-block{margin-top:14px;}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.08);padding:16px 0;}
+.faq-item summary{cursor:pointer;font-size:.92rem;font-weight:600;color:#fff;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:"+";color:var(--pink);font-size:1.2rem;flex-shrink:0;}
+.faq-item[open] summary::after{content:"–";}
+.faq-item p{font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.7;margin-top:10px;}
 section.block{padding:56px 0;position:relative;max-width:640px;margin:0 auto;}
 section.block + section.block{border-top:1px solid rgba(255,255,255,.06);}
 .section-label{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
@@ -147,6 +156,7 @@ footer{position:relative;z-index:1;text-align:center;padding:20px 20px 50px;
       <p>"Será que estou louca?" acompanha uma relação que começou como paixão e foi virando, capítulo a capítulo, um exercício silencioso de duvidar da própria percepção: a euforia do início, os sinais ignorados, as frases que reescreviam a realidade até a vítima se sentir a culpada, a terapia que devolveu palavras para nomear o que estava acontecendo, e a saída, que não teve nada de cinematográfica.</p>
       <p>No fundo da história corre outra pergunta, menos falada mas igual de urgente: o que fazer com o tempo quando o corpo pode acabar antes do previsto. A narradora convive com PFIC, doença hepática rara, e é não binária num mundo que ainda insiste em pedir explicações para as duas coisas. O livro trata isso como parte do mesmo enredo, não como pano de fundo: a dificuldade de ser acreditada, seja sobre o próprio corpo, seja sobre a própria dor.</p>
       <div class="pull">"Será que estou louca?" pergunta o título. O livro inteiro responde: não, você só duvidou de si mesma tempo demais.</div>
+      <p class="trust-line">Já rendeu matéria no <strong>Band Mulher</strong> e em seis veículos de imprensa regionais</p>
 
       <div class="promo-box">
         <span class="promo-tag">Promoção até dia 9</span>
@@ -157,7 +167,7 @@ footer{position:relative;z-index:1;text-align:center;padding:20px 20px 50px;
 
       <p class="price-tag">R$ 89 <span>livro + ecobag exclusiva</span></p>
       <a class="btn-presale" href="https://forms.gle/ZnY7yxrfdvCfHMVa8" target="_blank" rel="noopener">Quero o livro + ecobag</a>
-      <p class="presale-note">Combo de pré-venda, via formulário. Só quer o livro, sem o brinde? Sai por R$72 no mesmo formulário.</p>
+      <p class="presale-note">Combo de pré-venda, via formulário. Só quer o livro, sem o brinde? Sai por R$72 no mesmo formulário. Comprando pelo formulário, você tem <strong>7 dias de garantia</strong>: se mudar de ideia, cancela e recebe o valor de volta integral.</p>
     </div>
   </section>
 </div>
@@ -169,7 +179,26 @@ footer{position:relative;z-index:1;text-align:center;padding:20px 20px 50px;
     <p class="price-tag">R$ 89</p>
     <p style="color:rgba(255,255,255,.85);font-size:.95rem;line-height:1.8;max-width:440px;">Na pré-venda, o exemplar vem acompanhado de uma ecobag de tecido resistente, estampada com a identidade visual do livro. Quantidade limitada à campanha — depois que essa leva acabar, não tem reposição.</p>
     <a class="btn-secondary" href="https://forms.gle/ZnY7yxrfdvCfHMVa8" target="_blank" rel="noopener">Quero o combo</a>
+    <p class="presale-note">Comprou pelo formulário e mudou de ideia? <strong>7 dias de garantia</strong>, dinheiro de volta.</p>
     <p class="presale-note">Só quer o livro, sem o brinde? R$72 pelo formulário, ou <a href="https://caravanagrupoeditorial.com/livros/sera-que-estou-louca/" target="_blank" rel="noopener">R$56 até dia 9 direto na Caravana Editorial</a> (depois volta a R$80).</p>
+  </div>
+</section>
+<section class="block">
+  <p class="section-label">Dúvidas</p>
+  <h2 class="block-title">Perguntas frequentes</h2>
+  <div class="faq-block">
+    <details class="faq-item">
+      <summary>Posso cancelar a compra?</summary>
+      <p>Sim. Comprando direto pelo formulário — livro avulso ou combo com ecobag — você tem 7 dias de garantia pra cancelar e receber o valor de volta integral.</p>
+    </details>
+    <details class="faq-item">
+      <summary>O frete é grátis?</summary>
+      <p>Ainda estamos fechando os detalhes do frete, incluindo se ele sai gratuito. Assim que tivermos certeza, avisamos por e-mail antes do envio.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Quando o livro chega?</summary>
+      <p>A pré-venda segue por até dois meses. Depois que ela fechar, a data exata de envio é enviada por e-mail pra quem comprou.</p>
+    </details>
   </div>
 </section>
 <section class="block">
@@ -194,7 +223,7 @@ footer{position:relative;z-index:1;text-align:center;padding:20px 20px 50px;
 
   <p class="price-tag" style="text-align:center;">R$ 89 <span>livro + ecobag</span></p>
   <a class="btn-presale" href="https://forms.gle/ZnY7yxrfdvCfHMVa8" target="_blank" rel="noopener">Quero o livro + ecobag</a>
-  <p class="presale-note">Só quer o livro, sem o brinde? R$72 pelo formulário.</p>
+  <p class="presale-note">Só quer o livro, sem o brinde? R$72 pelo formulário. Comprando pelo formulário, você tem <strong>7 dias de garantia</strong> pra cancelar e reaver o valor.</p>
 </div>
 <div class="social-row">
   <a class="social-btn" href="https://facebook.com/seraqueestoulouca" target="_blank" rel="noopener" aria-label="Facebook">
