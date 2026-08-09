@@ -66,7 +66,15 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 .text-col p{font-size:.98rem;line-height:1.85;color:rgba(255,255,255,.85);margin-bottom:16px;font-weight:300;}
 .pull{border-left:2px solid var(--pink);padding-left:20px;margin:28px 0 32px;font-style:italic;
   color:var(--muted);font-size:.92rem;line-height:1.7;}
-.price-tag{font-family:"Abril Fatface",serif;font-size:clamp(1.5rem,4vw,1.9rem);color:#fff;margin:0 0 14px;}
+.price-tag{font-family:"Abril Fatface",serif;font-size:clamp(2rem,5.5vw,2.6rem);color:#fff;margin:0 0 14px;}
+.press-logos{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;margin-top:26px;}
+.press-logo-item{display:flex;flex-direction:column;align-items:center;gap:10px;}
+.press-logo-card{background:#fff;border-radius:10px;padding:12px 18px;display:flex;align-items:center;justify-content:center;height:52px;width:140px;}
+.press-logo-card img{max-width:100%;max-height:100%;object-fit:contain;}
+.press-btns{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;}
+.press-btn{font-size:.68rem;padding:6px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.2);
+  color:var(--muted);text-decoration:none;transition:border-color .2s,color .2s;}
+.press-btn:hover{border-color:var(--pink);color:#fff;}
 .price-tag span{font-family:"DM Sans",sans-serif;font-size:.72rem;font-weight:400;color:var(--muted);margin-left:8px;letter-spacing:.02em;}
 .btn-presale{display:inline-block;background:var(--pink);color:#fff;text-decoration:none;
   border-radius:22px;font-size:.9rem;font-weight:600;padding:14px 36px;
@@ -131,16 +139,6 @@ footer{position:relative;z-index:1;text-align:center;padding:20px 20px 50px;
   <p class="hero-author">João Pedro Fontes</p>
   <h1 class="page-name">Será que Estou Louca?</h1>
 </div>
-<nav class="topnav">
-  <div class="topnav-inner">
-    <a href="/">Início</a>
-    <a href="sobre-o-autor">Sobre o autor</a>
-    <a href="sinopse">Sinopse</a>
-    <a href="por-que-ouvir">Por que ouvir antes de ler?</a>
-    <a href="escute">Ouça enquanto lê</a>
-    <a href="compre-agora" class="active">Compre agora</a>
-  </div>
-</nav>
 <div class="promo-banner">
   <p><span class="promo-tag">Só até dia 9</span>Livro avulso por <strong>R$56</strong> direto no site da editora — <a href="https://caravanagrupoeditorial.com/livros/sera-que-estou-louca/" target="_blank" rel="noopener">garanta o seu</a></p>
 </div>
@@ -209,6 +207,47 @@ footer{position:relative;z-index:1;text-align:center;padding:20px 20px 50px;
     <span class="press-icon">▶</span>
     <span class="press-text"><b>Entrevista completa no Band Mulher</b><span>Assistir no Instagram</span></span>
   </a>
+
+  <div class="press-logos">
+    <div class="press-logo-item">
+      <div class="press-logo-card"><img src="https://ibandrn.com.br/wp-content/uploads/2024/02/Logo_IbandRN02.png" alt="IBandRN"></div>
+      <div class="press-btns">
+        <a class="press-btn" href="https://ibandrn.com.br/jovem-potiguar-lanca-livro-sobre-gaslighting/" target="_blank" rel="noopener">Matéria 1</a>
+        <a class="press-btn" href="https://ibandrn.com.br/projeto-literario-sobre-gaslighting-abre-pre-venda/" target="_blank" rel="noopener">Matéria 2</a>
+      </div>
+    </div>
+    <div class="press-logo-item">
+      <div class="press-logo-card"><img src="https://i.postimg.cc/3xXNDd5k/band-rn-94118-removebg-preview.png" alt="Band RN"></div>
+      <div class="press-btns">
+        <a class="press-btn" href="https://www.instagram.com/p/Dbbcz75t7Ie/" target="_blank" rel="noopener">Ver matéria</a>
+      </div>
+    </div>
+    <div class="press-logo-item">
+      <div class="press-logo-card"><img src="https://media.saibamais.jor.br/uploads/2023/08/logo-icon.svg" alt="Saiba Mais"></div>
+      <div class="press-btns">
+        <a class="press-btn" href="https://saibamais.jor.br/2026/01/escrever-foi-quando-entendi-jovem-potiguar-transforma-relacao-conturbada-em-livro/" target="_blank" rel="noopener">Matéria 1</a>
+        <a class="press-btn" href="https://saibamais.jor.br/2026/07/livro-de-jovem-potiguar-amplia-debate-sobre-doenca-rara-e-saude-mental/" target="_blank" rel="noopener">Matéria 2</a>
+      </div>
+    </div>
+    <div class="press-logo-item">
+      <div class="press-logo-card"><img src="https://www.opotiguar.com.br/assets/img/logo/logo.png" alt="O Potiguar"></div>
+      <div class="press-btns">
+        <a class="press-btn" href="https://www.opotiguar.com.br/jovem-potiguar-lanca-livro-sobre-gaslighting" target="_blank" rel="noopener">Ver matéria</a>
+      </div>
+    </div>
+    <div class="press-logo-item">
+      <div class="press-logo-card"><img src="https://farolpotiguar.com/wp-content/uploads/2025/11/cropped-cropped-cropped-Farol-Potiguar.png" alt="Farol Potiguar"></div>
+      <div class="press-btns">
+        <a class="press-btn" href="https://farolpotiguar.com/jovem-potiguar-lanca-livro-sobre-gaslighting/" target="_blank" rel="noopener">Ver matéria</a>
+      </div>
+    </div>
+    <div class="press-logo-item">
+      <div class="press-logo-card"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIYLFR0tytLg1mdVcW_s3UeGI0IJDri6nS0YBHvfM52lozOMLxp0OnHZ-a5ePZGe36oMh4RoTkSTWv0rRIkC5ybUO5xNf7GHUc2irGQFmkD2YXqIzhBwUDNsjjqAEQY-ZbFpPQW_RQ_ZCW/s1083/logo_bann2.jpg" alt="Tribuna de Notícias"></div>
+      <div class="press-btns">
+        <a class="press-btn" href="https://www.tribunadenoticias.com.br/2026/01/jovem-potiguar-lanca-livro-sobre.html" target="_blank" rel="noopener">Ver matéria</a>
+      </div>
+    </div>
+  </div>
 </section>
 <div class="final-cta">
   <h2 class="block-title">Ainda não garantiu o seu?</h2>
