@@ -75,6 +75,13 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 .press-btn{font-size:.68rem;padding:6px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.2);
   color:var(--muted);text-decoration:none;transition:border-color .2s,color .2s;}
 .press-btn:hover{border-color:var(--pink);color:#fff;}
+.video-embed{position:relative;width:100%;padding-bottom:56.25%;height:0;border-radius:14px;overflow:hidden;margin-top:20px;}
+.video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.testimonials-grid{display:flex;flex-direction:column;gap:18px;}
+.testimonial-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px 24px;}
+.testimonial-card p{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.85);font-style:italic;margin-bottom:12px;}
+.testimonial-author{font-size:.8rem;color:var(--pink);font-weight:600;}
+.testimonial-author span{color:var(--muted);font-weight:400;}
 .price-tag span{font-family:"DM Sans",sans-serif;font-size:.72rem;font-weight:400;color:var(--muted);margin-left:8px;letter-spacing:.02em;}
 .btn-presale{display:inline-block;background:var(--pink);color:#fff;text-decoration:none;
   border-radius:22px;font-size:.9rem;font-weight:600;padding:14px 36px;
@@ -127,9 +134,21 @@ h2.block-title{font-family:"Abril Fatface",serif;font-size:clamp(1.6rem,5vw,2.3r
 footer{position:relative;z-index:1;text-align:center;padding:20px 20px 50px;
   font-size:.68rem;color:rgba(255,255,255,.18);letter-spacing:.1em;}
 @media(max-width:760px){
-  .wrap{padding:0 24px;}
-  .hero-cols{flex-direction:column;gap:28px;}
-  .cover-col{position:static;flex:0 0 auto;max-width:220px;margin:0 auto;}
+  .wrap{padding:0 20px;}
+  .hero-cols{flex-direction:column;gap:24px;}
+  .cover-col{position:static;flex:0 0 auto;max-width:200px;margin:0 auto;}
+  .btn-presale,.btn-secondary{display:block;width:100%;box-sizing:border-box;text-align:center;}
+  .promo-box{padding:18px 20px;}
+  .promo-box .btn-presale{width:100%;}
+  .press-logos{gap:12px;}
+  .press-logo-card{width:104px;height:44px;padding:8px 12px;}
+  .press-btn{font-size:.64rem;padding:5px 10px;}
+  .testimonial-card{padding:18px 20px;}
+  section.block{padding:40px 0;}
+  .final-cta{padding:44px 16px 16px;}
+}
+@media(max-width:400px){
+  .press-logo-card{width:90px;height:40px;}
 }
 </style>
 </head>
@@ -149,7 +168,7 @@ footer{position:relative;z-index:1;text-align:center;padding:20px 20px 50px;
     </div>
     <div class="text-col">
       <p class="section-label">Sinopse</p>
-      <h2>A história</h2>
+      <h2>Gaslighting não é uma discussão. É te fazer duvidar do que você viu com os próprios olhos.</h2>
       <p>Quem narra este livro já morreu. É justamente por isso que consegue contar tudo sem medo.</p>
       <p>"Será que estou louca?" acompanha uma relação que começou como paixão e foi virando, capítulo a capítulo, um exercício silencioso de duvidar da própria percepção: a euforia do início, os sinais ignorados, as frases que reescreviam a realidade até a vítima se sentir a culpada, a terapia que devolveu palavras para nomear o que estava acontecendo, e a saída, que não teve nada de cinematográfica.</p>
       <p>No fundo da história corre outra pergunta, menos falada mas igual de urgente: o que fazer com o tempo quando o corpo pode acabar antes do previsto. A narradora convive com PFIC, doença hepática rara, e é não binária num mundo que ainda insiste em pedir explicações para as duas coisas. O livro trata isso como parte do mesmo enredo, não como pano de fundo: a dificuldade de ser acreditada, seja sobre o próprio corpo, seja sobre a própria dor.</p>
@@ -182,6 +201,20 @@ footer{position:relative;z-index:1;text-align:center;padding:20px 20px 50px;
   </div>
 </section>
 <section class="block">
+  <p class="section-label">Quem já leu</p>
+  <h2 class="block-title">Depoimentos de leitura antecipada</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <p>"Li e gostei bastante do livro. As músicas no início de cada capítulo foram uma ideia muito boa, ajudam a entender melhor o fantasma que narra a história."</p>
+      <p class="testimonial-author">Letícia <span>— irmã do autor</span></p>
+    </div>
+    <div class="testimonial-card">
+      <p>"Terminei a leitura e não consegui parar até o final. A história prende do início ao fim, e dá pra sentir o quanto tem de verdade e de coragem nessas páginas. Não leio só como leitora qualquer, leio como amiga, e sei o tanto que esse livro custou pra existir."</p>
+      <p class="testimonial-author">Maria <span>— amiga do autor</span></p>
+    </div>
+  </div>
+</section>
+<section class="block">
   <p class="section-label">Dúvidas</p>
   <h2 class="block-title">Perguntas frequentes</h2>
   <div class="faq-block">
@@ -208,9 +241,13 @@ footer{position:relative;z-index:1;text-align:center;padding:20px 20px 50px;
     <span class="press-text"><b>Entrevista completa no Band Mulher</b><span>Assistir no Instagram</span></span>
   </a>
 
+  <div class="video-embed">
+    <iframe src="https://www.youtube.com/embed/zhuDax25rO8?start=8277" title="Entrevista sobre Será que Estou Louca?" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
   <div class="press-logos">
     <div class="press-logo-item">
-      <div class="press-logo-card"><img src="https://ibandrn.com.br/wp-content/uploads/2024/02/Logo_IbandRN02.png" alt="IBandRN"></div>
+      <div class="press-logo-card"><img src="https://i.postimg.cc/cHp2G1Dz/Logo-Iband-RN02.png" alt="IBandRN"></div>
       <div class="press-btns">
         <a class="press-btn" href="https://ibandrn.com.br/jovem-potiguar-lanca-livro-sobre-gaslighting/" target="_blank" rel="noopener">Matéria 1</a>
         <a class="press-btn" href="https://ibandrn.com.br/projeto-literario-sobre-gaslighting-abre-pre-venda/" target="_blank" rel="noopener">Matéria 2</a>
