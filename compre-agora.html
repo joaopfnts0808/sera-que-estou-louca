@@ -238,5 +238,20 @@ footer{position:relative;z-index:1;text-align:center;padding:20px 20px 50px;
 </div>
 <p class="social-note"><a href="mailto:imprensa@seraqueestoulouca.com.br">imprensa@seraqueestoulouca.com.br</a></p>
 <footer><p>© 2026 · Será que Estou Louca? · João Pedro Fontes</p></footer>
+<script>
+document.addEventListener('click', function(e){
+  var link = e.target.closest('a');
+  if(!link || !link.href) return;
+  if(typeof fbq !== 'function') return;
+  var href = link.href;
+  if(href.indexOf('sera-que-estou-louca-versao-ecobag') > -1){
+    fbq('track','InitiateCheckout',{content_name:'combo-ecobag',value:89,currency:'BRL'});
+  } else if(href.indexOf('lojavirtualnuvem.com.br/produtos/seraqueestoulouca') > -1){
+    fbq('track','InitiateCheckout',{content_name:'livro-avulso',value:72,currency:'BRL'});
+  } else if(href.indexOf('caravanagrupoeditorial.com') > -1){
+    fbq('track','InitiateCheckout',{content_name:'livro-avulso-promo-editora',value:56,currency:'BRL'});
+  }
+});
+</script>
 </body>
 </html>
