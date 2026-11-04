@@ -19,28 +19,7 @@ body{background:var(--bg);color:#fff;font-family:"DM Sans",sans-serif;min-height
 .b3{background:var(--blue);width:280px;height:280px;top:45%;left:35%;animation-delay:-7s;}
 @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(24px,-36px) scale(1.06)}66%{transform:translate(-14px,22px) scale(.94)}}
 .wrap{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 40px;}
-/* ---- Key gate ---- */
-.key-gate{position:fixed;inset:0;z-index:500;background:var(--bg);
-  display:flex;align-items:center;justify-content:center;padding:30px;}
-.key-gate.hidden{display:none;}
-.key-box{width:100%;max-width:380px;display:flex;flex-direction:column;gap:16px;text-align:center;}
-.key-box h1{font-family:"Abril Fatface",serif;font-size:1.7rem;
-  background:linear-gradient(140deg,#fff,var(--pink) 55%,var(--purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.key-box p.sub{font-size:.82rem;color:var(--muted);line-height:1.5;}
-.key-form{display:flex;flex-direction:column;gap:10px;align-items:center;margin-top:8px;}
-.key-form input{width:100%;max-width:260px;background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.15);color:#fff;font-family:"DM Sans",sans-serif;
-  border-radius:10px;padding:12px 14px;font-size:.95rem;text-align:center;letter-spacing:.05em;}
-.key-form input:focus{outline:none;border-color:var(--pink);}
-.btn-unlock{background:var(--pink);color:#fff;border:none;border-radius:20px;
-  font-family:"DM Sans",sans-serif;font-size:.85rem;font-weight:600;padding:11px 30px;cursor:pointer;}
-.key-error{font-size:.76rem;color:#ff6b9d;min-height:16px;}
-.key-alt{font-size:.75rem;color:rgba(255,255,255,.3);line-height:1.6;margin-top:6px;}
-.key-alt a{color:var(--muted);}
-/* ---- Home do livro ---- */
-.home{display:none;}
-.home.vis{display:block;}
+.home{display:block;}
 /* nav no topo */
 .topnav{position:sticky;top:0;z-index:50;background:rgba(11,9,40,.85);
   backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08);}
@@ -111,18 +90,6 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 20px 50px;
 </head>
 <body>
 <div class="bgs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
-<div class="key-gate" id="keyGate">
-  <div class="key-box">
-    <h1 data-i18n="gate_title">Será que<br>Estou Louca?</h1>
-    <p class="sub" data-key="home_gate_sub">Este espaço é exclusivo para quem apoiou a pré-venda do livro. Digite sua chave de acesso para entrar.</p>
-    <div class="key-form">
-      <input type="text" id="keyInput" placeholder="XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false">
-      <button class="btn-unlock" onclick="tryUnlock()" data-i18n="gate_btn">Entrar</button>
-      <p class="key-error" id="keyError"></p>
-    </div>
-    <p class="key-alt" data-i18n="gate_alt">Ainda não garantiu seu exemplar? A pré-venda está aberta na Caravana Editorial.</p>
-  </div>
-</div>
 <div class="home" id="home">
   <nav class="topnav">
     <div class="topnav-inner">
@@ -176,46 +143,10 @@ const SB_URL = "https://rvmfonytiinfzdgirsgk.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2bWZvbnl0aWluZnpkZ2lyc2drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg1ODQsImV4cCI6MjA5NjMwNDU4NH0.kGVmLNzLE6eK6QaaCRVw8_cNZ8aloYi5CNzWwvEpSqI";
 const EDIT_PASS = "louca2026";
 const DEFAULTS = {
-  home_gate_sub: "Este espaço é exclusivo para quem apoiou a pré-venda do livro. Digite sua chave de acesso para entrar.",
   home_hero_sub: "Um romance narrado por um fantasma",
   home_presale_txt: "O livro já está em pré-venda. Garanta o seu exemplar."
 };
 let editActive = false;
-function normalizeKey(v) {
-  return v.trim().toUpperCase().replace(/\s+/g, "");
-}
-function hasValidStoredKey() {
-  return localStorage.getItem("sq_key_ok") === "1" && !!localStorage.getItem("sq_key_val");
-}
-async function tryUnlock() {
-  const input = document.getElementById("keyInput");
-  const err = document.getElementById("keyError");
-  const key = normalizeKey(input.value);
-  if (!key) { err.textContent = "Digite uma chave."; return; }
-  err.textContent = "Verificando...";
-  try {
-    const r = await fetch(SB_URL + "/rest/v1/rpc/redeem_key", {
-      method: "POST",
-      headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY, "Content-Type": "application/json" },
-      body: JSON.stringify({ input_key: key })
-    });
-    const ok = await r.json();
-    if (ok === true) {
-      localStorage.setItem("sq_key_ok", "1");
-      localStorage.setItem("sq_key_val", key);
-      showHome();
-    } else {
-      err.textContent = "Chave inválida ou já utilizada.";
-    }
-  } catch (e) {
-    err.textContent = "Erro de conexão. Tente novamente.";
-  }
-}
-function showHome() {
-  document.getElementById("keyGate").classList.add("hidden");
-  document.getElementById("home").classList.add("vis");
-}
-document.getElementById("keyInput").addEventListener("keydown", e => { if (e.key === "Enter") tryUnlock(); });
 /* ---- conteúdo editável (Supabase) ---- */
 async function sbFetch(method, body) {
   const r = await fetch(SB_URL + "/rest/v1/conteudo", {
@@ -283,30 +214,22 @@ async function saveContent() {
 }
 const LANG_DATA = {
   pt: {
-    gate_title: "Será que<br>Estou Louca?",
-    gate_btn: "Entrar",
-    gate_alt: "Ainda não garantiu seu exemplar? A pré-venda está aberta na Caravana Editorial.",
     title: "Será que<br>Estou Louca?",
     nav_author: "Sobre o autor",
     nav_synopsis: "Sinopse",
     nav_why: "Por que ouvir antes de ler?",
     nav_listen: "Ouça enquanto lê",
     presale_btn: "Ver pré-venda",
-    home_gate_sub: "Este espaço é exclusivo para quem apoiou a pré-venda do livro. Digite sua chave de acesso para entrar.",
     home_hero_sub: "Um romance narrado por um fantasma",
     home_presale_txt: "O livro já está em pré-venda. Garanta o seu exemplar."
   },
   en: {
-    gate_title: "Am I<br>Going Crazy?",
-    gate_btn: "Enter",
-    gate_alt: "Haven't secured your copy yet? Pre-sale is open at Caravana Editorial.",
     title: "Am I<br>Going Crazy?",
     nav_author: "About the author",
     nav_synopsis: "Synopsis",
     nav_why: "Why listen before reading?",
     nav_listen: "Listen while you read",
     presale_btn: "See pre-sale",
-    home_gate_sub: "This space is exclusive to those who supported the book's pre-sale. Enter your access key.",
     home_hero_sub: "A novel narrated by a ghost",
     home_presale_txt: "The book is already up for pre-sale. Get your copy."
   }
@@ -340,7 +263,7 @@ function setLang(lang) {
 (function init() {
   const savedLang = localStorage.getItem("sq_lang") || "pt";
   if (savedLang === "en") setLang("en");
-  if (hasValidStoredKey()) { showHome(); loadContent(); }
+  loadContent();
 })();
 </script>
 </body>
