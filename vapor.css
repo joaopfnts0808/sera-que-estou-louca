@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap');
+
+:root {
+  --bg: #7ac5f8;
+  --win-bg: #18233c;
+  --win-dark: #0c1222;
+  --cyan: #2cf6b3;
+  --pink: #f83898;
+  --purple: #9b5de5;
+  --muted: #88c0d0;
+  --text: #e0fbfc;
+  --border-light: #2cf6b3;
+  --border-dark: #0a0e1a;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 0 !important; /* Visual 100% reto estilo Windows 95/98 */
+}
+
+body {
+  background: linear-gradient(180deg, #56b4f5 0%, #99d6ff 45%, #d6efff 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: "Space Mono", monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Grade Vaporwave sutil no fundo */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Listras superiores estilo Hotline Cafe */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 18px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--pink) 0px, var(--pink) 4px,
+    transparent 4px, transparent 7px
+  );
+  z-index: 90;
+  pointer-events: none;
+}
+
+.bgs, .blob { display: none !important; }
+
+.wrap, section.block, .final-cta {
+  position: relative;
+  z-index: 1;
+}
+
+/* Barra de Navegação estilo Menu Retrô */
+.topnav {
+  position: sticky;
+  top: 18px;
+  z-index: 50;
+  background: #274466;
+  border-top: 3px solid var(--pink);
+  border-bottom: 3px solid var(--cyan);
+  box-shadow: 0 6px 0 rgba(12, 18, 34, 0.4);
+}
+
+.topnav-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topnav a {
+  color: var(--cyan);
+  text-decoration: none;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.62rem;
+  padding: 8px 12px;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  transition: all 0.1s;
+}
+
+.topnav a:hover, .topnav a.active {
+  background: var(--pink);
+  color: #fff;
+  border: 2px outset #ff85c2;
+  text-shadow: 1px 1px 0 #000;
+}
+.topnav a::after { display: none; }
+
+/* Cabeçalhos e Títulos 3D Retrô */
+.hero, .page-top {
+  text-align: center;
+  padding: 54px 20px 28px;
+}
+
+.hero-author {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.65rem;
+  color: var(--pink);
+  text-shadow: 2px 2px 0 #fff;
+  margin-bottom: 14px;
+}
+
+.hero-title, .page-name, h1 {
+  font-family: "Press Start 2P", monospace !important;
+  font-size: clamp(1.5rem, 5vw, 2.8rem) !important;
+  line-height: 1.3 !important;
+  color: var(--cyan) !important;
+  background: none !important;
+  -webkit-text-fill-color: var(--cyan) !important;
+  text-shadow: 
+    3px 3px 0px var(--pink),
+    6px 6px 0px var(--win-dark);
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.hero-sub, .role {
+  display: inline-block;
+  background: var(--win-bg);
+  color: #fff;
+  border: 2px solid var(--cyan);
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  box-shadow: 4px 4px 0 var(--pink);
+}
+
+.hero-bar { display: none; }
+
+/* Botão Voltar & Toggle de Idioma */
+.back-link {
+  display: inline-block;
+  background: var(--win-bg);
+  color: var(--cyan) !important;
+  border: 2px outset var(--cyan) !important;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.6rem !important;
+  padding: 8px 14px !important;
+  margin-bottom: 24px;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--win-dark);
+}
+.back-link:hover {
+  background: var(--pink);
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+.lang-toggle {
+  display: flex;
+  margin: 20px auto 0;
+  width: fit-content;
+  border: 2px solid var(--win-dark);
+  background: var(--win-bg);
+  box-shadow: 3px 3px 0 var(--pink);
+}
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.6rem;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+.lang-btn.active {
+  background: var(--cyan);
+  color: var(--win-dark);
+}
+
+/* Caixas de Conteúdo estilo Janela de Sistema */
+.bio, .special-card, .testimonial-card, .cta, .promo-box, .login-banner, .user-bar {
+  background: var(--win-bg) !important;
+  border: 3px solid var(--cyan) !important;
+  box-shadow: 6px 6px 0px var(--pink) !important;
+  padding: 24px !important;
+  position: relative;
+}
+
+/* Barra de título falsa nas caixas principais */
+.bio::before, .special-card::before {
+  content: "■ SYSTEM_FILE.TXT // SERÁ QUE ESTOU LOUCA?";
+  display: block;
+  background: linear-gradient(90deg, var(--pink), var(--purple));
+  color: #fff;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+  padding: 6px 10px;
+  margin: -24px -24px 20px -24px;
+  border-bottom: 2px solid var(--cyan);
+}
+
+.bio p, .text-col p {
+  color: var(--text) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.75 !important;
+}
+
+.pull {
+  background: var(--win-dark);
+  border: 2px dashed var(--pink) !important;
+  border-left: 6px solid var(--cyan) !important;
+  padding: 16px !important;
+  color: var(--cyan) !important;
+  font-style: normal !important;
+}
+
+/* Capa do Livro & Botões Principais */
+.cover-img, .cover-img-lg, .ecobag-img, .author-photo {
+  border: 3px solid var(--cyan) !important;
+  box-shadow: 8px 8px 0 var(--pink) !important;
+}
+
+.btn-presale, .btn-go, .btn-spotify, .btn-secondary {
+  background: var(--cyan) !important;
+  color: var(--win-dark) !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 0.7rem !important;
+  border: 3px outset #a8ffdf !important;
+  box-shadow: 4px 4px 0 var(--win-dark) !important;
+  padding: 14px 22px !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.btn-presale:hover, .btn-go:hover, .btn-spotify:hover {
+  background: var(--pink) !important;
+  color: #fff !important;
+  border-color: #ff99cc !important;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--win-dark) !important;
+}
+
+.presale-cta p, .social-note, .social-note a, footer p {
+  color: var(--win-dark) !important;
+  font-weight: 700;
+}
+
+.social-btn {
+  background: var(--win-bg) !important;
+  border: 2px solid var(--cyan) !important;
+  color: var(--cyan) !important;
+  box-shadow: 3px 3px 0 var(--pink);
+}
+.social-btn:hover {
+  background: var(--pink) !important;
+  color: #fff !important;
+}
+
+/* Abas dos Discos (Lado A, B, C, Bônus) */
+.sec-label {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.7rem !important;
+  color: var(--win-dark) !important;
+  text-shadow: 1px 1px 0 #fff;
+  margin: 40px 0 18px !important;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: none !important;
+}
+
+.tab {
+  background: #274466;
+  color: var(--muted) !important;
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 0.6rem !important;
+  padding: 12px 8px !important;
+  border: 2px solid var(--cyan);
+  border-bottom: none;
+}
+.tab.active {
+  background: var(--win-bg) !important;
+  color: var(--cyan) !important;
+  border-top: 3px solid var(--pink);
+}
+
+.panel {
+  background: var(--win-bg);
+  border: 3px solid var(--cyan);
+  box-shadow: 6px 6px 0 var(--pink);
+  padding: 20px;
+}
+
+.panel-desc {
+  color: var(--cyan) !important;
+  font-size: 0.78rem !important;
+  border-bottom: 1px dashed var(--pink) !important;
+  padding-top: 0 !important;
+}
+
+.track {
+  border-bottom: 1px solid rgba(44, 246, 179, 0.2) !important;
+  padding: 14px 8px !important;
+}
+.track:hover {
+  background: rgba(248, 56, 152, 0.12);
+}
+.track-cap {
+  font-family: "Press Start 2P", monospace !important;
+  font-size: 0.65rem !important;
+  color: var(--pink) !important;
+}
+.track-thumb {
+  border: 2px solid var(--cyan);
+}
+.track-title {
+  color: #fff;
+  font-size: 0.9rem !important;
+}
+.track.expanded .track-title {
+  color: var(--cyan) !important;
+}
+.track-artist {
+  color: var(--muted) !important;
+}
+.track-hint {
+  color: var(--pink) !important;
+  font-family: "VT323", monospace;
+  font-size: 0.9rem !important;
+}
+.track-desc {
+  color: var(--text) !important;
+  font-style: normal !important;
+  background: var(--win-dark);
+  padding: 0 12px;
+  border-left: 3px solid var(--pink);
+}
+.track.expanded .track-desc {
+  padding: 12px;
+}
+
+.btn-play {
+  background: var(--cyan) !important;
+  color: var(--win-dark) !important;
+  border: 2px outset #fff !important;
+  width: 34px !important;
+  height: 34px !important;
+}
+.btn-play.playing {
+  background: var(--pink) !important;
+  color: #fff !important;
+}
