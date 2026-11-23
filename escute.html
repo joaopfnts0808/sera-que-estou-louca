@@ -6,114 +6,115 @@
 <title>Ouça enquanto lê — Será que Estou Louca?</title>
 <link rel="stylesheet" href="vapor.css">
 <style>
-/* Player Flutuante Estilo Winamp / Hotline Radio */
 .winamp-player {
   position: fixed;
   bottom: 24px;
   right: 24px;
   width: 280px;
-  background: #141e33;
-  border: 3px solid var(--cyan);
+  background: #13103a;
+  border: 2px solid var(--purple);
   box-shadow: 6px 6px 0 var(--pink);
   z-index: 150;
   display: none;
   flex-direction: column;
   user-select: none;
+  font-family: "Poppins", sans-serif;
 }
 .winamp-player.vis { display: flex; }
 
 .wp-titlebar {
-  background: linear-gradient(90deg, var(--pink), #b5179e);
+  background: linear-gradient(90deg, var(--pink), var(--purple));
   color: #fff;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.52rem;
-  padding: 6px 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 7px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid var(--cyan);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
   cursor: grab;
 }
 .wp-titlebar:active { cursor: grabbing; }
 
-.wp-win-btns { display: flex; gap: 3px; }
+.wp-win-btns { display: flex; gap: 4px; }
 .wp-win-btn {
-  background: var(--cyan);
-  color: #000;
-  border: 1px outset #fff;
-  width: 14px;
-  height: 14px;
-  font-size: 9px;
-  line-height: 11px;
+  background: var(--win-dark);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  line-height: 15px;
   text-align: center;
-  font-weight: bold;
   cursor: pointer;
 }
 
-.wp-body { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+.wp-body { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
 
 .wp-status-row {
   display: flex;
   justify-content: space-between;
-  font-family: "VT323", monospace;
-  font-size: 1rem;
-  color: var(--cyan);
-  letter-spacing: 1px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--steel);
+  letter-spacing: 0.05em;
 }
 
 .wp-lcd {
-  background: #070b14;
-  border: 2px inset #274466;
-  padding: 6px 8px;
+  background: #08061c;
+  border: 1px solid var(--purple);
+  padding: 8px 10px;
   overflow: hidden;
   white-space: nowrap;
 }
 .wp-lcd-title {
-  font-family: "VT323", monospace;
-  font-size: 1.15rem;
-  color: var(--cyan);
-  text-transform: uppercase;
+  font-family: "DM Serif Display", serif;
+  font-size: 1.05rem;
+  color: #fff;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .wp-lcd-artist {
-  font-family: "Space Mono", monospace;
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   color: var(--pink);
 }
 
 .wp-controls {
   display: grid;
   grid-template-columns: 1fr 1.2fr 1fr 1.3fr;
-  gap: 5px;
+  gap: 6px;
 }
 .wp-btn {
-  background: var(--cyan);
-  color: #0b0928;
-  border: 2px outset #b8ffea;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.55rem;
+  background: var(--win-dark);
+  color: #fff;
+  border: 1px solid var(--purple);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
   padding: 7px 4px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.15s;
 }
-.wp-btn:active { border-style: inset; }
+.wp-btn:hover { background: var(--purple); }
 .wp-btn-mute {
   background: var(--pink);
-  color: #fff;
-  border-color: #ff99cc;
+  border-color: #ff85d8;
 }
 .wp-btn-mute.muted {
-  background: #4a1530;
-  color: #aaa;
+  background: #3a1230;
+  color: var(--muted);
 }
 
 .wp-art-box {
   position: relative;
   width: 100%;
   aspect-ratio: 1;
-  background: #070b14;
-  border: 2px solid var(--cyan);
+  background: #08061c;
+  border: 1px solid var(--purple);
   overflow: hidden;
 }
 .wp-art-box img {
@@ -125,11 +126,12 @@
 .wp-art-overlay {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  background: rgba(11, 9, 40, 0.85);
-  padding: 5px 8px;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.5rem;
-  color: var(--cyan);
+  background: rgba(11, 9, 40, 0.88);
+  padding: 6px 8px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #fff;
   border-top: 1px solid var(--pink);
   text-align: center;
 }
@@ -138,38 +140,31 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.5rem;
-  color: var(--cyan);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--muted);
 }
 .wp-vol-row input[type="range"] {
   flex: 1;
   accent-color: var(--pink);
   cursor: pointer;
-  height: 6px;
 }
 
 .wp-footer-drag {
-  background: #0c1222;
+  background: #08061c;
   color: var(--muted);
-  font-family: "VT323", monospace;
-  font-size: 0.85rem;
+  font-size: 0.62rem;
   text-align: center;
-  padding: 3px;
-  border-top: 1px solid #274466;
+  padding: 4px;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 .winamp-player.minimized .wp-art-box,
 .winamp-player.minimized .wp-vol-row { display: none; }
 
 @media (max-width: 600px) {
-  .winamp-player {
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    width: auto;
-  }
-  .wp-art-box { display: none; } /* Compacto no celular para não cobrir as letras */
+  .winamp-player { left: 12px; right: 12px; bottom: 12px; width: auto; }
+  .wp-art-box { display: none; }
 }
 </style>
 </head>
