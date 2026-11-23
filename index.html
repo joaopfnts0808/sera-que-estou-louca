@@ -6,336 +6,245 @@
 <title>Será que Estou Louca? — João Pedro Fontes</title>
 <link rel="stylesheet" href="vapor.css">
 <style>
-/* Ajustes específicos da Home estilo Hotline Cafe */
 .hc-container {
   max-width: 780px;
   margin: 0 auto;
-  padding: 46px 20px 60px;
+  padding: 40px 20px 64px;
   position: relative;
   z-index: 1;
 }
 
-/* Cabeçalho Hero: Título 3D + Monitor CRT retrô */
+/* Cabeçalho Limpo e Marcante */
 .hc-hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-  margin-bottom: 18px;
-  flex-wrap: wrap;
-}
-
-.hc-title-block {
-  text-align: left;
-  position: relative;
+  text-align: center;
+  margin-bottom: 24px;
 }
 
 .hc-kicker {
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.65rem;
-  color: var(--pink);
-  text-shadow: 2px 2px 0 #fff;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-  transform: rotate(-2deg);
-  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 8px;
 }
 
 .hc-main-title {
-  font-family: "Press Start 2P", monospace !important;
-  font-size: clamp(1.8rem, 5.2vw, 3.1rem) !important;
-  line-height: 1.25 !important;
-  color: var(--cyan) !important;
+  font-family: "DM Serif Display", serif !important;
+  font-size: clamp(2.6rem, 7vw, 4.6rem) !important;
+  line-height: 1.02 !important;
+  color: #fff !important;
   text-shadow:
     3px 3px 0px var(--pink),
-    6px 6px 0px #18233c,
-    8px 8px 0px rgba(0, 0, 0, 0.35) !important;
-  margin: 0 !important;
+    6px 6px 0px var(--purple) !important;
+  margin-bottom: 14px !important;
 }
 
-.hc-jp-sub {
-  font-family: "Space Mono", monospace;
-  font-weight: 700;
-  font-size: 1rem;
-  color: #1c3d6e;
-  letter-spacing: 3px;
-  margin-top: 10px;
-  text-shadow: 1px 1px 0 var(--cyan);
-}
-
-/* Monitor CRT Retrô */
-.crt-monitor {
-  width: 148px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.crt-bezel {
-  width: 140px;
-  height: 118px;
-  background: #d8dee9;
-  border: 3px solid #2e3440;
-  box-shadow: 5px 5px 0 var(--pink), inset -3px -3px 0 #9aa5b8, inset 3px 3px 0 #fff;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.crt-screen {
-  width: 100%;
-  height: 82px;
-  background: #090d16;
-  border: 2px inset #4c566a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cyan);
-  font-family: "Press Start 2P", monospace;
-  font-size: 1.8rem;
-  text-shadow: 0 0 8px var(--cyan);
-}
-.crt-leds {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 4px;
-}
-.crt-led {
-  width: 8px;
-  height: 4px;
-  background: var(--cyan);
-  box-shadow: 0 0 4px var(--cyan);
-}
-.crt-stand {
-  width: 74px;
-  height: 12px;
-  background: #b0b9c8;
-  border: 2px solid #2e3440;
-  border-top: none;
-}
-.crt-base {
-  width: 104px;
-  height: 8px;
-  background: #d8dee9;
-  border: 2px solid #2e3440;
+.hc-sub-tag {
+  display: inline-block;
+  background: var(--win-bg);
+  border: 1px solid var(--purple);
   box-shadow: 4px 4px 0 var(--pink);
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  color: var(--muted);
 }
 
-.hc-tagline {
-  text-align: center;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.62rem;
-  color: #fff;
-  text-shadow: 2px 2px 0 #1c3d6e;
-  margin: 14px 0 22px;
-}
-
-/* Barra de Navegação em 2 linhas estilo Portal Y2K */
+/* Barra de Navegação Estilo Portal Retrô */
 .hc-nav {
-  background: #274466;
-  border-top: 4px solid var(--pink);
-  border-bottom: 4px solid var(--cyan);
-  box-shadow: 0 6px 0 rgba(12, 18, 34, 0.35);
-  padding: 12px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-.hc-nav-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px 18px;
-}
-.hc-nav a {
-  color: var(--cyan);
-  text-decoration: none;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.65rem;
-  padding: 7px 12px;
-  text-transform: uppercase;
-  transition: all 0.1s;
-}
-.hc-nav a.active,
-.hc-nav a:hover {
-  background: var(--pink);
-  color: #fff;
-  border: 2px outset #ff85c2;
-  text-shadow: 1px 1px 0 #000;
-}
-
-/* Fileira de Selos 88x31 estilo Web 1.0 */
-.badges-row {
+  background: var(--win-bg);
+  border: 2px solid var(--purple);
+  box-shadow: 5px 5px 0 var(--pink);
+  padding: 10px 14px;
+  margin: 26px auto 18px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  margin: 24px 0;
-}
-.badge-88 {
-  width: 112px;
-  height: 34px;
-  background: var(--win-bg);
-  border: 2px outset var(--cyan);
-  color: var(--cyan);
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.45rem;
-  line-height: 1.3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  text-decoration: none;
-  padding: 2px 4px;
-  box-shadow: 2px 2px 0 #0c1222;
-}
-.badge-88.alt {
-  background: var(--pink);
-  color: #fff;
-  border-color: #ff99cc;
-}
-.badge-88:hover {
-  transform: translateY(-2px);
 }
 
-/* Janela Principal: Capa + Boas-vindas + Pré-venda */
+.hc-nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+
+.hc-nav a.active,
+.hc-nav a:hover {
+  background: var(--pink);
+  color: #fff;
+  border-color: #ff85d8;
+}
+
+/* Janela Principal com Capa + Ação Imediata */
 .hc-window {
   background: var(--win-bg);
-  border: 3px solid var(--cyan);
+  border: 2px solid var(--purple);
   box-shadow: 8px 8px 0 var(--pink);
+  margin-top: 24px;
 }
+
 .hc-win-bar {
-  background: linear-gradient(90deg, #1b365d, #274466);
-  border-bottom: 2px solid var(--cyan);
-  padding: 7px 12px;
+  background: linear-gradient(90deg, var(--pink), var(--purple));
+  padding: 8px 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.58rem;
-  color: var(--cyan);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #fff;
 }
-.hc-win-bar span:last-child {
-  color: var(--pink);
-  font-family: "Space Mono", monospace;
-  font-weight: 700;
-  font-size: 0.75rem;
-}
+
 .hc-win-body {
-  padding: 28px 24px;
+  padding: 32px 28px;
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 28px;
+  grid-template-columns: 210px 1fr;
+  gap: 32px;
   align-items: center;
 }
+
 .hc-win-body .cover-img {
   width: 100%;
-  max-width: 200px;
+  max-width: 210px;
   display: block;
   margin: 0 auto;
 }
+
 .hc-win-content h2 {
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.95rem;
-  color: var(--cyan);
-  line-height: 1.5;
-  margin-bottom: 14px;
-  text-shadow: 2px 2px 0 var(--pink);
+  font-family: "DM Serif Display", serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 12px;
 }
+
 .hc-win-content p {
-  color: var(--text);
-  font-size: 0.88rem;
-  line-height: 1.7;
-  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.75;
+  margin-bottom: 22px;
+}
+
+.hc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Atalhos Rápidos (Estilo Selos Retrô Legíveis) */
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.q-card {
+  background: var(--win-bg);
+  border: 1px solid var(--purple);
+  box-shadow: 4px 4px 0 var(--blue);
+  padding: 16px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.q-card:hover {
+  border-color: var(--pink);
+  box-shadow: 4px 4px 0 var(--pink);
+  transform: translateY(-2px);
+}
+.q-card b {
+  display: block;
+  font-family: "DM Serif Display", serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.q-card span {
+  font-size: 0.78rem;
+  color: var(--muted);
+  display: block;
 }
 
 @media (max-width: 640px) {
-  .hc-title-block { text-align: center; }
   .hc-win-body {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: 24px 20px;
   }
+  .hc-actions { justify-content: center; }
+  .quick-links { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
 
 <div class="hc-container">
-  <!-- HERO ESTILO HOTLINE CAFE -->
   <header class="hc-hero">
-    <div class="hc-title-block">
-      <div class="hc-kicker">JOÃO PEDRO FONTES</div>
-      <h1 class="hc-main-title" data-i18n="title">SERÁ QUE<br>ESTOU LOUCA?</h1>
-      <div class="hc-jp-sub">私は狂っているのか // AUTOFICÇÃO</div>
-    </div>
+    <p class="hc-kicker">João Pedro Fontes</p>
+    <h1 class="hc-main-title" data-i18n="title">Será que<br>Estou Louca?</h1>
+    <p class="hc-sub-tag" data-key="home_hero_sub">Um romance narrado por um fantasma</p>
 
-    <div class="crt-monitor" aria-hidden="true">
-      <div class="crt-bezel">
-        <div class="crt-screen">愛</div>
-        <div class="crt-leds">
-          <span style="font-size:7px;color:#2e3440;font-family:monospace;font-weight:bold;">SQEL-98</span>
-          <span class="crt-led"></span>
-        </div>
-      </div>
-      <div class="crt-stand"></div>
-      <div class="crt-base"></div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
   </header>
 
-  <p class="hc-tagline" data-key="home_hero_sub">UM ROMANCE NARRADO POR UM FANTASMA // YOUR DIGITAL THERAPY</p>
-
-  <!-- NAVEGAÇÃO EM 2 NÍVEIS -->
   <nav class="hc-nav">
-    <div class="hc-nav-row">
-      <a href="/" class="active">HOME</a>
-      <a href="sinopse" data-i18n="nav_synopsis">SINOPSE</a>
-      <a href="sobre-o-autor" data-i18n="nav_author">SOBRE O AUTOR</a>
-      <a href="escute" data-i18n="nav_listen">OUÇA ENQUANTO LÊ</a>
-    </div>
-    <div class="hc-nav-row">
-      <a href="por-que-ouvir" data-i18n="nav_why">POR QUE OUVIR?</a>
-      <a href="compre-agora" data-i18n="nav_buy">COMPRE AGORA</a>
-      <a href="https://instagram.com/seraqueestoulouca" target="_blank" rel="noopener">INSTAGRAM</a>
-    </div>
+    <a href="/" class="active">Início</a>
+    <a href="sinopse" data-i18n="nav_synopsis">Sinopse</a>
+    <a href="sobre-o-autor" data-i18n="nav_author">Sobre o autor</a>
+    <a href="por-que-ouvir" data-i18n="nav_why">Por que ouvir?</a>
+    <a href="escute" data-i18n="nav_listen">Ouça enquanto lê</a>
+    <a href="compre-agora" data-i18n="nav_buy">Compre agora</a>
   </nav>
 
-  <div class="lang-toggle">
-    <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')">PT</button>
-    <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-  </div>
-
-  <!-- SELOS PIXELADOS 88x31 -->
-  <div class="badges-row">
-    <a class="badge-88" href="escute">SPOTIFY<br>SOUNDTRACK</a>
-    <a class="badge-88 alt" href="compre-agora">PRÉ-VENDA<br>ABERTA!</a>
-    <span class="badge-88">GHOST<br>NARRATOR</span>
-    <a class="badge-88 alt" href="sinopse">LEIA A<br>SINOPSE</a>
-    <span class="badge-88">NATAL // RN<br>2026</span>
-  </div>
-
-  <!-- JANELA WELCOME / CAPA / PRÉ-VENDA -->
+  <!-- JANELA PRINCIPAL -->
   <section class="hc-window">
     <div class="hc-win-bar">
-      <span>WELCOME</span>
-      <span>いらっしゃいませ</span>
+      <span>WELCOME // SERÁ QUE ESTOU LOUCA?</span>
+      <span>[ — □ × ]</span>
     </div>
     <div class="hc-win-body">
       <img class="cover-img" src="https://i.postimg.cc/QNkmfV7R/capa-png.png" alt="Capa do livro Será que Estou Louca?, de João Pedro Fontes">
       <div class="hc-win-content">
-        <h2 data-i18n="welcome_h2">Bem-vinde ao arquivo do livro.</h2>
-        <p data-key="home_presale_txt">O livro já está em pré-venda. Garanta o seu exemplar impresso ou o combo com ecobag exclusiva.</p>
-        <div style="display:flex; flex-wrap:wrap; gap:12px;">
+        <h2 data-i18n="welcome_h2">Quem narra este livro já morreu.</h2>
+        <p data-key="home_presale_txt">É justamente por isso que consegue contar tudo sem medo. O livro já está em pré-venda — garanta o seu exemplar ou explore a trilha sonora oficial.</p>
+        <div class="hc-actions">
           <a class="btn-presale" href="compre-agora" data-i18n="presale_btn">Garantir exemplar</a>
-          <a class="btn-secondary" href="escute" data-i18n="listen_cta">Abrir trilha</a>
+          <a class="btn-secondary" href="escute" data-i18n="listen_cta">Ouça a trilha sonora</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ATALHOS RÁPIDOS -->
+  <div class="quick-links">
+    <a class="q-card" href="sinopse">
+      <b data-i18n="card_sin_t">A História</b>
+      <span data-i18n="card_sin_s">Leia a sinopse completa do romance</span>
+    </a>
+    <a class="q-card" href="escute">
+      <b data-i18n="card_mus_t">19 Faixas</b>
+      <span data-i18n="card_mus_s">Ouça o disco capítulo por capítulo no Spotify</span>
+    </a>
+    <a class="q-card" href="sobre-o-autor">
+      <b data-i18n="card_aut_t">O Autor</b>
+      <span data-i18n="card_aut_s">Conheça João Pedro Fontes</span>
+    </a>
+  </div>
+
   <!-- REDES E RODAPÉ -->
-  <div class="social-row" style="margin-top:32px;">
+  <div class="social-row" style="margin-top:36px;">
     <a class="social-btn" href="https://facebook.com/seraqueestoulouca" target="_blank" rel="noopener" aria-label="Facebook">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.9h-2.34V22c4.78-.8 8.44-4.95 8.44-9.94Z"/></svg>
     </a>
@@ -346,131 +255,53 @@
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13Zm2.2.5 7.3 5.47a.8.8 0 0 0 .96 0L19.8 6H4.2ZM4 8.1v10.4h16V8.1l-7.02 5.26a2.6 2.6 0 0 1-3.06 0L4 8.1Z"/></svg>
     </a>
   </div>
-  <p class="social-note"><a href="mailto:imprensa@seraqueestoulouca.com.br">imprensa@seraqueestoulouca.com.br</a></p>
-  <footer style="margin-top:20px; text-align:center;"><p>© 2026 · Será que Estou Louca? · João Pedro Fontes</p></footer>
+  <p class="social-note" style="text-align:center; font-size:0.75rem; margin-top:10px;"><a href="mailto:imprensa@seraqueestoulouca.com.br" style="color:var(--muted);">imprensa@seraqueestoulouca.com.br</a></p>
+  <footer style="margin-top:24px; text-align:center; font-size:0.72rem; color:var(--muted);"><p>© 2026 · Será que Estou Louca? · João Pedro Fontes</p></footer>
 </div>
-
-<!-- Edição Inline Supabase -->
-<div class="edit-bar" id="editBar">
-  <p id="editStatus">Modo de edição ativo — clique em qualquer texto para editar.</p>
-  <button class="btn-cancel" onclick="cancelEdit()">Cancelar</button>
-  <button class="btn-save" id="saveBtn" onclick="saveContent()">Salvar tudo</button>
-</div>
-<div class="edit-trigger" id="editTrigger" onclick="promptEdit()">✏️</div>
 
 <script>
-const SB_URL = "https://rvmfonytiinfzdgirsgk.supabase.co";
-const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ2bWZvbnl0aWluZnpkZ2lyc2drIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA3Mjg1ODQsImV4cCI6MjA5NjMwNDU4NH0.kGVmLNzLE6eK6QaaCRVw8_cNZ8aloYi5CNzWwvEpSqI";
-const EDIT_PASS = "louca2026";
-const DEFAULTS = {
-  home_hero_sub: "UM ROMANCE NARRADO POR UM FANTASMA // YOUR DIGITAL THERAPY",
-  home_presale_txt: "O livro já está em pré-venda. Garanta o seu exemplar impresso ou o combo com ecobag exclusiva."
-};
-let editActive = false;
-
-async function sbFetch(method, body) {
-  const r = await fetch(SB_URL + "/rest/v1/conteudo", {
-    method, headers:{apikey:SB_KEY,Authorization:"Bearer "+SB_KEY,"Content-Type":"application/json",
-      Prefer: method==="POST"?"resolution=merge-duplicates":""},
-    body: body ? JSON.stringify(body) : undefined
-  });
-  return method === "GET" ? r.json() : r;
-}
-
-async function loadContent() {
-  try {
-    const rows = await sbFetch("GET");
-    (rows || []).forEach(row => {
-      if (!(row.chave in DEFAULTS)) return;
-      document.querySelectorAll('[data-key="' + row.chave + '"]').forEach(el => {
-        if (!editActive) el.textContent = row.valor;
-      });
-    });
-  } catch (e) { console.warn("Supabase:", e); }
-  if (currentLang === "en") applyEnOverrides();
-}
-
-function promptEdit() {
-  if (localStorage.getItem("sq_editor_ok") === "1") { enableEdit(); return; }
-  const pw = prompt("Senha de edição:");
-  if (pw === EDIT_PASS) enableEdit();
-  else if (pw !== null) alert("Senha incorreta.");
-}
-
-function enableEdit() {
-  editActive = true;
-  document.querySelectorAll("[data-key]").forEach(el => {
-    el.contentEditable = "true";
-    el.dataset.original = el.textContent;
-  });
-  document.getElementById("editBar").classList.add("vis");
-  document.getElementById("editTrigger").style.display = "none";
-}
-
-function cancelEdit() {
-  document.querySelectorAll("[data-key]").forEach(el => {
-    el.textContent = el.dataset.original || el.textContent;
-    el.removeAttribute("contenteditable");
-  });
-  document.getElementById("editBar").classList.remove("vis");
-  document.getElementById("editTrigger").style.display = "flex";
-  editActive = false;
-}
-
-async function saveContent() {
-  const btn = document.getElementById("saveBtn");
-  const status = document.getElementById("editStatus");
-  btn.disabled = true; btn.textContent = "Salvando...";
-  const rows = [...document.querySelectorAll("[data-key]")].map(el => ({ chave: el.dataset.key, valor: el.textContent.trim() }));
-  try {
-    await sbFetch("POST", rows);
-    status.textContent = "Salvo!";
-    setTimeout(cancelEdit, 1000);
-  } catch (e) {
-    status.textContent = "Erro ao salvar.";
-    btn.disabled = false; btn.textContent = "Salvar tudo";
-  }
-}
-
 const LANG_DATA = {
   pt: {
-    title: "SERÁ QUE<br>ESTOU LOUCA?",
-    nav_author: "SOBRE O AUTOR",
-    nav_synopsis: "SINOPSE",
-    nav_why: "POR QUE OUVIR?",
-    nav_listen: "OUÇA ENQUANTO LÊ",
-    nav_buy: "COMPRE AGORA",
-    welcome_h2: "Bem-vinde ao arquivo do livro.",
+    title: "Será que<br>Estou Louca?",
+    nav_author: "Sobre o autor",
+    nav_synopsis: "Sinopse",
+    nav_why: "Por que ouvir?",
+    nav_listen: "Ouça enquanto lê",
+    nav_buy: "Compre agora",
+    welcome_h2: "Quem narra este livro já morreu.",
     presale_btn: "Garantir exemplar",
-    listen_cta: "Abrir trilha",
-    home_hero_sub: "UM ROMANCE NARRADO POR UM FANTASMA // YOUR DIGITAL THERAPY",
-    home_presale_txt: "O livro já está em pré-venda. Garanta o seu exemplar impresso ou o combo com ecobag exclusiva."
+    listen_cta: "Ouça a trilha sonora",
+    card_sin_t: "A História",
+    card_sin_s: "Leia a sinopse completa do romance",
+    card_mus_t: "19 Faixas",
+    card_mus_s: "Ouça o disco capítulo por capítulo no Spotify",
+    card_aut_t: "O Autor",
+    card_aut_s: "Conheça João Pedro Fontes",
+    home_hero_sub: "Um romance narrado por um fantasma",
+    home_presale_txt: "É justamente por isso que consegue contar tudo sem medo. O livro já está em pré-venda — garanta o seu exemplar ou explore a trilha sonora oficial."
   },
   en: {
-    title: "AM I<br>GOING CRAZY?",
-    nav_author: "ABOUT THE AUTHOR",
-    nav_synopsis: "SYNOPSIS",
-    nav_why: "WHY LISTEN?",
-    nav_listen: "LISTEN WHILE READING",
-    nav_buy: "BUY NOW",
-    welcome_h2: "Welcome to the book's archive.",
+    title: "Am I<br>Going Crazy?",
+    nav_author: "About the author",
+    nav_synopsis: "Synopsis",
+    nav_why: "Why listen?",
+    nav_listen: "Listen while reading",
+    nav_buy: "Buy now",
+    welcome_h2: "The narrator of this book is already dead.",
     presale_btn: "Get your copy",
-    listen_cta: "Open soundtrack",
-    home_hero_sub: "A NOVEL NARRATED BY A GHOST // YOUR DIGITAL THERAPY",
-    home_presale_txt: "The book is up for pre-sale. Get your print copy or the exclusive tote bag bundle."
+    listen_cta: "Listen to soundtrack",
+    card_sin_t: "The Story",
+    card_sin_s: "Read the full novel synopsis",
+    card_mus_t: "19 Tracks",
+    card_mus_s: "Listen chapter by chapter on Spotify",
+    card_aut_t: "The Author",
+    card_aut_s: "Meet João Pedro Fontes",
+    home_hero_sub: "A novel narrated by a ghost",
+    home_presale_txt: "That is precisely why they can tell everything without fear. Pre-sale is live — get your copy or explore the official soundtrack."
   }
 };
 
 let currentLang = localStorage.getItem("sq_lang") || "pt";
-function applyEnOverrides() {
-  const t = LANG_DATA.en;
-  Object.keys(DEFAULTS).forEach(key => {
-    document.querySelectorAll('[data-key="' + key + '"]').forEach(el => {
-      if (!editActive) el.textContent = t[key];
-    });
-  });
-}
-
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem("sq_lang", lang);
@@ -481,18 +312,12 @@ function setLang(lang) {
     const key = el.dataset.i18n;
     if (t[key] != null) el.innerHTML = t[key];
   });
-  if (lang === "en") applyEnOverrides();
-  else Object.keys(DEFAULTS).forEach(key => {
-    document.querySelectorAll('[data-key="' + key + '"]').forEach(el => {
-      if (!editActive) el.textContent = DEFAULTS[key];
-    });
+  document.querySelectorAll("[data-key]").forEach(el => {
+    const key = el.dataset.key;
+    if (t[key] != null) el.textContent = t[key];
   });
 }
-
-(function init() {
-  if (currentLang === "en") setLang("en");
-  loadContent();
-})();
+if (currentLang === "en") setLang("en");
 </script>
 </body>
 </html>
