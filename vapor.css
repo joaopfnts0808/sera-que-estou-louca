@@ -1,58 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
 
 :root {
-  --bg: #7ac5f8;
-  --win-bg: #18233c;
-  --win-dark: #0c1222;
-  --cyan: #2cf6b3;
-  --pink: #f83898;
-  --purple: #9b5de5;
-  --muted: #88c0d0;
-  --text: #e0fbfc;
-  --border-light: #2cf6b3;
-  --border-dark: #0a0e1a;
+  --bg: #0b0928;
+  --win-bg: #13103a;
+  --win-dark: #08061c;
+  --pink: #f036b8;
+  --purple: #7b2fbe;
+  --blue: #2d4de0;
+  --steel: #6b8fd4;
+  --muted: #a69fd1;
+  --text: #f3f1ff;
 }
 
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  border-radius: 0 !important; /* Visual 100% reto estilo Windows 95/98 */
 }
 
 body {
-  background: linear-gradient(180deg, #56b4f5 0%, #99d6ff 45%, #d6efff 100%);
-  background-attachment: fixed;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(240, 54, 184, 0.16), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(45, 77, 224, 0.18), transparent 50%),
+    linear-gradient(to right, rgba(123, 47, 190, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(123, 47, 190, 0.12) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 44px 44px, 44px 44px;
   color: var(--text);
-  font-family: "Space Mono", monospace;
+  font-family: "Poppins", sans-serif;
   min-height: 100vh;
   overflow-x: hidden;
-  position: relative;
+  line-height: 1.65;
 }
 
-/* Grade Vaporwave sutil no fundo */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Listras superiores estilo Hotline Cafe */
+/* Listras neon no topo estilo Hotline Cafe na paleta do livro */
 body::after {
   content: "";
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: 18px;
+  height: 12px;
   background: repeating-linear-gradient(
     to bottom,
-    var(--pink) 0px, var(--pink) 4px,
-    transparent 4px, transparent 7px
+    var(--pink) 0px, var(--pink) 3px,
+    transparent 3px, transparent 6px
   );
   z-index: 90;
   pointer-events: none;
@@ -65,15 +55,16 @@ body::after {
   z-index: 1;
 }
 
-/* Barra de Navegação estilo Menu Retrô */
+/* Navegação intuitiva em barra estilo portal Y2K */
 .topnav {
   position: sticky;
-  top: 18px;
+  top: 12px;
   z-index: 50;
-  background: #274466;
-  border-top: 3px solid var(--pink);
-  border-bottom: 3px solid var(--cyan);
-  box-shadow: 0 6px 0 rgba(12, 18, 34, 0.4);
+  background: rgba(19, 16, 58, 0.94);
+  backdrop-filter: blur(10px);
+  border-top: 2px solid var(--pink);
+  border-bottom: 2px solid var(--purple);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
 }
 
 .topnav-inner {
@@ -87,88 +78,94 @@ body::after {
 }
 
 .topnav a {
-  color: var(--cyan);
+  color: var(--text);
   text-decoration: none;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.62rem;
-  padding: 8px 12px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  border: 2px solid transparent;
-  transition: all 0.1s;
+  padding: 7px 14px;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
 }
 
 .topnav a:hover, .topnav a.active {
   background: var(--pink);
   color: #fff;
-  border: 2px outset #ff85c2;
-  text-shadow: 1px 1px 0 #000;
+  border-color: #ff85d8;
+  box-shadow: 3px 3px 0 var(--purple);
 }
 .topnav a::after { display: none; }
 
-/* Cabeçalhos e Títulos 3D Retrô */
+/* Títulos em DM Serif Display com sombra sólida retrô */
 .hero, .page-top {
   text-align: center;
-  padding: 54px 20px 28px;
+  padding: 48px 20px 24px;
 }
 
 .hero-author {
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.65rem;
-  color: var(--pink);
-  text-shadow: 2px 2px 0 #fff;
-  margin-bottom: 14px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 10px;
 }
 
 .hero-title, .page-name, h1 {
-  font-family: "Press Start 2P", monospace !important;
-  font-size: clamp(1.5rem, 5vw, 2.8rem) !important;
-  line-height: 1.3 !important;
-  color: var(--cyan) !important;
+  font-family: "DM Serif Display", serif !important;
+  font-size: clamp(2.5rem, 6.5vw, 4.4rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.05 !important;
+  color: #fff !important;
   background: none !important;
-  -webkit-text-fill-color: var(--cyan) !important;
-  text-shadow: 
+  -webkit-text-fill-color: #fff !important;
+  text-shadow:
     3px 3px 0px var(--pink),
-    6px 6px 0px var(--win-dark);
-  letter-spacing: 2px;
+    6px 6px 0px var(--purple);
   margin-bottom: 16px;
 }
 
 .hero-sub, .role {
   display: inline-block;
   background: var(--win-bg);
-  color: #fff;
-  border: 2px solid var(--cyan);
-  padding: 6px 14px;
-  font-size: 0.78rem;
+  color: var(--muted);
+  border: 1px solid var(--purple);
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  font-weight: 400;
   box-shadow: 4px 4px 0 var(--pink);
 }
 
 .hero-bar { display: none; }
 
-/* Botão Voltar & Toggle de Idioma */
+/* Botão Voltar & Idioma */
 .back-link {
   display: inline-block;
   background: var(--win-bg);
-  color: var(--cyan) !important;
-  border: 2px outset var(--cyan) !important;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.6rem !important;
-  padding: 8px 14px !important;
+  color: #fff !important;
+  border: 1px solid var(--pink) !important;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.75rem !important;
+  font-weight: 600;
+  padding: 7px 16px !important;
   margin-bottom: 24px;
   text-decoration: none;
-  box-shadow: 3px 3px 0 var(--win-dark);
+  box-shadow: 3px 3px 0 var(--purple);
+  transition: transform 0.15s;
 }
 .back-link:hover {
   background: var(--pink);
-  color: #fff !important;
-  border-color: #fff !important;
+  transform: translate(1px, 1px);
 }
 
 .lang-toggle {
   display: flex;
-  margin: 20px auto 0;
+  margin: 18px auto 0;
   width: fit-content;
-  border: 2px solid var(--win-dark);
+  border: 1px solid var(--purple);
   background: var(--win-bg);
   box-shadow: 3px 3px 0 var(--pink);
 }
@@ -176,189 +173,210 @@ body::after {
   background: none;
   border: none;
   color: var(--muted);
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.6rem;
-  padding: 7px 14px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 6px 14px;
   cursor: pointer;
 }
 .lang-btn.active {
-  background: var(--cyan);
-  color: var(--win-dark);
+  background: var(--pink);
+  color: #fff;
 }
 
-/* Caixas de Conteúdo estilo Janela de Sistema */
+/* Janelas de Conteúdo (Sinopse, Bio, Cards) */
 .bio, .special-card, .testimonial-card, .cta, .promo-box, .login-banner, .user-bar {
   background: var(--win-bg) !important;
-  border: 3px solid var(--cyan) !important;
+  border: 2px solid var(--purple) !important;
   box-shadow: 6px 6px 0px var(--pink) !important;
-  padding: 24px !important;
+  padding: 26px !important;
   position: relative;
 }
 
-/* Barra de título falsa nas caixas principais */
 .bio::before, .special-card::before {
-  content: "■ SYSTEM_FILE.TXT // SERÁ QUE ESTOU LOUCA?";
+  content: "● SERÁ QUE ESTOU LOUCA? // ARQUIVO.TXT";
   display: block;
   background: linear-gradient(90deg, var(--pink), var(--purple));
   color: #fff;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.55rem;
-  padding: 6px 10px;
-  margin: -24px -24px 20px -24px;
-  border-bottom: 2px solid var(--cyan);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 7px 14px;
+  margin: -26px -26px 22px -26px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .bio p, .text-col p {
   color: var(--text) !important;
-  font-size: 0.9rem !important;
-  line-height: 1.75 !important;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 0.95rem !important;
+  font-weight: 300 !important;
+  line-height: 1.8 !important;
 }
 
 .pull {
   background: var(--win-dark);
-  border: 2px dashed var(--pink) !important;
-  border-left: 6px solid var(--cyan) !important;
-  padding: 16px !important;
-  color: var(--cyan) !important;
-  font-style: normal !important;
+  border: 1px solid var(--purple) !important;
+  border-left: 4px solid var(--pink) !important;
+  padding: 18px 20px !important;
+  color: #fff !important;
+  font-style: italic !important;
+  font-size: 0.92rem !important;
 }
 
-/* Capa do Livro & Botões Principais */
+/* Capa e Botões de Ação */
 .cover-img, .cover-img-lg, .ecobag-img, .author-photo {
-  border: 3px solid var(--cyan) !important;
-  box-shadow: 8px 8px 0 var(--pink) !important;
+  border: 2px solid var(--purple) !important;
+  box-shadow: 7px 7px 0 var(--pink) !important;
 }
 
-.btn-presale, .btn-go, .btn-spotify, .btn-secondary {
-  background: var(--cyan) !important;
-  color: var(--win-dark) !important;
-  font-family: "Press Start 2P", monospace !important;
-  font-size: 0.7rem !important;
-  border: 3px outset #a8ffdf !important;
-  box-shadow: 4px 4px 0 var(--win-dark) !important;
-  padding: 14px 22px !important;
-  text-transform: uppercase;
+.btn-presale, .btn-go, .btn-spotify {
+  background: var(--pink) !important;
+  color: #fff !important;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  border: 1px solid #ff85d8 !important;
+  box-shadow: 4px 4px 0 var(--purple) !important;
+  padding: 12px 26px !important;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-presale:hover, .btn-go:hover, .btn-spotify:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--purple) !important;
+}
+
+.btn-secondary {
+  background: var(--win-dark) !important;
+  color: #fff !important;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  border: 1px solid var(--steel) !important;
+  box-shadow: 4px 4px 0 var(--blue) !important;
+  padding: 12px 26px !important;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
 }
-.btn-presale:hover, .btn-go:hover, .btn-spotify:hover {
-  background: var(--pink) !important;
-  color: #fff !important;
-  border-color: #ff99cc !important;
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--win-dark) !important;
-}
-
-.presale-cta p, .social-note, .social-note a, footer p {
-  color: var(--win-dark) !important;
-  font-weight: 700;
+.btn-secondary:hover {
+  border-color: var(--pink) !important;
+  box-shadow: 2px 2px 0 var(--pink) !important;
 }
 
 .social-btn {
   background: var(--win-bg) !important;
-  border: 2px solid var(--cyan) !important;
-  color: var(--cyan) !important;
+  border: 1px solid var(--purple) !important;
+  color: #fff !important;
   box-shadow: 3px 3px 0 var(--pink);
 }
 .social-btn:hover {
   background: var(--pink) !important;
-  color: #fff !important;
 }
 
-/* Abas dos Discos (Lado A, B, C, Bônus) */
+/* Abas e Faixas em escute.html */
 .sec-label {
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.7rem !important;
-  color: var(--win-dark) !important;
-  text-shadow: 1px 1px 0 #fff;
-  margin: 40px 0 18px !important;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.72rem !important;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel) !important;
+  margin: 42px 0 16px !important;
 }
 
 .tabs {
   display: flex;
-  gap: 4px;
+  gap: 6px;
   border-bottom: none !important;
 }
 
 .tab {
-  background: #274466;
+  background: var(--win-dark);
   color: var(--muted) !important;
-  font-family: "Press Start 2P", monospace !important;
-  font-size: 0.6rem !important;
-  padding: 12px 8px !important;
-  border: 2px solid var(--cyan);
+  font-family: "DM Serif Display", serif !important;
+  font-size: 1.05rem !important;
+  padding: 11px 10px !important;
+  border: 1px solid var(--purple);
   border-bottom: none;
+  cursor: pointer;
 }
 .tab.active {
   background: var(--win-bg) !important;
-  color: var(--cyan) !important;
+  color: #fff !important;
   border-top: 3px solid var(--pink);
 }
 
 .panel {
   background: var(--win-bg);
-  border: 3px solid var(--cyan);
+  border: 2px solid var(--purple);
   box-shadow: 6px 6px 0 var(--pink);
   padding: 20px;
 }
 
 .panel-desc {
-  color: var(--cyan) !important;
-  font-size: 0.78rem !important;
-  border-bottom: 1px dashed var(--pink) !important;
+  color: var(--muted) !important;
+  font-size: 0.85rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   padding-top: 0 !important;
 }
 
 .track {
-  border-bottom: 1px solid rgba(44, 246, 179, 0.2) !important;
-  padding: 14px 8px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 14px 10px !important;
 }
 .track:hover {
-  background: rgba(248, 56, 152, 0.12);
+  background: rgba(240, 54, 184, 0.08);
 }
 .track-cap {
-  font-family: "Press Start 2P", monospace !important;
-  font-size: 0.65rem !important;
+  font-family: "DM Serif Display", serif !important;
+  font-size: 0.85rem !important;
   color: var(--pink) !important;
 }
 .track-thumb {
-  border: 2px solid var(--cyan);
+  border: 1px solid var(--purple);
 }
 .track-title {
   color: #fff;
-  font-size: 0.9rem !important;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.92rem !important;
 }
 .track.expanded .track-title {
-  color: var(--cyan) !important;
+  color: var(--pink) !important;
 }
 .track-artist {
   color: var(--muted) !important;
+  font-size: 0.78rem !important;
 }
 .track-hint {
-  color: var(--pink) !important;
-  font-family: "VT323", monospace;
-  font-size: 0.9rem !important;
+  color: var(--steel) !important;
+  font-size: 0.7rem !important;
 }
 .track-desc {
   color: var(--text) !important;
   font-style: normal !important;
+  font-size: 0.85rem !important;
   background: var(--win-dark);
-  padding: 0 12px;
+  padding: 0 14px;
   border-left: 3px solid var(--pink);
 }
 .track.expanded .track-desc {
-  padding: 12px;
+  padding: 12px 14px;
 }
 
 .btn-play {
-  background: var(--cyan) !important;
-  color: var(--win-dark) !important;
-  border: 2px outset #fff !important;
+  background: var(--win-dark) !important;
+  color: #fff !important;
+  border: 1px solid var(--pink) !important;
   width: 34px !important;
   height: 34px !important;
 }
-.btn-play.playing {
+.btn-play.playing, .btn-play:hover {
   background: var(--pink) !important;
   color: #fff !important;
 }
