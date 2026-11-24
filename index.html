@@ -52,7 +52,7 @@ body::after {
 .hc-container {
   max-width: 820px;
   margin: 0 auto;
-  padding: 44px 20px 90px;
+  padding: 44px 20px 100px;
   position: relative;
   z-index: 1;
 }
@@ -156,7 +156,7 @@ body::after {
   background: rgba(240, 54, 184, 0.22);
 }
 
-/* Janelas Estilo Hotline Cafe */
+/* Janelas */
 .hc-window {
   background: var(--purple-dark);
   border: 2px solid var(--purple);
@@ -258,7 +258,7 @@ body::after {
   box-shadow: 2px 2px 0 var(--pink);
 }
 
-/* SEÇÃO DA TRILHA SONORA NA HOME (PLAYER EMBUTIDO QUE VIRA FLUTUANTE) */
+/* SEÇÃO DA TRILHA SONORA NA HOME */
 .soundtrack-dock {
   padding: 28px;
 }
@@ -282,26 +282,104 @@ body::after {
   font-weight: 300;
 }
 
-/* Placeholder que mantém o espaço na seção quando o player flutua */
+/* BLOCO DE VÍDEO + LEGENDA SINCRONIZADA */
+.video-stage-bundle {
+  margin-bottom: 22px;
+}
+
+.video-stage-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 2px solid var(--purple);
+  border-bottom: none;
+  box-shadow: 6px 6px 0 var(--pink);
+  position: relative;
+  overflow: hidden;
+}
+.video-stage-wrap iframe,
+.video-stage-wrap #yt-player-engine {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* VISOR DE LEGENDA ABAIXO DO VÍDEO */
+.subtitle-stage-box {
+  background: var(--purple-deep);
+  border: 2px solid var(--purple);
+  border-top: 2px solid var(--pink);
+  box-shadow: 6px 6px 0 var(--pink);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sub-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--pink);
+}
+.sub-mini-btn {
+  background: var(--purple-dark);
+  color: var(--white);
+  border: 1px solid var(--purple);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  cursor: pointer;
+}
+.sub-mini-btn:hover, .sub-mini-btn.active {
+  background: var(--pink);
+  border-color: var(--white);
+}
+.sub-text-display {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.96rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--white);
+  padding: 4px 8px;
+}
+.sub-text-display.muted {
+  opacity: 0.55;
+  font-size: 0.8rem;
+  font-weight: 300;
+  font-style: italic;
+}
+
 .player-slot {
-  min-height: 150px;
+  min-height: 170px;
 }
 .floating-notice {
   display: none;
   background: var(--purple-deep);
   border: 1px dashed var(--pink);
-  padding: 22px;
+  padding: 18px;
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
 }
 .floating-notice.vis {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-/* O PLAYER (ESTADO 1: EMBUTIDO NA SEÇÃO DA HOME) */
+/* WIDGET DO PLAYER ABAIXO DO VÍDEO (COM CAPA DA MÚSICA) */
 .radio-widget {
   background: var(--purple-deep);
   border: 2px solid var(--purple);
@@ -309,7 +387,6 @@ body::after {
   display: flex;
   flex-direction: column;
   user-select: none;
-  transition: box-shadow 0.2s;
 }
 
 .rw-topbar {
@@ -327,47 +404,37 @@ body::after {
   background: var(--purple-deep);
   color: var(--white);
   border: 1px solid var(--white);
-  padding: 1px 7px;
-  font-size: 0.65rem;
+  padding: 2px 7px;
+  font-size: 0.64rem;
   font-weight: 600;
   cursor: pointer;
 }
-.rw-win-btn:hover { background: var(--pink); }
+.rw-win-btn:hover, .rw-win-btn.active { background: var(--pink); }
 
 .rw-content {
-  padding: 18px;
-}
-
-.rw-login-box {
+  padding: 16px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.rw-login-box p {
-  font-size: 0.86rem;
-  max-width: 470px;
-  font-weight: 300;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.rw-player-grid {
-  display: none;
-  grid-template-columns: 110px 1fr;
-  gap: 18px;
-  align-items: center;
-}
-.rw-player-grid.active {
+.rw-main-grid {
   display: grid;
+  grid-template-columns: 112px 1fr;
+  gap: 16px;
+  align-items: center;
 }
 
+/* CAPA DA MÚSICA NO PLAYER */
 .rw-cover-box {
   position: relative;
-  width: 110px;
-  height: 110px;
-  border: 1px solid var(--purple);
+  width: 112px;
+  height: 112px;
+  border: 2px solid var(--purple);
+  box-shadow: 3px 3px 0 var(--pink);
   overflow: hidden;
   flex-shrink: 0;
+  background: #000;
 }
 .rw-cover-box img {
   width: 100%;
@@ -379,16 +446,17 @@ body::after {
 .rw-info-col {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   min-width: 0;
 }
 .rw-status-line {
   display: flex;
   justify-content: space-between;
-  font-size: 0.68rem;
+  align-items: center;
+  font-size: 0.66rem;
   font-weight: 600;
   color: var(--pink);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
 }
 .rw-lcd {
   background: var(--purple-dark);
@@ -403,23 +471,49 @@ body::after {
   text-overflow: ellipsis;
 }
 .rw-artist {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   opacity: 0.82;
 }
+
+/* Barra de Progresso Interativa (Scrubbing) */
+.rw-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.65rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.9;
+}
+.rw-progress-bar {
+  flex: 1;
+  height: 7px;
+  background: var(--purple-dark);
+  border: 1px solid var(--purple);
+  cursor: pointer;
+  position: relative;
+}
+.rw-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--pink);
+  transition: width 0.2s linear;
+}
+
+/* Controles Principais */
 .rw-controls-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 .rw-btn {
   background: var(--purple);
   color: var(--white);
   border: 1px solid var(--white);
   font-family: "Poppins", sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  padding: 7px 12px;
+  padding: 6px 10px;
   cursor: pointer;
 }
 .rw-btn:hover, .rw-btn.pink { background: var(--pink); }
@@ -427,43 +521,104 @@ body::after {
 .rw-vol-box {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.68rem;
+  gap: 5px;
+  font-size: 0.65rem;
   font-weight: 600;
   margin-left: auto;
 }
 .rw-vol-box input {
-  width: 80px;
+  width: 72px;
   accent-color: var(--pink);
   cursor: pointer;
 }
 
-/* O PLAYER (ESTADO 2: FLUTUANTE ENTRE TODAS AS PÁGINAS/ABAS) */
+/* Barra de Ferramentas de Leitura */
+.rw-tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.rw-tool-btn {
+  background: var(--purple-dark);
+  color: var(--white);
+  border: 1px solid var(--purple);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 5px 9px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.rw-tool-btn:hover, .rw-tool-btn.on {
+  background: var(--pink);
+  border-color: var(--white);
+}
+
+/* Painel Expansível: Acompanhar Leitura + Timer + Nota do Capítulo */
+.rw-reading-drawer {
+  display: none;
+  background: var(--purple-dark);
+  border: 1px solid var(--pink);
+  padding: 12px;
+  font-size: 0.8rem;
+}
+.rw-reading-drawer.open { display: block; }
+.rw-reading-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--pink);
+}
+.rw-timer-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rw-mini-timer-btn {
+  background: var(--purple);
+  color: var(--white);
+  border: 1px solid var(--white);
+  font-size: 0.6rem;
+  font-weight: 600;
+  padding: 1px 6px;
+  cursor: pointer;
+}
+.rw-mini-timer-btn:hover { background: var(--pink); }
+.rw-reading-text {
+  font-weight: 300;
+  line-height: 1.55;
+}
+
+/* ESTADO FLUTUANTE DO PLAYER ENTRE AS ABAS */
 .radio-widget.floating {
   position: fixed;
-  bottom: 22px;
-  right: 22px;
-  width: 310px;
+  bottom: 20px;
+  right: 20px;
+  width: 345px;
   background: var(--purple-dark);
   box-shadow: 7px 7px 0 var(--pink);
   z-index: 9999;
 }
-.radio-widget.floating .rw-topbar {
-  cursor: grab;
+.radio-widget.floating .rw-topbar { cursor: grab; }
+.radio-widget.floating .rw-topbar:active { cursor: grabbing; }
+.radio-widget.floating .rw-main-grid { grid-template-columns: 76px 1fr; gap: 12px; }
+.radio-widget.floating .rw-cover-box { width: 76px; height: 76px; }
+.radio-widget.floating.minimized .rw-tools-row,
+.radio-widget.floating.minimized .rw-reading-drawer,
+.radio-widget.floating.minimized .rw-vol-box,
+.radio-widget.floating.minimized .rw-cover-box {
+  display: none !important;
 }
-.radio-widget.floating .rw-topbar:active {
-  cursor: grabbing;
-}
-.radio-widget.floating .rw-player-grid {
+.radio-widget.floating.minimized .rw-main-grid {
   grid-template-columns: 1fr;
-}
-.radio-widget.floating .rw-cover-box {
-  width: 100%;
-  height: 150px;
-}
-.radio-widget.floating.minimized .rw-cover-box,
-.radio-widget.floating.minimized .rw-vol-box {
-  display: none;
 }
 
 /* SEÇÃO DA RESENHA (RAFAEL NASCIMENTO / SSEX BBOX) */
@@ -603,6 +758,10 @@ body::after {
   cursor: pointer;
 }
 .track-item:hover { background: rgba(240, 54, 184, 0.1); }
+.track-item.now-playing {
+  background: rgba(240, 54, 184, 0.15);
+  border-left: 3px solid var(--pink);
+}
 .track-row {
   display: flex;
   align-items: center;
@@ -663,8 +822,8 @@ body::after {
   .hc-actions { justify-content: center; }
   .author-layout { grid-template-columns: 1fr; }
   .author-photo { max-width: 140px; }
-  .rw-player-grid { grid-template-columns: 1fr; }
-  .rw-cover-box { width: 100%; height: 180px; }
+  .rw-main-grid { grid-template-columns: 1fr; }
+  .rw-cover-box { width: 100%; height: 160px; }
   .radio-widget.floating { left: 12px; right: 12px; bottom: 12px; width: auto; }
   .radio-widget.floating .rw-cover-box { display: none; }
 }
@@ -693,7 +852,7 @@ body::after {
     <a class="nav-buy-btn" href="https://a.co/d/0guFeMn5" target="_blank" rel="noopener" data-i18n="nav_buy">Compre agora</a>
   </nav>
 
-  <!-- ABA 1: INÍCIO (COM LIVRO + SEÇÃO TRILHA SONORA + SEÇÃO RESENHA) -->
+  <!-- ABA 1: INÍCIO -->
   <div class="tab-view active" id="view-inicio">
 
     <!-- 1. BLOCO DO LIVRO -->
@@ -715,31 +874,47 @@ body::after {
       </div>
     </section>
 
-    <!-- 2. SEÇÃO DA TRILHA SONORA (PLAYER EMBUTIDO QUE VIRA FLUTUANTE) -->
+    <!-- 2. SEÇÃO DA TRILHA SONORA (VÍDEO GRANDE + LEGENDA .SRT + PLAYER) -->
     <section class="hc-window" id="secao-trilha">
       <div class="hc-win-bar">
         <span>SOUNDTRACK.M3U // TRILHA OFICIAL DO LIVRO</span>
-        <span>20 FAIXAS</span>
+        <span>19 FAIXAS COMPLETAS</span>
       </div>
       <div class="soundtrack-dock">
         <div class="sd-header">
           <div>
             <h2>Ouça enquanto lê</h2>
-            <p>Uma música por capítulo. Ao dar play ou trocar de aba, o player flutua na tela para continuar tocando.</p>
+            <p>Clipes e faixas completas na ordem da playlist com legendas sincronizadas.</p>
           </div>
           <button type="button" class="btn-secondary" style="padding:8px 16px; font-size:0.76rem;" onclick="showTab('trilha', document.querySelectorAll('.hc-nav button')[4])">Ver todas as faixas</button>
         </div>
 
+        <!-- SLOT DO VÍDEO + LEGENDA (VIAJA ENTRE INÍCIO E BIBLIOTECA MUSICAL) -->
+        <div id="homeVideoHost">
+          <div class="video-stage-bundle" id="sharedVideoStage">
+            <div class="video-stage-wrap">
+              <div id="yt-player-engine"></div>
+            </div>
+            <div class="subtitle-stage-box" id="subtitleStageBox">
+              <div class="sub-top-bar">
+                <span id="subStatusLabel">CC // LEGENDA SINCRONIZADA</span>
+                <button type="button" class="sub-mini-btn active" id="btnToggleSub" onclick="toggleSubtitles()">CC: ON</button>
+              </div>
+              <div class="sub-text-display muted" id="subTextDisplay">♪ ♪ ♪</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLAYER ABAIXO DO VÍDEO COM A CAPA DA MÚSICA -->
         <div class="player-slot" id="playerSlot">
           <div class="floating-notice" id="floatingNotice">
-            <span>O player está flutuando no canto da tela para você ouvir enquanto navega.</span>
-            <button type="button" class="btn-secondary" style="padding:7px 16px; font-size:0.75rem;" onclick="dockPlayer()">Encaixar player aqui novamente</button>
+            <span>O player está flutuando no canto da tela para você controlar enquanto navega pelas abas.</span>
+            <button type="button" class="btn-secondary" style="padding:7px 16px; font-size:0.75rem;" onclick="dockPlayer()">Encaixar player abaixo do vídeo</button>
           </div>
 
-          <!-- WIDGET DO PLAYER -->
           <div class="radio-widget" id="radioWidget">
             <div class="rw-topbar" id="rwDragHandle">
-              <span>● LOUCA RADIO // SPOTIFY</span>
+              <span>● LOUCA RADIO // TRILHA COMPLETA</span>
               <div class="rw-win-btns">
                 <button type="button" class="rw-win-btn" id="btnFloatToggle" onclick="toggleFloatMode()" title="Destacar / Encaixar">FLUTUAR</button>
                 <button type="button" class="rw-win-btn" onclick="toggleMinimizePlayer()" title="Minimizar">_</button>
@@ -747,37 +922,58 @@ body::after {
             </div>
 
             <div class="rw-content">
-              <!-- TELA DE LOGIN SPOTIFY -->
-              <div class="rw-login-box" id="rwLoginView">
-                <p>Conecte sua conta Spotify Premium para tocar as 20 faixas do livro direto nesta janela e continuar ouvindo em qualquer aba.</p>
-                <button type="button" class="btn-primary" onclick="loginSpotify()">Entrar com Spotify</button>
-              </div>
-
-              <!-- PLAYER ATIVO -->
-              <div class="rw-player-grid" id="rwPlayerView">
+              <div class="rw-main-grid">
                 <div class="rw-cover-box">
-                  <img id="rwCover" src="https://i.imgur.com/dgWxjNX.jpeg" alt="Capa">
+                  <img id="rwCover" src="https://i.ytimg.com/vi/vOZFiX6hDXQ/hqdefault.jpg" alt="Capa da música">
                 </div>
+
                 <div class="rw-info-col">
                   <div class="rw-status-line">
                     <span id="rwState">PRONTO PARA TOCAR</span>
-                    <span id="rwTrackNum">CAP. I (1/20)</span>
+                    <span id="rwTrackNum">FAIXA ★ (1/19)</span>
                   </div>
                   <div class="rw-lcd">
-                    <div class="rw-title" id="rwTitle">Out Of Mind</div>
-                    <div class="rw-artist" id="rwArtist">Tove Lo</div>
+                    <div class="rw-title" id="rwTitle">Who's Afraid of Little Old Me?</div>
+                    <div class="rw-artist" id="rwArtist">Taylor Swift</div>
                   </div>
+
+                  <div class="rw-progress-wrap">
+                    <span id="rwTimeCur">0:00</span>
+                    <div class="rw-progress-bar" id="rwProgressBar" onclick="seekProgress(event)" title="Clique para avançar ou voltar">
+                      <div class="rw-progress-fill" id="rwProgressFill"></div>
+                    </div>
+                    <span id="rwTimeDur">0:00</span>
+                  </div>
+
                   <div class="rw-controls-row">
                     <button type="button" class="rw-btn" onclick="prevTrack()" title="Anterior">◀◀</button>
                     <button type="button" class="rw-btn pink" onclick="togglePlay()" id="rwPlayBtn">▶ PLAY / PAUSE</button>
                     <button type="button" class="rw-btn" onclick="nextTrack()" title="Próxima">▶▶</button>
-                    <button type="button" class="rw-btn" onclick="toggleMute()" id="rwMuteBtn">MUTE</button>
                     <div class="rw-vol-box">
                       <span>VOL</span>
-                      <input type="range" id="rwVolSlider" min="0" max="1" step="0.05" value="0.8" oninput="setVol(this.value)">
+                      <input type="range" id="rwVolSlider" min="0" max="100" step="5" value="80" oninput="setVol(this.value)">
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div class="rw-tools-row">
+                <button type="button" class="rw-tool-btn" id="btnReadingMode" onclick="toggleReadingDrawer()">📖 Acompanhar Leitura</button>
+                <button type="button" class="rw-tool-btn" id="btnWhisperMode" onclick="toggleWhisperMode()">🤫 Modo Sussurro</button>
+                <a class="rw-tool-btn" href="https://youtube.com/playlist?list=PLJQ_9cMQGgAI&si=vIx0Vk7OlFIxInQ4" target="_blank" rel="noopener">↗ YouTube</a>
+                <a class="rw-tool-btn" href="https://open.spotify.com/playlist/2nKDeojKmuFvGf6p20WWbt" target="_blank" rel="noopener">↗ Spotify</a>
+              </div>
+
+              <div class="rw-reading-drawer" id="rwReadingDrawer">
+                <div class="rw-reading-head">
+                  <span id="rwReadingCap">NOTAS DA FAIXA ★</span>
+                  <div class="rw-timer-controls">
+                    <span id="rwReadingTimer">⏱ Leitura: 00:00</span>
+                    <button type="button" class="rw-mini-timer-btn" id="btnTimerToggle" onclick="toggleReadingTimer()">Pausar</button>
+                    <button type="button" class="rw-mini-timer-btn" onclick="resetReadingTimer()">Zerar</button>
+                  </div>
+                </div>
+                <p class="rw-reading-text" id="rwReadingNote">Sobre alguém que foi tratado como ameaça, como instável. A música apenas confirma: você deveria ter medo mesmo.</p>
               </div>
             </div>
           </div>
@@ -785,7 +981,7 @@ body::after {
       </div>
     </section>
 
-    <!-- 3. SEÇÃO DA RESENHA (RAFAEL NASCIMENTO / SSEX BBOX) -->
+    <!-- 3. SEÇÃO DA RESENHA -->
     <section class="hc-window">
       <div class="hc-win-bar">
         <span>PRESS // RESENHA EM DESTAQUE</span>
@@ -838,7 +1034,7 @@ body::after {
           <div>
             <h2>João Pedro Fontes</h2>
             <p class="inner-role">Natal, RN · Autoficção · PFIC</p>
-            <p>João Pedro Fontes nasceu em Marcelino Vieira e mora em Natal. Formado em Comunicação Social, passou anos escrevendo para marcas antes de escrever para si mesmo. "Será que estou louca?" é o primeiro livro.</p>
+            <p>João Pedro Fontes nasceu e mora em Natal. Formado em Comunicação Social, passou anos escrevendo para marcas antes de escrever para si mesmo. "Será que estou louca?" é o primeiro livro.</p>
             <p>É uma pessoa não binária vivendo com PFIC, uma doença hepática rara. Essa convivência com um corpo que pode falhar antes da hora aparece no livro sem pedir licença: é o motivo pelo qual a história é contada por um fantasma, alguém que já sabe como tudo termina e ainda assim insiste em voltar para contar do começo.</p>
             <div class="pull-quote">"Escrevo porque um fantasma não tem mais nada a perder ao dizer a verdade."</div>
             <a class="btn-primary" href="https://a.co/d/0guFeMn5" target="_blank" rel="noopener">Compre agora</a>
@@ -869,12 +1065,15 @@ body::after {
   <!-- ABA 5: FAIXAS DO LIVRO -->
   <div class="tab-view" id="view-trilha">
     <section class="hc-window">
-      <div class="hc-win-bar"><span>PLAYLIST.M3U // 20 FAIXAS</span><span>[ — □ × ]</span></div>
+      <div class="hc-win-bar"><span>PLAYLIST.M3U // 19 FAIXAS</span><span>[ — □ × ]</span></div>
       <div class="inner-pad">
         <h2>Biblioteca Musical</h2>
-        <p class="inner-role">Clique na faixa para ler a história ou dê play para ouvir no player flutuante</p>
+        <p class="inner-role">Clique na faixa para ler a história ou dê play para assistir e ouvir</p>
+
+        <div id="libraryVideoHost"></div>
+
         <div class="disc-tabs">
-          <button type="button" class="disc-tab active" onclick="filterDisc('all', this)">Todas (20)</button>
+          <button type="button" class="disc-tab active" onclick="filterDisc('all', this)">Todas (19)</button>
           <button type="button" class="disc-tab" onclick="filterDisc('A', this)">Lado A (I–V)</button>
           <button type="button" class="disc-tab" onclick="filterDisc('B', this)">Lado B (VI–X)</button>
           <button type="button" class="disc-tab" onclick="filterDisc('C', this)">Lado C (XI–XV)</button>
@@ -901,45 +1100,140 @@ body::after {
   <footer style="margin-top:20px; text-align:center; font-size:0.72rem; opacity:0.65;"><p>© 2026 · Será que Estou Louca? · João Pedro Fontes</p></footer>
 </div>
 
-<script src="https://sdk.scdn.co/spotify-player.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
 const TRACKS = [
-  { disc:"A", cap:"I", title:"Out Of Mind", artist:"Tove Lo", uri:"spotify:track:1duoEJxM4GBEICofJAh9Im", desc:"Out Of Mind é sobre negar que alguém tomou conta da sua cabeça. Você se convence de que está bem, que o tempo vai curar, que está seguindo em frente. A música é o momento em que essa mentira racha." },
-  { disc:"A", cap:"II", title:"Let's Not Fall In Love", artist:"BigBang", uri:"spotify:track:6UgkB0xM45TR3Zjqm3GQ6T", desc:"Let's Not Fall In Love é sobre dois que se gostam e sabem que aprofundar vai doer. O pedido é simples: fica essa noite, mas não promete nada. É o aviso que veio antes de tudo." },
-  { disc:"A", cap:"III", title:"Casanova", artist:"Allie X", uri:"spotify:track:1fN3fH8Wcx7SJJwlVFrO5t", desc:"Casanova é sobre saber que alguém é perigoso e ficar mesmo assim. Você vê a má reputação, sente o perigo nos lábios e continua." },
-  { disc:"A", cap:"IV", title:"Nicotine", artist:"Panic! At The Disco", uri:"spotify:track:5Q4H1XkVHxQjnrHCUpS61d", desc:"Nicotine é sobre querer parar e não conseguir. Você sabe que é ruim, corta os laços, e ainda precisa." },
-  { disc:"A", cap:"V", title:"hey you got drugs?", artist:"Tove Lo", uri:"spotify:track:73kadnv7SduzhApfRUv5C0", desc:"hey you got drugs? é sobre usar a noite e as substâncias para não sentir. Só mostra como é quando a festa é o único lugar onde você consegue respirar." },
-  { disc:"B", cap:"VI", title:"Doi D+", artist:"Jaloo", uri:"spotify:track:1CD7hXuEjiUsoqOhleyKb7", desc:"Doi D+ é sobre uma dor que não passa nem quando você tenta se afastar. Só a honestidade de quem ficou no naufrágio sabendo que o mar é a mesma pessoa que afunda." },
-  { disc:"B", cap:"VII", title:"Get Outta My Way", artist:"Kylie Minogue", uri:"spotify:track:2VZ5Vtjn16RThAvaFz3sJZ", desc:"Get Outta My Way é sobre decidir ir embora e já estar indo. Não tem hesitação, não tem última conversa." },
-  { disc:"B", cap:"VIII", title:"Circle The Drain", artist:"Katy Perry", uri:"spotify:track:7s0YfJE6hNNYq9BV26iCw6", desc:"Circle The Drain é sobre perceber que você virou responsável por alguém que não quer ser salvo." },
-  { disc:"B", cap:"IX", title:"Godless", artist:"Banks", uri:"spotify:track:1eTL8yocTmire9gpOn2H2g", desc:"Godless é sobre idolatrar alguém que não acredita em nada. Quando ela vai embora, sobra o vazio de quem perdeu a própria religião." },
-  { disc:"B", cap:"X", title:"Sangrando", artist:"Gaby Amarantos & Potyguara Bardo", uri:"spotify:track:2ArW2y4HFzz1VjGtl7f4xm", desc:"Sangrando é sobre olhar para o lado e perceber que a pessoa sumiu sem explicação. A cura não vem depois da dor. Vem durante." },
-  { disc:"C", cap:"XI", title:"Espumas ao Vento", artist:"Elza Soares", uri:"spotify:track:7KiLniGRlvAHpoxMLYp32P", desc:"Espumas ao Vento é sobre saber que o amor foi real e não conseguir aceitar que acabou." },
-  { disc:"C", cap:"XII", title:"Supercut", artist:"Lorde", uri:"spotify:track:6K8VQ84MqhsoakN5MjrnVR", desc:"Supercut é sobre a versão editada que você guarda de alguém. A compilação é bonita porque você escolheu o que ficou." },
-  { disc:"C", cap:"XIII", title:"Not Cute Anymore", artist:"ILLIT", uri:"spotify:track:1k0JAiH11gHL9dc5dfQjQr", desc:"Not Cute Anymore é sobre parar de se encaixar no que o outro esperava. É só alguém que cansou de ser o que não é." },
-  { disc:"C", cap:"XIV", title:"It's Alright, It's Ok", artist:"Ashley Tisdale", uri:"spotify:track:1bYtKF2sY2wLU6xdVaqIqD", desc:"It's Alright, It's Ok é sobre fechar a porta sem drama. A ponte queimou e tá tudo bem assim." },
-  { disc:"C", cap:"XV", title:"You're On Your Own, Kid", artist:"Taylor Swift", uri:"spotify:track:4D7BCuvgdJlYvlX5QlSQoE", desc:"You're On Your Own, Kid é sobre fechar uma conta que nunca vai ser paga pelo outro. Você sempre esteve por conta própria." },
-  { disc:"BONUS", cap:"★", title:"Who's Afraid of Little Old Me?", artist:"Taylor Swift", uri:"spotify:track:2d8UxVNhJinc8uat9PoM9y", desc:"Sobre alguém que foi tratado como ameaça, como instável. A música apenas confirma: você deveria ter medo mesmo." },
-  { disc:"BONUS", cap:"B1", title:"Amor pra Recordar", artist:"Gaby Amarantos & Liniker", uri:"spotify:track:2olfjOvAFAIaQ8mJp1TFo0", desc:"Ficou nas bônus porque esse sentimento é real: apesar de tudo, houve amor." },
-  { disc:"BONUS", cap:"B2", title:"Strangers", artist:"Halsey ft. Lauren Jauregui", uri:"spotify:track:11EDhDAVDtGPoSar6ootYA", desc:"O diagnóstico mais preciso do que aquela relação era antes de ter nome." },
-  { disc:"BONUS", cap:"B3", title:"Propaganda", artist:"Banks", uri:"spotify:track:3XMBVIWJ19LcePSuM0VLEX", desc:"A frase I can’t save myself é o que o texto inteiro tenta não dizer em voz alta." },
-  { disc:"BONUS", cap:"B4", title:"Não Me Cutuca", artist:"Anitta, Alceu Valença", uri:"spotify:track:02BhbpQKWCVjqVBUsvOL7i", desc:"Devolve a palavra do título pra quem foi chamada assim." }
+  { disc:"BONUS", cap:"★", title:"Who's Afraid of Little Old Me?", artist:"Taylor Swift", ytId:"vOZFiX6hDXQ", srtFile:"legendas/01-whos-afraid.srt", desc:"Sobre alguém que foi tratado como ameaça, como instável. A música apenas confirma: você deveria ter medo mesmo." },
+  { disc:"A", cap:"I", title:"Out Of Mind", artist:"Tove Lo", ytId:"_65tLeIWtx0", srtFile:"legendas/02-out-of-mind.srt", desc:"Out Of Mind é sobre negar que alguém tomou conta da sua cabeça. Você se convence de que está bem, que o tempo vai curar, que está seguindo em frente. A música é o momento em que essa mentira racha." },
+{ disc:"A", cap:"II", title:"Let's Not Fall In Love", artist:"BIGBANG", ytId:"9jTo6hTZmiQ", srtFile:"legendas/03-lets-not-fall-in-love.srt", desc:"Let's Not Fall In Love é sobre dois que se gostam e sabem que aprofundar vai doer. O pedido é simples: fica essa noite, mas não promete nada. É o aviso que veio antes de tudo." },
+  { disc:"A", cap:"III", title:"Casanova", artist:"Allie X", ytId:"xThd_r0dqd4", srtFile:"legendas/04-casanova.srt", desc:"Casanova é sobre saber que alguém é perigoso e ficar mesmo assim. Você vê a má reputação, sente o perigo nos lábios e continua." },
+  { disc:"A", cap:"IV", title:"Nicotine", artist:"Panic! At The Disco", ytId:"LkBxcmxWKAA", srtFile:"legendas/05-nicotine.srt", desc:"Nicotine é sobre querer parar e não conseguir. Você sabe que é ruim, corta os laços, e ainda precisa." },
+  { disc:"A", cap:"V", title:"hey you got drugs?", artist:"Tove Lo", ytId:"NCdB-b53bn0", srtFile:"legendas/06-hey-you-got-drugs.srt", desc:"hey you got drugs? é sobre usar a noite e as substâncias para não sentir. Só mostra como é quando a festa é o único lugar onde você consegue respirar." },
+  { disc:"B", cap:"VI", title:"Dói d+", artist:"Jaloo ft. Nave", ytId:"YFmIbWHNp0I", srtFile:"legendas/07-doi-d-mais.srt", desc:"Dói d+ é sobre uma dor que não passa nem quando você tenta se afastar. Só a honestidade de quem ficou no naufrágio sabendo que o mar é a mesma pessoa que afunda." },
+  { disc:"B", cap:"VII", title:"Get Outta My Way", artist:"Kylie Minogue", ytId:"BHGaW8lBlSk", srtFile:"legendas/08-get-outta-my-way.srt", desc:"Get Outta My Way é sobre decidir ir embora e já estar indo. Não tem hesitação, não tem última conversa." },
+ { disc:"B", cap:"VIII", title:"Circle The Drain", artist:"Katy Perry", ytId:"x2T8ED_dmZU", srtFile:"legendas/09-circle-the-drain.srt", desc:"Circle The Drain é sobre perceber que você virou responsável por alguém que não quer ser salvo." },
+   { disc:"B", cap:"IX", title:"Godless", artist:"BANKS", ytId:"Wr94C8vSAV8", srtFile:"legendas/10-godless.srt", desc:"Godless é sobre idolatrar alguém que não acredita em nada. Quando ela vai embora, sobra o vazio de quem perdeu a própria religião." },
+  { disc:"B", cap:"X", title:"Sangrando", artist:"Gaby Amarantos ft. Potyguara Bardo", ytId:"YqxMZUU098s", srtFile:"legendas/11-sangrando.srt", desc:"Sangrando é sobre olhar para o lado e perceber que a pessoa sumiu sem explicação. A cura não vem depois da dor. Vem durante." },
+  { disc:"C", cap:"XI", title:"Espumas ao Vento", artist:"Lisbela e o Prisioneiro", ytId:"39LNUl7vLNM", srtFile:"legendas/12-espumas-ao-vento.srt", desc:"Espumas ao Vento é sobre saber que o amor foi real e não conseguir aceitar que acabou." },
+  { disc:"C", cap:"XII", title:"Supercut", artist:"Lorde", ytId:"4bNZK-zgmUc", srtFile:"legendas/13-supercut.srt", desc:"Supercut é sobre a versão editada que você guarda de alguém. A compilação é bonita porque você escolheu o que ficou." },
+  { disc:"C", cap:"XIII", title:"NOT CUTE ANYMORE", artist:"ILLIT", ytId:"x_RYZsOfpKY", srtFile:"legendas/14-not-cute-anymore.srt", desc:"NOT CUTE ANYMORE é sobre parar de se encaixar no que o outro esperava. É só alguém que cansou de ser o que não é." },
+  { disc:"C", cap:"XIV", title:"It's Alright, It's OK", artist:"Ashley Tisdale", ytId:"On_ZPiDEqkA", srtFile:"legendas/15-its-alright-its-ok.srt", desc:"It's Alright, It's OK é sobre fechar a porta sem drama. A ponte queimou e tá tudo bem assim." },
+  { disc:"C", cap:"XV", title:"You're On Your Own, Kid", artist:"Taylor Swift", ytId:"7Gbg6Z70J7E", srtFile:"legendas/16-youre-on-your-own-kid.srt", desc:"You're On Your Own, Kid é sobre fechar uma conta que nunca vai ser paga pelo outro. Você sempre esteve por conta própria." },
+  { disc:"BONUS", cap:"B1", title:"Amor Pra Recordar", artist:"Gaby Amarantos ft. Liniker", ytId:"qcK5MJEktLc", srtFile:"legendas/17-amor-pra-recordar.srt", desc:"Ficou nas bônus porque esse sentimento é real: apesar de tudo, houve amor." },
+  { disc:"BONUS", cap:"B2", title:"Strangers", artist:"Halsey ft. Lauren Jauregui", ytId:"xMLKIezPOw4", srtFile:"legendas/18-strangers.srt", desc:"O diagnóstico mais preciso do que aquela relação era antes de ter nome." },
+  { disc:"BONUS", cap:"B3", title:"Propaganda", artist:"BANKS", ytId:"gQroY_XO1js", srtFile:"legendas/19-propaganda.srt", desc:"A frase I can’t save myself é o que o texto inteiro tenta não dizer em voz alta." }
 ];
 
-function renderTracks(filter = "all") {
+let ytPlayer = null;
+let ytReady = false;
+let currentIdx = 0;
+let currentFilter = "all";
+let isPlaying = false;
+let isFloating = false;
+let readingOpen = false;
+let readingSeconds = 0;
+let readingTimerRunning = true;
+let whisperActive = false;
+let savedVolume = 80;
+
+/* MOTOR DE LEGENDAS .SRT DO REPOSITÓRIO */
+let subtitlesEnabled = true;
+let currentCues = [];
+
+function srtTimeToSeconds(t) {
+  const parts = t.trim().replace(",", ".").split(":");
+  if (parts.length !== 3) return 0;
+  return parseFloat(parts[0]) * 3600 + parseFloat(parts[1]) * 60 + parseFloat(parts[2]);
+}
+
+function parseSRT(rawText) {
+  const blocks = rawText.replace(/\r/g, "").trim().split(/\n\s*\n/);
+  const cues = [];
+  for (const b of blocks) {
+    const lines = b.split("\n").map(l => l.trim()).filter(Boolean);
+    const timeLineIdx = lines.findIndex(l => l.includes("-->"));
+    if (timeLineIdx === -1) continue;
+    const [startStr, endStr] = lines[timeLineIdx].split("-->");
+    const text = lines.slice(timeLineIdx + 1).join("<br>");
+    cues.push({
+      start: srtTimeToSeconds(startStr),
+      end: srtTimeToSeconds(endStr),
+      text
+    });
+  }
+  return cues;
+}
+
+async function loadTrackSubtitles(idx) {
+  currentCues = [];
+  const trk = TRACKS[idx];
+  const disp = document.getElementById("subTextDisplay");
+  const status = document.getElementById("subStatusLabel");
+
+  if (!trk || !trk.srtFile) {
+    disp.className = "sub-text-display muted";
+    disp.textContent = "♪ ♪ ♪";
+    return;
+  }
+
+  try {
+    const res = await fetch(trk.srtFile);
+    if (!res.ok) throw new Error("not found");
+    const txt = await res.text();
+    currentCues = parseSRT(txt);
+    status.textContent = `CC // ${trk.title.toUpperCase()}`;
+    disp.className = "sub-text-display muted";
+    disp.textContent = "♪ ♪ ♪";
+  } catch (err) {
+    status.textContent = "CC // SEM LEGENDA CADASTRADA";
+    disp.className = "sub-text-display muted";
+    disp.textContent = "♪ ♪ ♪";
+  }
+}
+
+function toggleSubtitles() {
+  subtitlesEnabled = !subtitlesEnabled;
+  const btn = document.getElementById("btnToggleSub");
+  const disp = document.getElementById("subTextDisplay");
+  btn.textContent = subtitlesEnabled ? "CC: ON" : "CC: OFF";
+  btn.classList.toggle("active", subtitlesEnabled);
+  if (!subtitlesEnabled) {
+    disp.className = "sub-text-display muted";
+    disp.textContent = "Legendas ocultas.";
+  }
+}
+
+function syncSubtitles(curTime) {
+  if (!subtitlesEnabled || currentCues.length === 0) return;
+  const disp = document.getElementById("subTextDisplay");
+  const activeCue = currentCues.find(c => curTime >= c.start && curTime <= c.end);
+  if (activeCue) {
+    disp.className = "sub-text-display";
+    if (disp.innerHTML !== activeCue.text) {
+      disp.innerHTML = activeCue.text;
+    }
+  } else {
+    disp.className = "sub-text-display muted";
+    disp.textContent = "♪ ♪ ♪";
+  }
+}
+
+/* Renderiza Lista de Faixas na Aba 5 */
+function renderTracks(filter = currentFilter) {
+  currentFilter = filter;
   const box = document.getElementById("trackListContainer");
   box.innerHTML = "";
   TRACKS.forEach((t, idx) => {
     if (filter !== "all" && t.disc !== filter) return;
     const div = document.createElement("div");
-    div.className = "track-item";
+    div.className = "track-item" + (idx === currentIdx ? " now-playing" : "");
     div.innerHTML = `
       <div class="track-row" onclick="this.parentElement.classList.toggle('open')">
         <div class="track-meta">
           <div><span class="track-num">${t.cap}</span><span class="track-name">${t.title}</span></div>
           <div class="track-art">${t.artist}</div>
         </div>
-        <button type="button" class="mini-play" onclick="event.stopPropagation(); playSpecificTrack(${idx})" title="Ouvir no player">▶</button>
+        <button type="button" class="mini-play" onclick="event.stopPropagation(); playSpecificTrack(${idx})" title="Assistir e ouvir faixa inteira">▶</button>
       </div>
       <div class="track-note">${t.desc}</div>
     `;
@@ -954,8 +1248,169 @@ function filterDisc(disc, btn) {
   renderTracks(disc);
 }
 
-/* CONTROLE DE MODO EMBUTIDO VS FLUTUANTE DO PLAYER */
-let isFloating = false;
+function formatTime(sec) {
+  sec = Math.max(0, Math.floor(sec || 0));
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${m}:${s < 10 ? "0" : ""}${s}`;
+}
+
+function updateTrackUI(idx) {
+  currentIdx = idx;
+  const trk = TRACKS[idx];
+  document.getElementById("rwTrackNum").textContent = `FAIXA ${trk.cap} (${idx + 1}/${TRACKS.length})`;
+  document.getElementById("rwTitle").textContent = trk.title;
+  document.getElementById("rwArtist").textContent = trk.artist;
+  document.getElementById("rwCover").src = `https://i.ytimg.com/vi/${trk.ytId}/hqdefault.jpg`;
+  document.getElementById("rwReadingCap").textContent = `NOTAS DA FAIXA ${trk.cap}`;
+  document.getElementById("rwReadingNote").textContent = trk.desc;
+  renderTracks(currentFilter);
+  loadTrackSubtitles(idx);
+}
+
+/* Inicializa YouTube IFrame API exatamente como na versão funcional */
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player("yt-player-engine", {
+    videoId: TRACKS[0].ytId,
+    playerVars: {
+      autoplay: 0,
+      controls: 1,
+      modestbranding: 1,
+      playsinline: 1,
+      rel: 0
+    },
+    events: {
+      onReady: () => {
+        ytReady = true;
+        ytPlayer.setVolume(savedVolume);
+        document.getElementById("rwState").textContent = "PRONTO PARA TOCAR";
+        loadTrackSubtitles(0);
+      },
+      onStateChange: (e) => {
+        if (e.data === YT.PlayerState.PLAYING) {
+          isPlaying = true;
+          document.getElementById("rwState").textContent = "TOCANDO ▶";
+        } else if (e.data === YT.PlayerState.PAUSED) {
+          isPlaying = false;
+          document.getElementById("rwState").textContent = "PAUSADO";
+        } else if (e.data === YT.PlayerState.BUFFERING) {
+          document.getElementById("rwState").textContent = "CARREGANDO...";
+        } else if (e.data === YT.PlayerState.ENDED) {
+          nextTrack();
+        }
+      },
+      onError: () => {
+        nextTrack();
+      }
+    }
+  });
+}
+
+/* Atualiza Barra de Progresso e Sincroniza Legendas a cada 250ms */
+setInterval(() => {
+  if (!ytReady || !ytPlayer || typeof ytPlayer.getCurrentTime !== "function") return;
+  const cur = ytPlayer.getCurrentTime() || 0;
+  const dur = ytPlayer.getDuration() || 0;
+  if (dur > 0) {
+    const pct = Math.min(100, Math.max(0, (cur / dur) * 100));
+    document.getElementById("rwProgressFill").style.width = pct + "%";
+    document.getElementById("rwTimeCur").textContent = formatTime(cur);
+    document.getElementById("rwTimeDur").textContent = formatTime(dur);
+  }
+  syncSubtitles(cur);
+}, 250);
+
+/* Controles do Player */
+function playSpecificTrack(idx) {
+  updateTrackUI(idx);
+  if (ytReady && ytPlayer) {
+    ytPlayer.loadVideoById(TRACKS[idx].ytId);
+    ytPlayer.playVideo();
+  }
+}
+
+function togglePlay() {
+  if (!ytReady || !ytPlayer) return;
+  if (isPlaying) {
+    ytPlayer.pauseVideo();
+  } else {
+    ytPlayer.playVideo();
+  }
+}
+
+function nextTrack() {
+  playSpecificTrack((currentIdx + 1) % TRACKS.length);
+}
+
+function prevTrack() {
+  playSpecificTrack((currentIdx - 1 + TRACKS.length) % TRACKS.length);
+}
+
+function seekProgress(e) {
+  if (!ytReady || !ytPlayer) return;
+  const dur = ytPlayer.getDuration() || 0;
+  if (dur <= 0) return;
+  const bar = document.getElementById("rwProgressBar");
+  const rect = bar.getBoundingClientRect();
+  const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
+  const targetSec = ratio * dur;
+  ytPlayer.seekTo(targetSec, true);
+  document.getElementById("rwProgressFill").style.width = (ratio * 100) + "%";
+  document.getElementById("rwTimeCur").textContent = formatTime(targetSec);
+  syncSubtitles(targetSec);
+}
+
+function setVol(v) {
+  const num = parseInt(v, 10);
+  savedVolume = num;
+  whisperActive = false;
+  document.getElementById("btnWhisperMode").classList.remove("on");
+  if (ytReady && ytPlayer) {
+    ytPlayer.setVolume(num);
+  }
+}
+
+function toggleWhisperMode() {
+  whisperActive = !whisperActive;
+  const btn = document.getElementById("btnWhisperMode");
+  const slider = document.getElementById("rwVolSlider");
+  btn.classList.toggle("on", whisperActive);
+
+  if (whisperActive) {
+    slider.value = 20;
+    if (ytReady && ytPlayer) ytPlayer.setVolume(20);
+  } else {
+    const restore = savedVolume > 20 ? savedVolume : 80;
+    slider.value = restore;
+    if (ytReady && ytPlayer) ytPlayer.setVolume(restore);
+  }
+}
+
+function toggleReadingDrawer() {
+  readingOpen = !readingOpen;
+  document.getElementById("rwReadingDrawer").classList.toggle("open", readingOpen);
+  document.getElementById("btnReadingMode").classList.toggle("on", readingOpen);
+}
+
+function toggleReadingTimer() {
+  readingTimerRunning = !readingTimerRunning;
+  document.getElementById("btnTimerToggle").textContent = readingTimerRunning ? "Pausar" : "Retomar";
+}
+
+function resetReadingTimer() {
+  readingSeconds = 0;
+  document.getElementById("rwReadingTimer").textContent = "⏱ Leitura: 00:00";
+}
+
+setInterval(() => {
+  if (readingOpen && readingTimerRunning) {
+    readingSeconds++;
+    const m = Math.floor(readingSeconds / 60);
+    const s = readingSeconds % 60;
+    document.getElementById("rwReadingTimer").textContent =
+      `⏱ Leitura: ${m < 10 ? "0" : ""}${m}:${s < 10 ? "0" : ""}${s}`;
+  }
+}, 1000);
 
 function floatPlayer() {
   if (isFloating) return;
@@ -1001,22 +1456,27 @@ function scrollToOrFloatPlayer() {
   if (sec && document.getElementById("view-inicio").classList.contains("active")) {
     sec.scrollIntoView({ behavior: "smooth", block: "center" });
   }
-  if (accessToken && deviceId) {
-    floatPlayer();
-    if (!isPlaying) playSpecificTrack(currentIdx);
+  if (ytReady && ytPlayer && !isPlaying) {
+    ytPlayer.playVideo();
   }
 }
 
 function floatPlayerAndPlay() {
   floatPlayer();
-  if (accessToken && deviceId) {
-    if (!isPlaying) playSpecificTrack(currentIdx);
+  if (ytReady && ytPlayer && !isPlaying) {
+    ytPlayer.playVideo();
   }
 }
 
-/* NAVEGAÇÃO ENTRE ABAS (MANTÉM O PLAYER FLUTUANDO QUANDO VOCÊ ALTERNA) */
 function showTab(tabId, btn) {
-  if (tabId !== "inicio" && (isPlaying || accessToken)) {
+  const videoStage = document.getElementById("sharedVideoStage");
+  if (tabId === "trilha") {
+    document.getElementById("libraryVideoHost").appendChild(videoStage);
+  } else if (tabId === "inicio") {
+    document.getElementById("homeVideoHost").appendChild(videoStage);
+  }
+
+  if (tabId !== "inicio" && isPlaying) {
     floatPlayer();
   }
   document.querySelectorAll(".hc-nav button").forEach(b => b.classList.remove("active"));
@@ -1026,146 +1486,6 @@ function showTab(tabId, btn) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-/* SPOTIFY WEB PLAYBACK SDK */
-const CLIENT_ID    = "6b17b314279f41ca800c603bd7db0326";
-const REDIRECT_URI = location.origin + location.pathname;
-const SCOPES       = "streaming user-read-email user-read-private user-modify-playback-state user-read-playback-state";
-
-let accessToken = null, player = null, deviceId = null;
-let currentIdx = 0, isPlaying = false, isMuted = false, savedVol = 0.8;
-
-function genVerifier(n) {
-  const c = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  return Array.from(crypto.getRandomValues(new Uint8Array(n))).map(x => c[x % c.length]).join("");
-}
-async function genChallenge(v) {
-  const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(v));
-  return btoa(String.fromCharCode(...new Uint8Array(d))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
-}
-async function loginSpotify() {
-  const v = genVerifier(128), ch = await genChallenge(v);
-  localStorage.setItem("sp_v", v);
-  localStorage.setItem("sp_auto_open", "1");
-  location.href = "https://accounts.spotify.com/authorize?client_id=" + CLIENT_ID +
-    "&response_type=code&redirect_uri=" + encodeURIComponent(REDIRECT_URI) +
-    "&scope=" + encodeURIComponent(SCOPES) + "&code_challenge_method=S256&code_challenge=" + ch;
-}
-async function exchangeCode(code) {
-  const v = localStorage.getItem("sp_v");
-  const r = await fetch("https://accounts.spotify.com/api/token", {
-    method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"},
-    body: new URLSearchParams({client_id:CLIENT_ID,grant_type:"authorization_code",code,redirect_uri:REDIRECT_URI,code_verifier:v})
-  });
-  const d = await r.json();
-  if (d.access_token) {
-    localStorage.setItem("sp_t", d.access_token);
-    localStorage.setItem("sp_e", Date.now() + d.expires_in * 1000);
-    localStorage.removeItem("sp_v");
-    history.replaceState(null, null, location.pathname);
-    return d.access_token;
-  }
-  return null;
-}
-function getSavedToken() {
-  const t = localStorage.getItem("sp_t"), e = +localStorage.getItem("sp_e");
-  return t && Date.now() < e ? t : null;
-}
-
-window.onSpotifyWebPlaybackSDKReady = async () => {
-  const params = new URLSearchParams(location.search);
-  const code = params.get("code");
-  if (code) accessToken = await exchangeCode(code);
-  else accessToken = getSavedToken();
-
-  if (!accessToken) return;
-
-  document.getElementById("rwLoginView").style.display = "none";
-  document.getElementById("rwPlayerView").classList.add("active");
-
-  const shouldAutoPlay = localStorage.getItem("sp_auto_open") === "1";
-  if (shouldAutoPlay) {
-    localStorage.removeItem("sp_auto_open");
-    floatPlayer();
-  }
-
-  player = new Spotify.Player({
-    name: "Será que Estou Louca? Radio",
-    getOAuthToken: cb => cb(accessToken),
-    volume: 0.8
-  });
-
-  player.addListener("ready", ({ device_id }) => {
-    deviceId = device_id;
-    document.getElementById("rwState").textContent = "CONECTADO";
-    if (shouldAutoPlay) {
-      playSpecificTrack(0);
-    }
-  });
-
-  player.addListener("player_state_changed", s => {
-    if (!s) return;
-    isPlaying = !s.paused;
-    document.getElementById("rwState").textContent = isPlaying ? "TOCANDO ▶" : "PAUSADO";
-    if (isPlaying) floatPlayer();
-    const t = s.track_window.current_track;
-    if (t) {
-      document.getElementById("rwTitle").textContent = t.name;
-      document.getElementById("rwArtist").textContent = t.artists.map(a => a.name).join(", ");
-      if (t.album.images[0]?.url) document.getElementById("rwCover").src = t.album.images[0].url;
-    }
-  });
-
-  player.connect();
-};
-
-async function playSpecificTrack(idx) {
-  floatPlayer();
-  if (!accessToken) {
-    loginSpotify();
-    return;
-  }
-  if (!deviceId) {
-    document.getElementById("rwState").textContent = "CARREGANDO...";
-    return;
-  }
-  currentIdx = idx;
-  const trk = TRACKS[idx];
-  document.getElementById("rwTrackNum").textContent = `CAP. ${trk.cap} (${idx + 1}/20)`;
-  document.getElementById("rwTitle").textContent = trk.title;
-  document.getElementById("rwArtist").textContent = trk.artist;
-
-  await fetch("https://api.spotify.com/v1/me/player/play?device_id=" + deviceId, {
-    method: "PUT",
-    headers: { Authorization: "Bearer " + accessToken, "Content-Type": "application/json" },
-    body: JSON.stringify({ uris: TRACKS.map(x => x.uri), offset: { position: idx } })
-  });
-}
-
-async function togglePlay() {
-  if (!accessToken) { loginSpotify(); return; }
-  floatPlayer();
-  if (!isPlaying && deviceId) {
-    await playSpecificTrack(currentIdx);
-  } else if (player) {
-    await player.togglePlay();
-  }
-}
-async function nextTrack() { await playSpecificTrack((currentIdx + 1) % TRACKS.length); }
-async function prevTrack() { await playSpecificTrack((currentIdx - 1 + TRACKS.length) % TRACKS.length); }
-function setVol(v) {
-  savedVol = parseFloat(v);
-  isMuted = savedVol === 0;
-  if (player) player.setVolume(savedVol);
-}
-function toggleMute() {
-  isMuted = !isMuted;
-  const target = isMuted ? 0 : (savedVol || 0.8);
-  document.getElementById("rwVolSlider").value = target;
-  document.getElementById("rwMuteBtn").classList.toggle("pink", isMuted);
-  if (player) player.setVolume(target);
-}
-
-/* Arrastar quando estiver flutuando */
 (function dragFloatingWidget() {
   const widget = document.getElementById("radioWidget");
   const bar = document.getElementById("rwDragHandle");
@@ -1189,7 +1509,6 @@ function toggleMute() {
   document.addEventListener("mouseup", () => { drag = false; });
 })();
 
-/* Tradução PT/EN */
 const I18N = {
   pt: {
     title: "Será que<br>Estou Louca?",
